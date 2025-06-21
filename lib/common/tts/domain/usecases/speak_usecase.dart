@@ -1,4 +1,5 @@
-import 'package:icheja_mobile/common/domain/repositories/tts_repository.dart';
+
+import 'package:icheja_mobile/common/tts/domain/repositories/tts_repository.dart';
 
 class SpeakUseCase {
   final TtsRepository _repository;

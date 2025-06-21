@@ -23,10 +23,6 @@ class ExerciseLayout extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // Header
-          Image.asset('assets/img/logo.png', width: 40, height: 40),
-          const SizedBox(height: 24),
-
           // Title
           Row(
             mainAxisAlignment: MainAxisAlignment.start,

@@ -23,5 +23,12 @@ void setupExerciseDependencies(GetIt getIt) {
         speakUseCase: getIt(),
         stopUseCase: getIt(),
         getIsSpeakingStreamUseCase: getIt(),
+        startRecordingUseCase: getIt(),
+        stopRecordingUseCase: getIt(),
+        getIsRecordingStreamUseCase: getIt(),
+        playAudioUseCase: getIt(),
+        stopAudioUseCase: getIt(),
+        getIsPlayingStreamUseCase: getIt(),
+        takePictureUseCase: getIt(),
       ));
 }

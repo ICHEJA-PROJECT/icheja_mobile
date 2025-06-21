@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter_tts/flutter_tts.dart';
-import 'package:icheja_mobile/common/domain/repositories/tts_repository.dart';
+import 'package:icheja_mobile/common/tts/domain/repositories/tts_repository.dart';
 
 class TtsRepositoryImpl implements TtsRepository {
   final FlutterTts _flutterTts;
