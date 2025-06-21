@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:icheja_mobile/common/presentation/theme/theme.dart';
 import 'package:icheja_mobile/core/application/dependency_injection.dart';
-import 'package:icheja_mobile/exercises/presentation/pages/exercise_page.dart';
+import 'package:icheja_mobile/core/router/app_router.dart';
 
 void main() {
   setupDependencies();
@@ -12,14 +13,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
+    return MaterialApp.router(
       title: 'ICHEJA Mobile',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
-      home: const ExercisePage(),
+      theme: CustomTheme.themeData,
+      debugShowCheckedModeBanner: false,
+      routerConfig: router,
     );
   }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 
 class ExerciseLayout extends StatelessWidget {
@@ -37,9 +38,9 @@ class ExerciseLayout extends StatelessWidget {
               const SizedBox(width: 16),
               Container(
                 padding:
-                    const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    const EdgeInsets.symmetric(horizontal: 16, vertical: 2),
                 decoration: BoxDecoration(
-                  color: Colors.pink,
+                  color: ColorTheme.primary,
                   borderRadius: BorderRadius.circular(8),
                 ),
                 child: Text(
@@ -47,7 +48,7 @@ class ExerciseLayout extends StatelessWidget {
                   style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
-                      color: Colors.white),
+                      color: ColorTheme.text),
                 ),
               ),
             ],
@@ -58,36 +59,36 @@ class ExerciseLayout extends StatelessWidget {
           Text(
             exercise.instrucciones,
             textAlign: TextAlign.justify,
-            style: const TextStyle(fontSize: 16),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 26),
 
           // Instructions
-          Container(
-            padding: const EdgeInsets.all(16),
-            decoration: BoxDecoration(
-              color: Colors.grey[200],
-              borderRadius: BorderRadius.circular(12),
-            ),
-            child: Row(
-              children: [
-                IconButton(
-                  icon: Icon(isSpeaking ? Icons.stop : Icons.volume_up),
-                  color: Colors.teal,
+          Row(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: ColorTheme.secondary,
+                  borderRadius: BorderRadius.circular(12),
+                ),
+                child: IconButton(
+                  icon: Icon(isSpeaking ? Icons.stop : Icons.volume_up_outlined),
+                  color: ColorTheme.text,
                   iconSize: 32,
                   onPressed: onSpeakerPressed,
                 ),
-                const SizedBox(width: 16),
-                const Expanded(
-                  child: Text(
-                    'Instrucciones del ejercicio',
-                    style: TextStyle(
-                        fontSize: 16, fontWeight: FontWeight.w500),
-                  ),
+              ),
+              const SizedBox(width: 16),
+              const Expanded(
+                child: Text(
+                  'Instrucciones del ejercicio',
+                  style: TextStyle(fontSize: 19, fontWeight: FontWeight.bold),
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
+
           const SizedBox(height: 24),
 
           ...childrens,
@@ -96,7 +97,7 @@ class ExerciseLayout extends StatelessWidget {
           ElevatedButton(
             onPressed: onSend,
             style: ElevatedButton.styleFrom(
-              backgroundColor: Colors.blue[700],
+              backgroundColor: ColorTheme.tertiary,
               padding: const EdgeInsets.symmetric(vertical: 16),
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
@@ -104,7 +105,10 @@ class ExerciseLayout extends StatelessWidget {
             ),
             child: const Text(
               'Enviar Ejercicio',
-              style: TextStyle(color: Colors.white),
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold),
             ),
           ),
         ],

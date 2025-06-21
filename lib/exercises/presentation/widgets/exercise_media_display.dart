@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
 
@@ -21,7 +22,7 @@ class ExerciseMediaDisplay extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: Colors.grey[200],
+              color: ColorTheme.background,
               borderRadius: BorderRadius.circular(12),
             ),
             child: Image.network(
@@ -38,7 +39,7 @@ class ExerciseMediaDisplay extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: Colors.grey[200],
+                color: ColorTheme.background,
                 borderRadius: BorderRadius.circular(12),
               ),
               child: Image.file(

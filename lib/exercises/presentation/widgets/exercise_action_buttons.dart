@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
 
@@ -46,10 +47,12 @@ class _ReadingExerciseActions extends StatelessWidget {
               color: Colors.white),
           label: Text(
             viewModel.isRecording ? 'Detener Grabación' : 'Grabar Audio',
-            style: const TextStyle(color: Colors.white),
+            style: const TextStyle(
+                color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
           ),
           style: ElevatedButton.styleFrom(
-            backgroundColor: viewModel.isRecording ? Colors.red : Colors.teal,
+            backgroundColor:
+                viewModel.isRecording ? Colors.red : ColorTheme.secondary,
             padding: const EdgeInsets.symmetric(vertical: 16),
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(12),
@@ -73,7 +76,10 @@ class _ReadingExerciseActions extends StatelessWidget {
                 viewModel.isPlaying
                     ? 'Detener Reproducción'
                     : 'Reproducir Audio',
-                style: const TextStyle(color: Colors.white),
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 16,
+                    fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
                 backgroundColor: Colors.orange[700],
@@ -101,10 +107,11 @@ class _WritingExerciseActions extends StatelessWidget {
       icon: const Icon(Icons.camera_alt, color: Colors.white),
       label: const Text(
         'Tomar Foto',
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(
+            color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
       ),
       style: ElevatedButton.styleFrom(
-        backgroundColor: Colors.indigo,
+        backgroundColor: ColorTheme.secondary,
         padding: const EdgeInsets.symmetric(vertical: 16),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),

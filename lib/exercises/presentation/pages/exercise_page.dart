@@ -10,9 +10,11 @@ class ExercisePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider<ExerciseViewModel>(
-      create: (_) => getIt<ExerciseViewModel>()..loadExercises(),
-      child: const AppLayout(child: ExerciseView()),
+    return ChangeNotifierProvider(
+      create: (context) => sl<ExerciseViewModel>()..loadExercises(),
+      child: const AppLayout(
+        body: ExerciseView(),
+      ),
     );
   }
 }
