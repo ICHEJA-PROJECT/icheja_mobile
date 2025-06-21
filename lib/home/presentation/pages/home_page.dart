@@ -28,7 +28,7 @@ class HomePage extends StatelessWidget {
                   const SizedBox(height: 20),
                   const WelcomeHeader(),
                   const SizedBox(height: 25),
-                  const ProgressAction(),
+                  ProgressAction(viewModel: viewModel),
                   const SizedBox(height: 30),
                   if (viewModel.isLoading)
                     const Center(child: CircularProgressIndicator())
