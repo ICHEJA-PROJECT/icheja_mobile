@@ -84,6 +84,7 @@ class ReadingFeedbackModel extends ReadingFeedback {
     required super.transcription,
     required super.distance,
     required super.precision,
+    super.palabrasIncorrectas,
   });
 
   factory ReadingFeedbackModel.fromJson(Map<String, dynamic> json) {
@@ -92,6 +93,9 @@ class ReadingFeedbackModel extends ReadingFeedback {
       transcription: json['transcription'] as String,
       distance: json['distance'] as int,
       precision: (json['precision'] as num).toDouble(),
+      palabrasIncorrectas: json['wrong_words'] != null
+          ? List<String>.from(json['wrong_words'])
+          : null,
     );
   }
 }

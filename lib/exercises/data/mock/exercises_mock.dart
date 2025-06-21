@@ -81,7 +81,8 @@ final List<Map<String, dynamic>> exercisesMock = [
     "contexto": {"lectura_base": "agua, alma, alma, avena, aire, alacena"},
     "retroalimentacion": {
       "objective_sentence": "agua, alma, alma, avena, aire, alacena",
-      "transcription": "agua, alma, alma, avena, aire, alacena",
+      "transcription": "afua, alma, alfa, avena, aire, alacena",
+      "wrong_words": ["alma", "alfa"],
       "distance": 6,
       "precision": 84.21,
     },
@@ -102,7 +103,8 @@ final List<Map<String, dynamic>> exercisesMock = [
     "contexto": {"lectura_base": "ojo, olla, ocho, ocote, oreja, objeto"},
     "retroalimentacion": {
       "objective_sentence": "ojo, olla, ocho, ocote, oreja, objeto",
-      "transcription": "Ojo, olla, ocho, o corte, oreja, objeto.",
+      "transcription": "Ojo, olla, osho, o corte, oreja, otteto.",
+      "wrong_words": ["osh", "otteto"],
       "distance": 3,
       "precision": 92.5,
     },
@@ -124,6 +126,7 @@ final List<Map<String, dynamic>> exercisesMock = [
     "retroalimentacion": {
       "objective_sentence": "uña, uno, uniforme, urna, uva, universo",
       "transcription": "Unia, uno uniforme, urna, uva, universo",
+      "wrong_words": ["Unia", "urna"],
       "distance": 3,
       "precision": 92.31,
     },

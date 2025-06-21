@@ -73,7 +73,8 @@ class ExerciseLayout extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
                 child: IconButton(
-                  icon: Icon(isSpeaking ? Icons.stop : Icons.volume_up_outlined),
+                  icon:
+                      Icon(isSpeaking ? Icons.stop : Icons.volume_up_outlined),
                   color: ColorTheme.text,
                   iconSize: 32,
                   onPressed: onSpeakerPressed,
@@ -92,25 +93,6 @@ class ExerciseLayout extends StatelessWidget {
           const SizedBox(height: 24),
 
           ...childrens,
-
-          const SizedBox(height: 16),
-          ElevatedButton(
-            onPressed: onSend,
-            style: ElevatedButton.styleFrom(
-              backgroundColor: ColorTheme.tertiary,
-              padding: const EdgeInsets.symmetric(vertical: 16),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-            ),
-            child: const Text(
-              'Enviar Ejercicio',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
         ],
       ),
     );

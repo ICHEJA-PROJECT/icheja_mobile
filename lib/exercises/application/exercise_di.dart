@@ -5,30 +5,30 @@ import 'package:icheja_mobile/exercises/domain/repositories/exercise_repository.
 import 'package:icheja_mobile/exercises/domain/usecases/get_exercises.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
 
-void setupExerciseDependencies(GetIt getIt) {
-  // Data sources
-  getIt.registerLazySingleton<ExerciseLocalDataSource>(
-      () => ExerciseLocalDataSourceImpl());
+void setupExerciseDependencies(GetIt sl) {
+  // ViewModel
+  sl.registerLazySingleton(() => ExerciseViewModel(
+        getExercises: sl(),
+        speakUseCase: sl(),
+        stopUseCase: sl(),
+        getIsSpeakingStreamUseCase: sl(),
+        startRecordingUseCase: sl(),
+        stopRecordingUseCase: sl(),
+        getIsRecordingStreamUseCase: sl(),
+        takePictureUseCase: sl(),
+        playAudioUseCase: sl(),
+        stopAudioUseCase: sl(),
+        getIsPlayingStreamUseCase: sl(),
+      ));
+
+  // Usecases
+  sl.registerLazySingleton(() => GetExercises(sl()));
 
   // Repositories
-  getIt.registerLazySingleton<ExerciseRepository>(
-      () => ExerciseRepositoryImpl(localDataSource: getIt()));
+  sl.registerLazySingleton<ExerciseRepository>(
+      () => ExerciseRepositoryImpl(localDataSource: sl()));
 
-  // Use cases
-  getIt.registerLazySingleton(() => GetExercises(getIt()));
-
-  // ViewModels
-  getIt.registerFactory(() => ExerciseViewModel(
-        getExercises: getIt(),
-        speakUseCase: getIt(),
-        stopUseCase: getIt(),
-        getIsSpeakingStreamUseCase: getIt(),
-        startRecordingUseCase: getIt(),
-        stopRecordingUseCase: getIt(),
-        getIsRecordingStreamUseCase: getIt(),
-        playAudioUseCase: getIt(),
-        stopAudioUseCase: getIt(),
-        getIsPlayingStreamUseCase: getIt(),
-        takePictureUseCase: getIt(),
-      ));
+  // Datasources
+  sl.registerLazySingleton<ExerciseLocalDataSource>(
+      () => ExerciseLocalDataSourceImpl());
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/layouts/exercise_layout.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
@@ -25,7 +26,11 @@ class ExerciseContent extends StatelessWidget {
           viewModel.speak(exercise.instrucciones);
         }
       },
-      onSend: () => viewModel.nextExercise(),
+      onSend: () {
+        if (viewModel.currentExercise != null) {
+          context.go('/feedback', extra: viewModel.currentExercise);
+        }
+      },
       childrens: [
         ExerciseMediaDisplay(
           exercise: exercise,

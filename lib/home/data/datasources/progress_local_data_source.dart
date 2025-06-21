@@ -9,7 +9,7 @@ class ProgressLocalDataSourceImpl implements ProgressLocalDataSource {
   @override
   Future<List<ProgressModel>> getProgress() async {
     // Simulate a network delay
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 1500));
     return progressMock.map((e) => ProgressModel.fromJson(e)).toList();
   }
 }

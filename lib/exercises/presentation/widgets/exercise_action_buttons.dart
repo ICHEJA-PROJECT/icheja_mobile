@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
@@ -35,6 +36,7 @@ class _ReadingExerciseActions extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
+        // Primary Action Button
         ElevatedButton.icon(
           onPressed: () {
             if (viewModel.isRecording) {
@@ -59,6 +61,7 @@ class _ReadingExerciseActions extends StatelessWidget {
             ),
           ),
         ),
+        // Playback Button
         if (viewModel.recordedFilePath != null && !viewModel.isRecording)
           Padding(
             padding: const EdgeInsets.only(top: 16),
@@ -82,14 +85,34 @@ class _ReadingExerciseActions extends StatelessWidget {
                     fontWeight: FontWeight.bold),
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.orange[700],
-                padding: const EdgeInsets.symmetric(vertical: 16),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
+                  backgroundColor: Colors.orange[700],
+                  padding: const EdgeInsets.symmetric(vertical: 16),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12))),
             ),
           ),
+
+        const SizedBox(height: 16),
+        // Send Button
+        ElevatedButton(
+          onPressed: () {
+            if (viewModel.currentExercise != null) {
+              context.go('/feedback', extra: viewModel.currentExercise);
+            }
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: ColorTheme.tertiary,
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+          child: const Text(
+            'Enviar Ejercicio',
+            style: TextStyle(
+                color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+        ),
       ],
     );
   }
@@ -102,21 +125,46 @@ class _WritingExerciseActions extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ElevatedButton.icon(
-      onPressed: () => viewModel.takePicture(),
-      icon: const Icon(Icons.camera_alt, color: Colors.white),
-      label: const Text(
-        'Tomar Foto',
-        style: TextStyle(
-            color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
-      ),
-      style: ElevatedButton.styleFrom(
-        backgroundColor: ColorTheme.secondary,
-        padding: const EdgeInsets.symmetric(vertical: 16),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(12),
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.stretch,
+      children: [
+        ElevatedButton.icon(
+          onPressed: () => viewModel.takePicture(),
+          icon: const Icon(Icons.camera_alt, color: Colors.white),
+          label: const Text(
+            'Tomar Foto',
+            style: TextStyle(
+                color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+          style: ElevatedButton.styleFrom(
+            backgroundColor: ColorTheme.secondary,
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
         ),
-      ),
+        const SizedBox(height: 16),
+        ElevatedButton(
+          onPressed: () {
+            if (viewModel.currentExercise != null) {
+              context.go('/feedback', extra: viewModel.currentExercise);
+            }
+          },
+          style: ElevatedButton.styleFrom(
+            backgroundColor: ColorTheme.tertiary,
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(12),
+            ),
+          ),
+          child: const Text(
+            'Enviar Ejercicio',
+            style: TextStyle(
+                color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+        ),
+      ],
     );
   }
 }

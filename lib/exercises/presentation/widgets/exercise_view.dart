@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
 import 'package:icheja_mobile/exercises/presentation/widgets/exercise_content.dart';
+import 'package:icheja_mobile/exercises/presentation/widgets/exercise_skeleton.dart';
 import 'package:provider/provider.dart';
 
 class ExerciseView extends StatelessWidget {
@@ -17,9 +18,7 @@ class ExerciseView extends StatelessWidget {
           children: [
             if (viewModel.isLoading)
               const Expanded(
-                child: Center(
-                  child: CircularProgressIndicator(),
-                ),
+                child: ExerciseSkeleton(),
               )
             else if (viewModel.errorMessage != null)
               Expanded(

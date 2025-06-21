@@ -55,6 +55,8 @@ class ExerciseViewModel extends ChangeNotifier {
   File? _takenPicture;
   File? get takenPicture => _takenPicture;
 
+  bool _isInitialized = false;
+
   Exercise? get currentExercise =>
       _exercises.isNotEmpty ? _exercises[_currentExerciseIndex] : null;
 
@@ -86,6 +88,8 @@ class ExerciseViewModel extends ChangeNotifier {
       _isPlaying = isPlaying;
       notifyListeners();
     });
+
+    loadExercises();
   }
 
   Future<void> speak(String text) async {
@@ -128,14 +132,16 @@ class ExerciseViewModel extends ChangeNotifier {
   }
 
   Future<void> loadExercises() async {
+    if (_isInitialized) return;
+
     _isLoading = true;
     _errorMessage = null;
     notifyListeners();
 
     try {
       _exercises = await getExercises();
-      final index = _exercises.indexWhere((ex) => ex.id == 1);
-      _currentExerciseIndex = index != -1 ? index : 0;
+      _currentExerciseIndex = 0; // Start at the first exercise
+      _isInitialized = true;
     } catch (e) {
       _errorMessage = "Failed to load exercises.";
     } finally {

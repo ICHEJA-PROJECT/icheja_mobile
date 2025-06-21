@@ -9,7 +9,7 @@ class ExerciseLocalDataSourceImpl implements ExerciseLocalDataSource {
   @override
   Future<List<ExerciseModel>> getExercises() async {
     // Simulate a network delay
-    await Future.delayed(const Duration(seconds: 1));
+    await Future.delayed(const Duration(milliseconds: 1500));
     final exercises = exercisesMock
         .map((exercise) => ExerciseModel.fromJson(exercise))
         .toList();

@@ -5,6 +5,7 @@ import 'package:icheja_mobile/common/application/camera_di.dart';
 import 'package:icheja_mobile/common/application/common_di.dart';
 import 'package:icheja_mobile/exercises/application/exercise_di.dart';
 import 'package:icheja_mobile/home/application/home_di.dart';
+import 'package:icheja_mobile/feedback/application/feedback_di.dart';
 
 final sl = GetIt.instance;
 
@@ -15,4 +16,5 @@ void setupDependencies() {
   setupCameraDependencies(sl);
   setupAudioRecorderDependencies(sl);
   setupAudioPlayerDependencies(sl);
+  setupFeedbackDependencies(sl);
 }
