@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:icheja_mobile/auth/application/auth_di.dart';
 import 'package:icheja_mobile/common/application/audio_player_di.dart';
 import 'package:icheja_mobile/common/application/audio_recorder_di.dart';
 import 'package:icheja_mobile/common/application/camera_di.dart';
@@ -17,4 +18,5 @@ void setupDependencies() {
   setupAudioRecorderDependencies(sl);
   setupAudioPlayerDependencies(sl);
   setupFeedbackDependencies(sl);
+  setupAuthDependencies(sl);
 }
