@@ -78,10 +78,10 @@ final List<Map<String, dynamic>> exercisesMock = [
     ],
     "escritura": false,
     "lectura": true,
-    "contexto": {"lectura_base": "agua, alma, alma, avena, aire, alacena"},
+    "contexto": {"lectura_base": "agua, alma, ama, avena, aire, alacena"},
     "retroalimentacion": {
-      "objective_sentence": "agua, alma, alma, avena, aire, alacena",
-      "transcription": "afua, alma, alfa, avena, aire, alacena",
+      "objective_sentence": "agua, alma, ama, avena, aire, alacena",
+      "transcription": "afua, alma, ama, avena, aire, alacena",
       "wrong_words": ["alma", "alfa"],
       "distance": 6,
       "precision": 84.21,

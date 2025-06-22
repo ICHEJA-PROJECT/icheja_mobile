@@ -17,15 +17,15 @@ class ReadingFeedbackDetails extends StatelessWidget {
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
         const SizedBox(height: 8),
-        PrecisionDisplay(precision: feedback.precision),
+        PrecisionDisplay(precision: feedback.score),
         const SizedBox(height: 24),
-        if (feedback.palabrasIncorrectas?.isNotEmpty ?? false) ...[
+        if (feedback.words.isNotEmpty) ...[
           const Text(
             'Palabras incorrectas',
             style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
           ),
           const SizedBox(height: 12),
-          IncorrectWordsDisplay(words: feedback.palabrasIncorrectas!),
+          IncorrectWordsDisplay(words: feedback.words.cast<String>()),
           const SizedBox(height: 24),
         ]
       ],

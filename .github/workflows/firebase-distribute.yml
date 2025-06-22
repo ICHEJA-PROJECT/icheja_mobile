@@ -1,0 +1,50 @@
+name: Distribute to Firebase App Distribution
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+    types: [closed]
+  workflow_dispatch: # permite ejecución manual
+
+jobs:
+  build:
+    name: Build and Distribute
+    runs-on: ubuntu-latest
+
+    if: ${{ github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.pull_request.merged == true) }}
+
+    steps:
+    - name: Checkout source code
+      uses: actions/checkout@v4
+
+    - name: Set up Java
+      uses: actions/setup-java@v3
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Set up Flutter
+      uses: subosito/flutter-action@v2
+      with:
+        flutter-version: 'stable'
+
+    - name: Install dependencies
+      run: flutter pub get
+
+    - name: Build APK
+      run: flutter build apk --release
+
+    - name: Install Firebase CLI
+      run: npm install -g firebase-tools
+
+    - name: Distribute to Firebase
+      run: |
+        firebase appdistribution:distribute build/app/outputs/flutter-apk/app-release.apk \
+          --app ${{ secrets.FIREBASE_APP_ID }} \
+          --token ${{ secrets.FIREBASE_TOKEN }} \
+          --testers "${{ secrets.TESTER_EMAILS }}" \
+          --release-notes "Versión generada automáticamente desde GitHub Actions"

@@ -4,7 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:icheja_mobile/common/tts/domain/usecases/get_is_speaking_stream_usecase.dart';
 import 'package:icheja_mobile/common/tts/domain/usecases/speak_usecase.dart';
 import 'package:icheja_mobile/common/tts/domain/usecases/stop_usecase.dart';
+import 'package:icheja_mobile/exercises/domain/entities/context_entity.dart';
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
+import 'package:icheja_mobile/exercises/domain/entities/feedback_entity.dart';
+import 'package:icheja_mobile/exercises/domain/usecases/evaluate_reading_exercise_usecase.dart';
+import 'package:icheja_mobile/exercises/domain/usecases/evaluate_writing_exercise_usecase.dart';
 import 'package:icheja_mobile/exercises/domain/usecases/get_exercises.dart';
 import 'package:icheja_mobile/common/audio_recorder/domain/usecases/get_is_recording_stream_usecase.dart';
 import 'package:icheja_mobile/common/audio_recorder/domain/usecases/start_recording_usecase.dart';
@@ -25,6 +29,11 @@ class ExerciseViewModel extends ChangeNotifier {
   final PlayAudioUseCase playAudioUseCase;
   final StopAudioUseCase stopAudioUseCase;
   final GetIsPlayingStreamUseCase getIsPlayingStreamUseCase;
+  final EvaluateReadingExerciseUseCase evaluateReadingExerciseUseCase;
+  final EvaluateWritingExerciseUseCase evaluateWritingExerciseUseCase;
+
+  FeedbackEntity? _evaluatedFeedback;
+  FeedbackEntity? get evaluatedFeedback => _evaluatedFeedback;
 
   late final StreamSubscription<bool> _isSpeakingSubscription;
   late final StreamSubscription<bool> _isRecordingSubscription;
@@ -56,6 +65,11 @@ class ExerciseViewModel extends ChangeNotifier {
 
   bool _isInitialized = false;
 
+  bool get isButtonForReadingEvaluationEnabled =>
+      _recordedFilePath != null && currentExercise != null;
+  bool get isButtonForWritingEvaluationEnabled =>
+      currentExercise != null && takenPicture != null;
+
   Exercise? get currentExercise =>
       _exercises.isNotEmpty ? _exercises[_currentExerciseIndex] : null;
 
@@ -70,6 +84,8 @@ class ExerciseViewModel extends ChangeNotifier {
     required this.playAudioUseCase,
     required this.stopAudioUseCase,
     required this.getIsPlayingStreamUseCase,
+    required this.evaluateReadingExerciseUseCase,
+    required this.evaluateWritingExerciseUseCase,
   }) {
     _isSpeakingSubscription = getIsSpeakingStreamUseCase().listen((isSpeaking) {
       _isSpeaking = isSpeaking;
@@ -108,7 +124,60 @@ class ExerciseViewModel extends ChangeNotifier {
 
   Future<void> stopRecording() async {
     _recordedFilePath = await stopRecordingUseCase();
+    if (_recordedFilePath != null && currentExercise != null) {
+      print('Recording file path: $_recordedFilePath');
+      print('Current exercise: ${currentExercise!.contenido}');
+    }
     notifyListeners();
+  }
+
+  Future<void> evaluateListeningExercise() async {
+    if (_recordedFilePath == null || currentExercise == null) return;
+
+    _isLoading = true;
+    _errorMessage = null;
+    notifyListeners();
+
+    try {
+      final exerciseCtx = currentExercise!.contexto as ReadingContext;
+      final feedback = await evaluateReadingExerciseUseCase(
+        audioPath: _recordedFilePath!,
+        objectiveSentence: exerciseCtx.readingBase,
+      );
+      print('Feedback: $feedback');
+      _evaluatedFeedback = feedback;
+    } catch (e) {
+      _errorMessage = "Error al evaluar el ejercicio: ${e.toString()}";
+      print('Error: $_errorMessage');
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future<void> evaluateWritingExercise() async {
+    if (_takenPicture == null || currentExercise == null) return;
+
+    _isLoading = true;
+    _errorMessage = null;
+    notifyListeners();
+
+    try {
+      final exerciseCtx = currentExercise!.contexto as WritingContext;
+      final feedback = await evaluateWritingExerciseUseCase(
+        studentImage: _takenPicture!,
+        originalImageUrl: exerciseCtx.imageBase,
+      );
+      _evaluatedFeedback = feedback;
+      print('Writing exercise evaluation result: $feedback');
+    } catch (e) {
+      _errorMessage =
+          "Error al evaluar el ejercicio de escritura: ${e.toString()}";
+      print('Error: $_errorMessage');
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
   }
 
   Future<void> playRecording() async {
@@ -178,6 +247,10 @@ class ExerciseViewModel extends ChangeNotifier {
       _currentExerciseIndex = _exercises.length - 1;
     }
     notifyListeners();
+  }
+
+  void clearFeedback() {
+    _evaluatedFeedback = null;
   }
 
   @override

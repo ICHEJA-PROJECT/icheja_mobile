@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
+import 'package:icheja_mobile/core/application/dependency_injection.dart';
+import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
+import 'package:icheja_mobile/core/session/session_manager.dart';
 
 class AppLayout extends StatelessWidget {
   final Widget body;
@@ -40,9 +43,8 @@ class AppLayout extends StatelessWidget {
             label: 'Ejercicios',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.person_outline),
-            activeIcon: Icon(Icons.person),
-            label: 'Perfil',
+            icon: Icon(Icons.logout),
+            label: 'Salir',
           ),
         ],
         currentIndex: _calculateSelectedIndex(context),
@@ -71,15 +73,14 @@ class AppLayout extends StatelessWidget {
   void _onItemTapped(int index, BuildContext context) {
     switch (index) {
       case 0:
-        context.go('/home');
+        context.go(AppRoutesConstant.home);
         break;
       case 1:
-        context.go('/exercises');
+        context.go(AppRoutesConstant.exercises);
         break;
       case 2:
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('En progreso...')),
-        );
+        sl<SessionManager>().clearSession();
+        context.go(AppRoutesConstant.welcome);
         break;
     }
   }
