@@ -1,25 +1,26 @@
 import 'package:flutter/material.dart';
 
 class WelcomeHeader extends StatelessWidget {
-  const WelcomeHeader({super.key});
+  final String name;
+  const WelcomeHeader({super.key, required this.name});
 
   @override
   Widget build(BuildContext context) {
-    return const Row(
+    return Row(
       children: [
-        CircleAvatar(
+        const CircleAvatar(
           radius: 24,
           backgroundColor: Color(0xFFE0E0E0),
           child: Icon(Icons.person, color: Colors.black54),
         ),
-        SizedBox(width: 16),
+        const SizedBox(width: 16),
         Expanded(
           child: Text(
-            'Bienvenido Fernando',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+            'Bienvenido $name',
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
-        Icon(Icons.settings_outlined),
+        const Icon(Icons.settings_outlined),
       ],
     );
   }

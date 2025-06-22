@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:icheja_mobile/common/tts/domain/usecases/get_is_speaking_stream_usecase.dart';
 import 'package:icheja_mobile/common/tts/domain/usecases/speak_usecase.dart';
 import 'package:icheja_mobile/common/tts/domain/usecases/stop_usecase.dart';
+import 'package:icheja_mobile/core/session/session_manager.dart';
 import 'package:icheja_mobile/home/domain/entities/progress_entity.dart';
 import 'package:icheja_mobile/home/domain/usecases/get_progress.dart';
 
@@ -12,6 +13,7 @@ class HomeViewModel extends ChangeNotifier {
   final SpeakUseCase _speakUseCase;
   final StopUseCase _stopUseCase;
   final GetIsSpeakingStreamUseCase _getIsSpeakingStreamUseCase;
+  final SessionManager _sessionManager;
   StreamSubscription? _isSpeakingSubscription;
 
   HomeViewModel(
@@ -19,7 +21,9 @@ class HomeViewModel extends ChangeNotifier {
     this._speakUseCase,
     this._stopUseCase,
     this._getIsSpeakingStreamUseCase,
+    this._sessionManager,
   ) {
+    _fetchUsername();
     fetchProgress();
     _isSpeakingSubscription =
         _getIsSpeakingStreamUseCase().listen((isSpeaking) {
@@ -37,8 +41,16 @@ class HomeViewModel extends ChangeNotifier {
   String? _error;
   String? get error => _error;
 
+  String? _username;
+  String? get username => _username;
+
   bool _isSpeaking = false;
   bool get isSpeaking => _isSpeaking;
+
+  Future<void> _fetchUsername() async {
+    _username = await _sessionManager.getUserName();
+    notifyListeners();
+  }
 
   Future<void> fetchProgress() async {
     _isLoading = true;
@@ -58,7 +70,7 @@ class HomeViewModel extends ChangeNotifier {
   void speakProgress() {
     if (_progressList.isEmpty) return;
 
-    final welcome = 'Bienvenido Fernando.';
+    final welcome = 'Bienvenido ${_username ?? ''}.';
     final progressParts = _progressList.map((p) {
       return 'Tu progreso en ${p.title} es del ${p.percentage} por ciento.';
     }).join(' ');

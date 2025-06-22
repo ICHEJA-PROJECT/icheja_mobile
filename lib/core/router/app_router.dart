@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icheja_mobile/auth/presentation/pages/qr_scanner_page.dart';
 import 'package:icheja_mobile/auth/presentation/pages/welcome_page.dart';
+import 'package:icheja_mobile/core/application/dependency_injection.dart';
+import 'package:icheja_mobile/core/session/session_manager.dart';
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/pages/exercise_page.dart';
 import 'package:icheja_mobile/feedback/presentation/pages/feedback_page.dart';
@@ -10,8 +12,27 @@ import 'package:icheja_mobile/home/presentation/pages/home_page.dart';
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
 
 final GoRouter router = GoRouter(
-  initialLocation: '/',
+  initialLocation: '/home',
   navigatorKey: _rootNavigatorKey,
+  redirect: (BuildContext context, GoRouterState state) async {
+    final routesNonSecure = ['/', '/qr_scanner'];
+    final sessionManager = sl<SessionManager>();
+    final token = await sessionManager.getToken();
+    final isLoggedIn = token != null;
+
+    final isNonSecure = routesNonSecure.contains(state.matchedLocation);
+
+    if (!isLoggedIn && !isNonSecure) {
+      // Si no ha iniciado sesión y intenta acceder a una página no segura, redirigir a bienvenida
+      return '/';
+    }
+
+    if (isLoggedIn && isNonSecure) {
+      // Si ya ha iniciado sesión y intenta acceder a una página no segura, redirigir a la página no segura
+      return state.matchedLocation;
+    }
+    return null;
+  },
   routes: [
     GoRoute(
       path: '/',

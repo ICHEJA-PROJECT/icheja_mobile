@@ -7,7 +7,7 @@ import 'package:icheja_mobile/home/presentation/viewmodels/home_viewmodel.dart';
 
 void setupHomeDependencies(GetIt sl) {
   // ViewModel
-  sl.registerFactory(() => HomeViewModel(sl(), sl(), sl(), sl()));
+  sl.registerFactory(() => HomeViewModel(sl(), sl(), sl(), sl(), sl()));
 
   // Usecases
   sl.registerLazySingleton(() => GetProgressUseCase(sl()));
