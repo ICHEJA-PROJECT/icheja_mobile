@@ -1,9 +1,8 @@
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/domain/entities/context_entity.dart';
-import 'package:icheja_mobile/exercises/domain/entities/feedback_entity.dart';
 
 class ExerciseModel extends Exercise {
-  const ExerciseModel({
+  ExerciseModel({
     required super.id,
     required super.titulo,
     required super.subtitulo,
@@ -12,7 +11,6 @@ class ExerciseModel extends Exercise {
     required super.rutasImagenes,
     required super.type,
     required super.contexto,
-    required super.retroalimentacion,
   });
 
   factory ExerciseModel.fromJson(Map<String, dynamic> json) {
@@ -35,11 +33,6 @@ class ExerciseModel extends Exercise {
               json['contexto'] as Map<String, dynamic>)
           : ReadingContextModel.fromJson(
               json['contexto'] as Map<String, dynamic>),
-      retroalimentacion: isWriting
-          ? WritingFeedbackModel.fromJson(
-              json['retroalimentacion'] as Map<String, dynamic>)
-          : ReadingFeedbackModel.fromJson(
-              json['retroalimentacion'] as Map<String, dynamic>),
     );
   }
 }
@@ -60,42 +53,6 @@ class ReadingContextModel extends ReadingContext {
   factory ReadingContextModel.fromJson(Map<String, dynamic> json) {
     return ReadingContextModel(
       readingBase: json['lectura_base'] as String,
-    );
-  }
-}
-
-class WritingFeedbackModel extends WritingFeedback {
-  const WritingFeedbackModel({
-    required super.level,
-    required super.structuralSimilarity,
-  });
-
-  factory WritingFeedbackModel.fromJson(Map<String, dynamic> json) {
-    return WritingFeedbackModel(
-      level: json['level'] as String,
-      structuralSimilarity: (json['structural_similarity'] as num).toDouble(),
-    );
-  }
-}
-
-class ReadingFeedbackModel extends ReadingFeedback {
-  const ReadingFeedbackModel({
-    required super.objectiveSentence,
-    required super.transcription,
-    required super.distance,
-    required super.precision,
-    super.palabrasIncorrectas,
-  });
-
-  factory ReadingFeedbackModel.fromJson(Map<String, dynamic> json) {
-    return ReadingFeedbackModel(
-      objectiveSentence: json['objective_sentence'] as String,
-      transcription: json['transcription'] as String,
-      distance: json['distance'] as int,
-      precision: (json['precision'] as num).toDouble(),
-      palabrasIncorrectas: json['wrong_words'] != null
-          ? List<String>.from(json['wrong_words'])
-          : null,
     );
   }
 }

@@ -22,7 +22,7 @@ class CustomProgressBar extends StatelessWidget {
               width: constraints.maxWidth,
               height: height,
               decoration: BoxDecoration(
-                color: color.withOpacity(0.2),
+                color: color.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(height / 2),
               ),
             ),
@@ -46,7 +46,7 @@ class CustomProgressBar extends StatelessWidget {
                   border: Border.all(color: Colors.white, width: 2),
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.2),
+                      color: Colors.black.withValues(alpha: 0.2),
                       spreadRadius: 1,
                       blurRadius: 3,
                       offset: const Offset(0, 1),
