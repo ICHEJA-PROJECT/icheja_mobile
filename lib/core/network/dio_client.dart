@@ -1,4 +1,5 @@
 import 'package:dio/dio.dart';
+import 'package:icheja_mobile/core/network/error_interceptor.dart';
 
 class DioClient {
   late final Dio _dio;
@@ -6,8 +7,7 @@ class DioClient {
   DioClient() {
     _dio = Dio(
       BaseOptions(
-        baseUrl:
-            'http://34.200.107.148:3000',
+        baseUrl: 'http://34.200.107.148:3000',
         connectTimeout: const Duration(milliseconds: 5000),
         receiveTimeout: const Duration(milliseconds: 3000),
       ),
@@ -17,6 +17,7 @@ class DioClient {
       requestBody: true,
       responseBody: true,
     ));
+    _dio.interceptors.add(ErrorInterceptor());
   }
 
   Dio get dio => _dio;
