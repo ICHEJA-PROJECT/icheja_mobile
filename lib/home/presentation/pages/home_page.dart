@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:icheja_mobile/common/presentation/layouts/app_layout.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
 import 'package:icheja_mobile/core/application/dependency_injection.dart';
+import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
 import 'package:icheja_mobile/home/presentation/viewmodels/home_viewmodel.dart';
 import 'package:icheja_mobile/home/presentation/widgets/home_skeleton.dart';
 import 'package:icheja_mobile/home/presentation/widgets/progress_action.dart';
@@ -50,7 +51,7 @@ class HomePage extends StatelessWidget {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
-                    onPressed: () => context.go('/exercises'),
+                    onPressed: () => context.go(AppRoutesConstant.exercises),
                     child: const Text(
                       'Iniciar ejercicio',
                       style: TextStyle(

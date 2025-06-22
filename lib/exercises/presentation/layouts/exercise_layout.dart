@@ -5,7 +5,6 @@ import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 class ExerciseLayout extends StatelessWidget {
   final Exercise exercise;
   final List<Widget> childrens;
-  final VoidCallback onSend;
   final bool isSpeaking;
   final VoidCallback onSpeakerPressed;
 
@@ -13,7 +12,6 @@ class ExerciseLayout extends StatelessWidget {
     super.key,
     required this.exercise,
     required this.childrens,
-    required this.onSend,
     required this.isSpeaking,
     required this.onSpeakerPressed,
   });

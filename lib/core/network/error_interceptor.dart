@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:icheja_mobile/core/network/api_exception.dart';
+import 'package:icheja_mobile/core/errors/api_exception.dart';
 
 class ErrorInterceptor extends Interceptor {
   @override
