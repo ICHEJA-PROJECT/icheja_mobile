@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
-import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
 
@@ -149,10 +147,7 @@ class _WritingExerciseActions extends StatelessWidget {
         ElevatedButton(
           onPressed: viewModel.isButtonForWritingEvaluationEnabled
               ? () {
-                  context.go(AppRoutesConstant.feedback, extra: {
-                    'exercise': viewModel.currentExercise,
-                    'feedback': viewModel.currentExercise!.retroalimentacion,
-                  });
+                  viewModel.evaluateWritingExercise();
                 }
               : null,
           style: ElevatedButton.styleFrom(

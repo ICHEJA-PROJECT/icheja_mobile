@@ -26,15 +26,15 @@ class FeedbackBody extends StatelessWidget {
     if (feedback is ReadingFeedback) {
       final readingFeedback = feedback as ReadingFeedback;
       textToSpeak =
-          'Tu precisión de pronunciación fue del ${readingFeedback.precision.toInt()} por ciento.';
-      if (readingFeedback.palabrasIncorrectas?.isNotEmpty ?? false) {
+          'Tu precisión de pronunciación fue del ${readingFeedback.score.toInt()} por ciento.';
+      if (readingFeedback.words.isNotEmpty) {
         textToSpeak +=
-            ' Las palabras con errores fueron: ${readingFeedback.palabrasIncorrectas!.join(', ')}.';
+            ' Las palabras con errores fueron: ${readingFeedback.words.join(', ')}.';
       }
-    } else if (feedback is WritingFeedback) {
-      final writingFeedback = feedback as WritingFeedback;
+    } else if (feedback is WritingFeedbackEntity) {
+      final writingFeedback = feedback as WritingFeedbackEntity;
       textToSpeak =
-          'Tu nivel es ${writingFeedback.level}. La precisión de tu trazo es del ${(writingFeedback.structuralSimilarity * 100).toInt()} por ciento.';
+          'Tu nivel es ${writingFeedback.level}. La precisión de tu trazo es del ${writingFeedback.precision.toInt()} por ciento.';
     }
 
     return SingleChildScrollView(
@@ -59,8 +59,8 @@ class FeedbackBody extends StatelessWidget {
             ),
             const SizedBox(height: 24),
           ],
-          if (feedback is WritingFeedback)
-            WritingFeedbackDetails(feedback: feedback as WritingFeedback),
+          if (feedback is WritingFeedbackEntity)
+            WritingFeedbackDetails(feedback: feedback as WritingFeedbackEntity),
           if (feedback is ReadingFeedback)
             ReadingFeedbackDetails(feedback: feedback as ReadingFeedback),
           const SizedBox(height: 12),

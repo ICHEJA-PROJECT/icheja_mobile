@@ -8,6 +8,7 @@ import 'package:icheja_mobile/exercises/domain/entities/context_entity.dart';
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/domain/entities/feedback_entity.dart';
 import 'package:icheja_mobile/exercises/domain/usecases/evaluate_reading_exercise_usecase.dart';
+import 'package:icheja_mobile/exercises/domain/usecases/evaluate_writing_exercise_usecase.dart';
 import 'package:icheja_mobile/exercises/domain/usecases/get_exercises.dart';
 import 'package:icheja_mobile/common/audio_recorder/domain/usecases/get_is_recording_stream_usecase.dart';
 import 'package:icheja_mobile/common/audio_recorder/domain/usecases/start_recording_usecase.dart';
@@ -29,6 +30,7 @@ class ExerciseViewModel extends ChangeNotifier {
   final StopAudioUseCase stopAudioUseCase;
   final GetIsPlayingStreamUseCase getIsPlayingStreamUseCase;
   final EvaluateReadingExerciseUseCase evaluateReadingExerciseUseCase;
+  final EvaluateWritingExerciseUseCase evaluateWritingExerciseUseCase;
 
   FeedbackEntity? _evaluatedFeedback;
   FeedbackEntity? get evaluatedFeedback => _evaluatedFeedback;
@@ -83,6 +85,7 @@ class ExerciseViewModel extends ChangeNotifier {
     required this.stopAudioUseCase,
     required this.getIsPlayingStreamUseCase,
     required this.evaluateReadingExerciseUseCase,
+    required this.evaluateWritingExerciseUseCase,
   }) {
     _isSpeakingSubscription = getIsSpeakingStreamUseCase().listen((isSpeaking) {
       _isSpeaking = isSpeaking;
@@ -145,6 +148,31 @@ class ExerciseViewModel extends ChangeNotifier {
       _evaluatedFeedback = feedback;
     } catch (e) {
       _errorMessage = "Error al evaluar el ejercicio: ${e.toString()}";
+      print('Error: $_errorMessage');
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future<void> evaluateWritingExercise() async {
+    if (_takenPicture == null || currentExercise == null) return;
+
+    _isLoading = true;
+    _errorMessage = null;
+    notifyListeners();
+
+    try {
+      final exerciseCtx = currentExercise!.contexto as WritingContext;
+      final feedback = await evaluateWritingExerciseUseCase(
+        studentImage: _takenPicture!,
+        originalImageUrl: exerciseCtx.imageBase,
+      );
+      _evaluatedFeedback = feedback;
+      print('Writing exercise evaluation result: $feedback');
+    } catch (e) {
+      _errorMessage =
+          "Error al evaluar el ejercicio de escritura: ${e.toString()}";
       print('Error: $_errorMessage');
     } finally {
       _isLoading = false;

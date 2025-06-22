@@ -4,7 +4,7 @@ import 'package:icheja_mobile/feedback/presentation/widgets/feedback_metric.dart
 import 'package:icheja_mobile/feedback/presentation/widgets/precision_display.dart';
 
 class WritingFeedbackDetails extends StatelessWidget {
-  final WritingFeedback feedback;
+  final WritingFeedbackEntity feedback;
   const WritingFeedbackDetails({super.key, required this.feedback});
 
   @override
@@ -17,7 +17,7 @@ class WritingFeedbackDetails extends StatelessWidget {
           style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
         ),
         const SizedBox(height: 15),
-        PrecisionDisplay(precision: feedback.structuralSimilarity * 100),
+        PrecisionDisplay(precision: feedback.precision),
         const SizedBox(height: 24),
         FeedbackMetric(
           label: 'Nivel',
