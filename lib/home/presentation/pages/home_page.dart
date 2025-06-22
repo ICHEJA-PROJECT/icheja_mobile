@@ -35,7 +35,7 @@ class HomePage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.stretch,
                 children: [
                   const SizedBox(height: 20),
-                  const WelcomeHeader(),
+                  WelcomeHeader(name: viewModel.username ?? 'Usuario'),
                   const SizedBox(height: 25),
                   ProgressAction(viewModel: viewModel),
                   const SizedBox(height: 30),
