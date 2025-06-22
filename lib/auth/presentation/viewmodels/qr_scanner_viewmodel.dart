@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icheja_mobile/auth/domain/usecases/login_with_qr_usecase.dart';
 import 'package:icheja_mobile/common/camera/domain/repositories/camera_repository.dart';
-import 'package:icheja_mobile/core/network/api_exception.dart';
+import 'package:icheja_mobile/core/errors/api_exception.dart';
+import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
 import 'package:icheja_mobile/core/session/session_manager.dart';
 
 class QRScannerViewModel extends ChangeNotifier {
@@ -55,7 +56,7 @@ class QRScannerViewModel extends ChangeNotifier {
         print('Picture taken, sending to backend...');
         final userInfo = await _loginWithQrUseCase(file);
         await _sessionManager.saveSession(userInfo);
-        context.go('/home');
+        context.go(AppRoutesConstant.home);
       }
     } on DioException catch (e) {
       if (e.error is ApiException) {

@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:icheja_mobile/auth/domain/entities/user_info_entity.dart';
+import 'package:icheja_mobile/core/network/domain/constants/api_client_constants.dart';
 
 abstract class AuthRemoteDataSource {
   Future<UserInfo> loginWithQr(File qrImage);
@@ -22,7 +23,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
       });
 
       final response = await dio.post(
-        '/api/auth/login-student',
+        ApiClientConstants.loginStudentPath,
         data: formData,
       );
 
