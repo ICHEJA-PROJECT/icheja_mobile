@@ -15,7 +15,6 @@ void setupExerciseDependencies(GetIt sl) {
         startRecordingUseCase: sl(),
         stopRecordingUseCase: sl(),
         getIsRecordingStreamUseCase: sl(),
-        takePictureUseCase: sl(),
         playAudioUseCase: sl(),
         stopAudioUseCase: sl(),
         getIsPlayingStreamUseCase: sl(),

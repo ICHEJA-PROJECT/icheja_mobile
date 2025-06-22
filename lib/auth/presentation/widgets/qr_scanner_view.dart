@@ -49,15 +49,24 @@ class QRScannerView extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-            child: const Text(
-              'OK',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                fontFamily: 'Poppins',
-              ),
-            ),
+            child: viewModel.state.status != CameraStatus.success
+                ? const SizedBox(
+                    height: 24,
+                    width: 24,
+                    child: CircularProgressIndicator(
+                      color: Colors.white,
+                      strokeWidth: 3,
+                    ),
+                  )
+                : const Text(
+                    'OK',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: 'Poppins',
+                    ),
+                  ),
           ),
         ),
       ],

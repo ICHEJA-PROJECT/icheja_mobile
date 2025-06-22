@@ -118,7 +118,7 @@ final List<Map<String, dynamic>> exercisesMock = [
     "instrucciones":
         "Fíjate en las palabras en la imagen. Deberás pronunciarlas para mejorar la pronunciación de la U. Pronuncia en voz alta juntando los labios como si soplaras.",
     "rutas_imagenes": [
-      "https://res.cloudinary.com/dsiamqhuu/image/upload/v1750456721/ICHEJA/ICHEJA/file.jpg",
+      "https://res.cloudinary.com/dsiamqhuu/image/upload/v1750456797/ICHEJA/ICHEJA/file.jpg",
     ],
     "escritura": false,
     "lectura": true,

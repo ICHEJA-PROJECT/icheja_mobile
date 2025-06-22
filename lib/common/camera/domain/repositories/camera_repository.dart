@@ -13,8 +13,7 @@ class CameraState {
 }
 
 abstract class CameraRepository {
-  Future<void> initializeCamera();
-  Stream<CameraState> get cameraStateStream;
+  Stream<CameraState> initializeCamera();
   Future<File?> takePicture();
   Future<void> dispose();
 }

@@ -12,7 +12,7 @@ import 'package:icheja_mobile/common/audio_recorder/domain/usecases/stop_recordi
 import 'package:icheja_mobile/common/audio_player/domain/usecases/get_is_playing_stream_usecase.dart';
 import 'package:icheja_mobile/common/audio_player/domain/usecases/play_audio_usecase.dart';
 import 'package:icheja_mobile/common/audio_player/domain/usecases/stop_audio_usecase.dart';
-import 'package:icheja_mobile/common/camera/domain/usecases/take_picture_usecase.dart';
+import 'package:image_picker/image_picker.dart';
 
 class ExerciseViewModel extends ChangeNotifier {
   final GetExercises getExercises;
@@ -25,7 +25,6 @@ class ExerciseViewModel extends ChangeNotifier {
   final PlayAudioUseCase playAudioUseCase;
   final StopAudioUseCase stopAudioUseCase;
   final GetIsPlayingStreamUseCase getIsPlayingStreamUseCase;
-  final TakePictureUseCase takePictureUseCase;
 
   late final StreamSubscription<bool> _isSpeakingSubscription;
   late final StreamSubscription<bool> _isRecordingSubscription;
@@ -71,7 +70,6 @@ class ExerciseViewModel extends ChangeNotifier {
     required this.playAudioUseCase,
     required this.stopAudioUseCase,
     required this.getIsPlayingStreamUseCase,
-    required this.takePictureUseCase,
   }) {
     _isSpeakingSubscription = getIsSpeakingStreamUseCase().listen((isSpeaking) {
       _isSpeaking = isSpeaking;
@@ -124,9 +122,11 @@ class ExerciseViewModel extends ChangeNotifier {
   }
 
   Future<void> takePicture() async {
-    final picture = await takePictureUseCase();
-    if (picture != null) {
-      _takenPicture = picture;
+    final picker = ImagePicker();
+    final imageFile = await picker.pickImage(source: ImageSource.camera);
+
+    if (imageFile != null) {
+      _takenPicture = File(imageFile.path);
       notifyListeners();
     }
   }

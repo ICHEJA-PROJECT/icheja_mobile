@@ -14,9 +14,9 @@ void setupDependencies() {
   setupCommonDependencies(sl);
   setupExerciseDependencies(sl);
   setupHomeDependencies(sl);
-  setupCameraDependencies(sl);
+  setupCameraDI();
   setupAudioRecorderDependencies(sl);
   setupAudioPlayerDependencies(sl);
   setupFeedbackDependencies(sl);
-  setupAuthDependencies(sl);
+  setupAuthDI();
 }
