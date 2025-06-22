@@ -38,6 +38,21 @@ class QRScannerView extends StatelessWidget {
             ),
           ),
         ),
+        if (viewModel.errorMessage != null)
+          Padding(
+            padding:
+                const EdgeInsets.symmetric(horizontal: 24.0, vertical: 8.0),
+            child: Text(
+              viewModel.errorMessage!,
+              style: const TextStyle(
+                color: Colors.red,
+                fontSize: 17,
+                fontWeight: FontWeight.w500,
+                fontFamily: 'Poppins',
+              ),
+              textAlign: TextAlign.center,
+            ),
+          ),
         Padding(
           padding: const EdgeInsets.all(24.0),
           child: ElevatedButton(

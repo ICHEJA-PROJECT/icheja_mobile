@@ -1,9 +1,11 @@
 import 'dart:async';
 import 'dart:io';
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icheja_mobile/auth/domain/usecases/login_with_qr_usecase.dart';
 import 'package:icheja_mobile/common/camera/domain/repositories/camera_repository.dart';
+import 'package:icheja_mobile/core/network/api_exception.dart';
 import 'package:icheja_mobile/core/session/session_manager.dart';
 
 class QRScannerViewModel extends ChangeNotifier {
@@ -18,6 +20,9 @@ class QRScannerViewModel extends ChangeNotifier {
 
   bool _isLoggingIn = false;
   bool get isLoggingIn => _isLoggingIn;
+
+  String? _errorMessage;
+  String? get errorMessage => _errorMessage;
 
   QRScannerViewModel({
     required CameraRepository cameraRepository,
@@ -41,6 +46,7 @@ class QRScannerViewModel extends ChangeNotifier {
     if (_isLoggingIn) return;
 
     _isLoggingIn = true;
+    _errorMessage = null;
     notifyListeners();
 
     try {
@@ -49,12 +55,16 @@ class QRScannerViewModel extends ChangeNotifier {
         print('Picture taken, sending to backend...');
         final userInfo = await _loginWithQrUseCase(file);
         await _sessionManager.saveSession(userInfo);
-        print('Login successful for ${userInfo.name}, navigating to home...');
         context.go('/home');
       }
+    } on DioException catch (e) {
+      if (e.error is ApiException) {
+        _errorMessage = (e.error as ApiException).message;
+      } else {
+        _errorMessage = 'Ocurrió un error inesperado.';
+      }
     } catch (e) {
-      print('An error occurred during login: $e');
-      // Optionally, show an error message to the user
+      _errorMessage = 'Ocurrió un error inesperado.';
     } finally {
       _isLoggingIn = false;
       notifyListeners();
