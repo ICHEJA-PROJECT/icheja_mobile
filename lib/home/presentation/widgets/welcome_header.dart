@@ -20,7 +20,7 @@ class WelcomeHeader extends StatelessWidget {
             style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),
         ),
-        const Icon(Icons.settings_outlined),
+        // const Icon(Icons.settings_outlined),
       ],
     );
   }
