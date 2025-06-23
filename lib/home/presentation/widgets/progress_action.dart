@@ -2,9 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
 import 'package:icheja_mobile/home/presentation/viewmodels/home_viewmodel.dart';
 
-class ProgressAction extends StatelessWidget {
+class ProgressAction extends StatefulWidget {
   final HomeViewModel viewModel;
+
   const ProgressAction({super.key, required this.viewModel});
+
+  @override
+  State<ProgressAction> createState() =>
+      _ProgressActionState(viewModel: viewModel);
+}
+
+class _ProgressActionState extends State<ProgressAction> {
+  final HomeViewModel viewModel;
+  _ProgressActionState({required this.viewModel});
+  @override
+  void initState() {
+    super.initState();
+    if (viewModel.isSpeaking) {
+      viewModel.stopSpeaking();
+    } else {
+      viewModel.speakProgress();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,7 +44,7 @@ class ProgressAction extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
             ),
             child: Icon(
-              viewModel.isSpeaking ? Icons.stop : Icons.volume_up,
+              viewModel.isSpeaking ? Icons.stop : Icons.volume_up_outlined,
               color: Colors.white,
               size: 28,
             ),

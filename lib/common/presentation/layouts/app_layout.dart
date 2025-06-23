@@ -38,8 +38,8 @@ class AppLayout extends StatelessWidget {
             label: 'Inicio',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.school_outlined),
-            activeIcon: Icon(Icons.school),
+            icon: Icon(Icons.draw_outlined),
+            activeIcon: Icon(Icons.draw),
             label: 'Ejercicios',
           ),
           BottomNavigationBarItem(

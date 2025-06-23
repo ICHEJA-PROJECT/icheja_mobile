@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icheja_mobile/common/domain/constants/ui_constants.dart';
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/layouts/exercise_layout.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
@@ -22,7 +23,11 @@ class ExerciseContent extends StatelessWidget {
         if (viewModel.isSpeaking) {
           viewModel.stop();
         } else {
-          viewModel.speak(exercise.instrucciones);
+          final typeExercise = exercise.type;
+          final exerciseMessage = typeExercise == ExerciseType.writing
+              ? UIConstants.writingMessage
+              : UIConstants.readingMessage;
+          viewModel.speak("$exerciseMessage ${exercise.instrucciones}");
         }
       },
       childrens: [

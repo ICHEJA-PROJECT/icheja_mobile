@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:icheja_mobile/common/domain/constants/ui_constants.dart';
 import 'package:icheja_mobile/common/tts/domain/usecases/get_is_speaking_stream_usecase.dart';
 import 'package:icheja_mobile/common/tts/domain/usecases/speak_usecase.dart';
 import 'package:icheja_mobile/common/tts/domain/usecases/stop_usecase.dart';
@@ -74,8 +75,8 @@ class HomeViewModel extends ChangeNotifier {
     final progressParts = _progressList.map((p) {
       return 'Tu progreso en ${p.title} es del ${p.percentage} por ciento.';
     }).join(' ');
-
-    _speakUseCase('$welcome $progressParts');
+    final instructions = "$progressParts ${UIConstants.homeMessage}";
+    _speakUseCase('$welcome $instructions');
   }
 
   void stopSpeaking() {
