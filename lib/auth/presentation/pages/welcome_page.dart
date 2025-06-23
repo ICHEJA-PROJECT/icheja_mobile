@@ -1,10 +1,42 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icheja_mobile/auth/presentation/layouts/auth_layout.dart';
+import 'package:icheja_mobile/auth/presentation/viewmodels/welcome_viewmodel.dart';
+import 'package:icheja_mobile/common/domain/constants/ui_constants.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
+import 'package:icheja_mobile/core/application/dependency_injection.dart';
+import 'package:provider/provider.dart';
 
 class WelcomePage extends StatelessWidget {
   const WelcomePage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return ChangeNotifierProvider(
+      create: (_) => sl<WelcomeViewmodel>(),
+      child: const _WelcomePageBody(),
+    );
+  }
+}
+
+class _WelcomePageBody extends StatefulWidget {
+  const _WelcomePageBody({super.key});
+
+  @override
+  State<_WelcomePageBody> createState() => _WelcomePageState();
+}
+
+class _WelcomePageState extends State<_WelcomePageBody> {
+  @override
+  void initState() {
+    super.initState();
+    final viewModel = context.read<WelcomeViewmodel>();
+    if (viewModel.isSpeaking) {
+      viewModel.stop();
+    } else {
+      viewModel.speak(UIConstants.welcomeMessage);
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

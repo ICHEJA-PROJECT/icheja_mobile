@@ -5,6 +5,7 @@ import 'package:icheja_mobile/auth/data/repositories/auth_repository_impl.dart';
 import 'package:icheja_mobile/auth/domain/repositories/auth_repository.dart';
 import 'package:icheja_mobile/auth/domain/usecases/login_with_qr_usecase.dart';
 import 'package:icheja_mobile/auth/presentation/viewmodels/qr_scanner_viewmodel.dart';
+import 'package:icheja_mobile/auth/presentation/viewmodels/welcome_viewmodel.dart';
 import 'package:icheja_mobile/common/camera/domain/repositories/camera_repository.dart';
 
 void setupAuthDI(GetIt sl) {
@@ -32,6 +33,13 @@ void setupAuthDI(GetIt sl) {
       cameraRepository: sl<CameraRepository>(),
       loginWithQrUseCase: sl<LoginWithQrUseCase>(),
       sessionManager: sl(),
+    ),
+  );
+  sl.registerFactory(
+    () => WelcomeViewmodel(
+      speakUseCase: sl(),
+      stopUseCase: sl(),
+      getIsSpeakingStreamUseCase: sl(),
     ),
   );
 }
