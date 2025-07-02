@@ -7,7 +7,7 @@ class CustomTheme {
         secondaryHeaderColor: ColorTheme.secondary,
         scaffoldBackgroundColor: ColorTheme.background,
         textTheme: const TextTheme(
-          bodyLarge: TextStyle(color: ColorTheme.text),
+          bodyLarge: TextStyle(color: ColorTheme.text, fontFamily: 'Poppins'),
         ),
         visualDensity: VisualDensity.adaptivePlatformDensity,
       );

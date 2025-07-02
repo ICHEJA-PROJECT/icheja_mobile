@@ -6,4 +6,6 @@ class ColorTheme {
   static const tertiary = Color(0xFF036AB3);
   static const background = Color(0xFFEEEDED);
   static const text = Color(0xFFF3F3F3);
+  static const tertiaryHover = Color(0xFFFFEE00);
+  static const shadowColor = Color(0xA9000000);
 }
