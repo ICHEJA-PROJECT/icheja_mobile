@@ -22,8 +22,8 @@ class ModalHeader extends StatelessWidget {
             title!,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
+              fontSize: 24,
+              fontWeight: FontWeight.w900,
               color: titleColor ?? Colors.black87,
             ),
           ),
@@ -34,6 +34,7 @@ class ModalHeader extends StatelessWidget {
               textAlign: TextAlign.center,
               style: const TextStyle(
                 fontSize: 14,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ],
