@@ -9,6 +9,7 @@ import 'package:icheja_mobile/core/session/session_manager.dart';
 import 'package:icheja_mobile/exercises/application/exercise_di.dart';
 import 'package:icheja_mobile/home/application/home_di.dart';
 import 'package:icheja_mobile/feedback/application/feedback_di.dart';
+import 'package:icheja_mobile/resources/application/resources_di.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 final sl = GetIt.instance;
@@ -26,6 +27,7 @@ Future<void> setupDependencies() async {
   setupCommonDependencies(sl);
   setupExerciseDependencies(sl);
   setupHomeDependencies(sl);
+  setupResourcesDependencies(sl);
   setupCameraDI(sl);
   setupAudioRecorderDependencies(sl);
   setupAudioPlayerDependencies(sl);
