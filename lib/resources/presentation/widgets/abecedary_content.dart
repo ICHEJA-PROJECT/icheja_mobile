@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icheja_mobile/common/presentation/widgets/custom_container_border.dart';
-import 'package:icheja_mobile/common/presentation/widgets/custom_network_image.dart';
 import 'package:icheja_mobile/common/presentation/widgets/custom_svg_network_image.dart';
 import 'package:icheja_mobile/common/presentation/widgets/grid_container.dart';
-import 'package:icheja_mobile/common/presentation/widgets/image_skeleton_loader.dart';
 import 'package:icheja_mobile/resources/domain/entities/abecedary_resource_entity.dart';
 
 class AbecedaryContent extends StatelessWidget {

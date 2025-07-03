@@ -32,7 +32,7 @@ class ModalFooterActions extends StatelessWidget {
                   child: ElevatedButton(
                     onPressed: onClose,
                     style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.red,
+                      backgroundColor: const Color(0xFFFF2222),
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8),
@@ -74,4 +74,4 @@ class ModalFooterActions extends StatelessWidget {
       ),
     );
   }
-} 
+}

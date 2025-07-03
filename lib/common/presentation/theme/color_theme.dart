@@ -8,4 +8,5 @@ class ColorTheme {
   static const text = Color(0xFFF3F3F3);
   static const tertiaryHover = Color(0xFFFFEE00);
   static const shadowColor = Color(0xA9000000);
+  static const greenColor = Color(0xFF00A529);
 }
