@@ -56,137 +56,137 @@ class ResourceDetailViewmodel extends ChangeNotifier {
               vocal: 'A',
               minusVocal: 'a',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'B',
               minusVocal: 'b',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'C',
               minusVocal: 'c',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'D',
               minusVocal: 'd',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'E',
               minusVocal: 'e',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'F',
               minusVocal: 'f',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'G',
               minusVocal: 'g',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'H',
               minusVocal: 'h',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'I',
               minusVocal: 'i',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'J',
               minusVocal: 'j',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'K',
               minusVocal: 'k',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'L',
               minusVocal: 'l',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'M',
               minusVocal: 'm',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'N',
               minusVocal: 'n',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'Ñ',
               minusVocal: 'ñ',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'O',
               minusVocal: 'o',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'P',
               minusVocal: 'p',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'Q',
               minusVocal: 'q',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'R',
               minusVocal: 'r',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'S',
               minusVocal: 's',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'T',
               minusVocal: 't',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'U',
               minusVocal: 'u',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'V',
               minusVocal: 'v',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'W',
               minusVocal: 'w',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'X',
               minusVocal: 'x',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'Y',
               minusVocal: 'y',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
           AbecedaryResourceEntity(
               vocal: 'Z',
               minusVocal: 'z',
               imageUrl:
-                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
         ],
       );
     } catch (e) {
