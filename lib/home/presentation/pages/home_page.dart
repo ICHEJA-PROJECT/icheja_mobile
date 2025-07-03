@@ -1,3 +1,5 @@
+// ignore_for_file: unused_import, duplicate_import
+
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icheja_mobile/common/presentation/layouts/app_layout.dart';
@@ -43,7 +45,9 @@ class _HomePageState extends State<HomePage> {
       context: context,
       header: const ModalHeader(
         title: "Recomendación",
-        titleColor: Colors.deepPurple,
+        titleFontSize: 30,
+        subtitleFontSize: 20,
+        titleColor: ColorTheme.greenColor,
         subtitle: "Ejercicios recomendados",
       ),
       content: ModalContent(
@@ -51,9 +55,9 @@ class _HomePageState extends State<HomePage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             HorizontalModalLayout(
-              color: ColorTheme.primary, 
+              color: ColorTheme.primary,
               title: "Trazos circulares",
-              textColor: ColorTheme.text, 
+              textColor: ColorTheme.text,
               child: Container(
                 padding: const EdgeInsets.all(4),
                 decoration: BoxDecoration(
@@ -73,7 +77,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               action: () {
-                context.go(AppRoutesConstant.resources);
+                context.go(AppRoutesConstant.exercises);
               },
             )
           ],

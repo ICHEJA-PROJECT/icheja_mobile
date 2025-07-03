@@ -4,12 +4,16 @@ class ModalHeader extends StatelessWidget {
   final String? title;
   final Color? titleColor;
   final String? subtitle;
+  final double titleFontSize;
+  final double subtitleFontSize;
 
   const ModalHeader({
     super.key,
     required this.title,
     this.titleColor,
     this.subtitle,
+    this.titleFontSize = 24.0,
+    this.subtitleFontSize = 14.0,
   });
 
   @override
@@ -22,7 +26,7 @@ class ModalHeader extends StatelessWidget {
             title!,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontSize: 24,
+              fontSize: titleFontSize,
               fontWeight: FontWeight.w900,
               color: titleColor ?? Colors.black87,
             ),
@@ -32,8 +36,8 @@ class ModalHeader extends StatelessWidget {
             Text(
               subtitle!,
               textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 14,
+              style: TextStyle(
+                fontSize: subtitleFontSize,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -42,4 +46,4 @@ class ModalHeader extends StatelessWidget {
       ),
     );
   }
-} 
+}

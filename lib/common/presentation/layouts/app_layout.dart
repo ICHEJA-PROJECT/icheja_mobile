@@ -11,10 +11,14 @@ class AppLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String location = GoRouterState.of(context).uri.toString();
+
     return Scaffold(
       appBar: AppBar(
         title: Image.asset(
-          'assets/img/logo.png',
+          location.startsWith(AppRoutesConstant.exercises)
+              ? 'assets/img/header_line.png'
+              : 'assets/img/logo.png',
           height: 30,
         ),
         centerTitle: true,

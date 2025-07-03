@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:icheja_mobile/common/tts/domain/usecases/get_is_speaking_stream_usecase.dart';
 import 'package:icheja_mobile/common/tts/domain/usecases/speak_usecase.dart';
 import 'package:icheja_mobile/common/tts/domain/usecases/stop_usecase.dart';
+import 'package:icheja_mobile/core/session/session_manager.dart';
 import 'package:icheja_mobile/exercises/domain/entities/context_entity.dart';
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/domain/entities/feedback_entity.dart';
@@ -31,6 +32,7 @@ class ExerciseViewModel extends ChangeNotifier {
   final GetIsPlayingStreamUseCase getIsPlayingStreamUseCase;
   final EvaluateReadingExerciseUseCase evaluateReadingExerciseUseCase;
   final EvaluateWritingExerciseUseCase evaluateWritingExerciseUseCase;
+  final SessionManager sessionManager;
 
   FeedbackEntity? _evaluatedFeedback;
   FeedbackEntity? get evaluatedFeedback => _evaluatedFeedback;
@@ -44,6 +46,9 @@ class ExerciseViewModel extends ChangeNotifier {
 
   String? _errorMessage;
   String? get errorMessage => _errorMessage;
+
+  String? _username;
+  String? get username => _username;
 
   List<Exercise> _exercises = [];
   int _currentExerciseIndex = 0;
@@ -86,6 +91,7 @@ class ExerciseViewModel extends ChangeNotifier {
     required this.getIsPlayingStreamUseCase,
     required this.evaluateReadingExerciseUseCase,
     required this.evaluateWritingExerciseUseCase,
+    required this.sessionManager,
   }) {
     _isSpeakingSubscription = getIsSpeakingStreamUseCase().listen((isSpeaking) {
       _isSpeaking = isSpeaking;
@@ -102,7 +108,7 @@ class ExerciseViewModel extends ChangeNotifier {
       _isPlaying = isPlaying;
       notifyListeners();
     });
-
+    getUsername();
     loadExercises();
   }
 
@@ -200,6 +206,12 @@ class ExerciseViewModel extends ChangeNotifier {
     }
   }
 
+  Future<void> getUsername() async {
+    if (_isInitialized) return;
+    _username = await sessionManager.getUserName();
+    notifyListeners();
+  }
+
   Future<void> loadExercises() async {
     if (_isInitialized) return;
 
@@ -260,6 +272,5 @@ class ExerciseViewModel extends ChangeNotifier {
     _isSpeakingSubscription.cancel();
     _isRecordingSubscription.cancel();
     _isPlayingSubscription.cancel();
-    super.dispose();
   }
 }

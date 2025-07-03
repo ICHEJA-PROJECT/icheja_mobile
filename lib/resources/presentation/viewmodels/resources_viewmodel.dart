@@ -61,42 +61,42 @@ class ResourcesViewmodel extends ChangeNotifier {
           title: 'Ejercicio 1',
           imageUrl:
               'https://img.freepik.com/premium-vector/little-boy-doing-homework-by-read-writing-his-desk-vector-illustration_181870-188.jpg',
-          routeToGo: AppRoutesConstant.home,
+          routeToGo: AppRoutesConstant.exercises,
         ),
         ResourcesEntity(
           id: '3',
           title: 'Ejercicio 2',
           imageUrl:
               'https://img.freepik.com/premium-vector/little-boy-doing-homework-by-read-writing-his-desk-vector-illustration_181870-188.jpg',
-          routeToGo: AppRoutesConstant.home,
+          routeToGo: AppRoutesConstant.exercises,
         ),
         ResourcesEntity(
           id: '4',
           title: 'Ejercicio 3',
           imageUrl:
               'https://img.freepik.com/premium-vector/little-boy-doing-homework-by-read-writing-his-desk-vector-illustration_181870-188.jpg',
-          routeToGo: AppRoutesConstant.home,
+          routeToGo: AppRoutesConstant.exercises,
         ),
         ResourcesEntity(
           id: '5',
           title: 'Ejercicio 4',
           imageUrl:
               'https://img.freepik.com/premium-vector/little-boy-doing-homework-by-read-writing-his-desk-vector-illustration_181870-188.jpg',
-          routeToGo: AppRoutesConstant.home,
+          routeToGo: AppRoutesConstant.exercises,
         ),
         ResourcesEntity(
           id: '6',
           title: 'Ejercicio 5',
           imageUrl:
               'https://img.freepik.com/premium-vector/little-boy-doing-homework-by-read-writing-his-desk-vector-illustration_181870-188.jpg',
-          routeToGo: AppRoutesConstant.home,
+          routeToGo: AppRoutesConstant.exercises,
         ),
         ResourcesEntity(
           id: '7',
           title: 'Ejercicio 6',
           imageUrl:
               'https://img.freepik.com/premium-vector/little-boy-doing-homework-by-read-writing-his-desk-vector-illustration_181870-188.jpg',
-          routeToGo: AppRoutesConstant.home,
+          routeToGo: AppRoutesConstant.exercises,
         ),
       ];
     } catch (e) {
