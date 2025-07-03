@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
 import 'package:icheja_mobile/common/presentation/widgets/custom_network_image.dart';
+import 'package:icheja_mobile/common/presentation/widgets/image_skeleton_loader.dart';
 
 class RowTypes extends StatelessWidget {
   final String text;
   final Color overlayColor;
   final Color backgroundColor;
   final String imageUrl;
-  final VoidCallback? onPressed;
+  final Function()? onPressed;
 
   const RowTypes(
       {super.key,
@@ -61,7 +62,12 @@ class RowTypes extends StatelessWidget {
             flex: 3,
             child: CustomNetworkImage(
               imageUrl: imageUrl,
-              placeHolderImage: const CircularProgressIndicator(),
+              placeHolderImage: ImageSkeletonLoader(
+                width: 50.0,
+                height: 50.0,
+                baseColor: Colors.grey[300]!,
+                highlightColor: Colors.grey[100]!,
+              ),
               errorImage: const Icon(Icons.error, size: 50.0),
               width: 50.0,
               height: 50.0,
