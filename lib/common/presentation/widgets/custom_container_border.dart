@@ -41,7 +41,7 @@ class CustomContainerBorder extends StatelessWidget {
         ),
         margin: const EdgeInsets.all(5.0),
         child: Padding(
-            padding: const EdgeInsetsGeometry.symmetric(horizontal: 5.0),
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
             child: item));
   }
 }

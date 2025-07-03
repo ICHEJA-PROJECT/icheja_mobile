@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icheja_mobile/common/presentation/layouts/app_layout.dart';
+import 'package:icheja_mobile/common/presentation/layouts/horizontal_modal_layout.dart';
 import 'package:icheja_mobile/common/presentation/layouts/modal_layout.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_content.dart';
@@ -16,41 +17,71 @@ import 'package:icheja_mobile/common/presentation/widgets/custom_network_image.d
 import 'package:provider/provider.dart';
 import 'package:go_router/go_router.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  bool _modalShown = false;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (!_modalShown) {
+        _showModal(context);
+        _modalShown = true;
+      }
+    });
+  }
 
   void _showModal(BuildContext context) {
     ModalLayout.show(
       context: context,
       header: const ModalHeader(
         title: "Recomendación",
-        titleColor: Colors.green,
+        titleColor: Colors.deepPurple,
         subtitle: "Ejercicios recomendados",
       ),
-      content: const ModalContent(
+      content: ModalContent(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            CustomNetworkImage(
-              imageUrl:
-                  'https://cdn-icons-png.flaticon.com/512/8136/8136031.png',
-              placeHolderImage: const Icon(
-                Icons.school,
-                size: 64,
-                color: Colors.blue,
+            HorizontalModalLayout(
+              color: ColorTheme.primary, 
+              title: "Trazos circulares",
+              textColor: ColorTheme.text, 
+              child: Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  color: Colors.amber,
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    '1',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
               ),
-              errorImage: const Icon(
-                Icons.school,
-                size: 64,
-                color: Colors.red,
-              ),
-            ),
+              action: () {
+                context.go(AppRoutesConstant.resources);
+              },
+            )
           ],
         ),
       ),
       footerActions: ModalFooterActions(
         buttonTypes: [ModalButtonType.close],
-        onClose: () => GoRouter.of(context).pop(),
+        onClose: () => Navigator.of(context).pop(),
       ),
     );
   }
