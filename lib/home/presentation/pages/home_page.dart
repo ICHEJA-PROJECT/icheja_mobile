@@ -1,17 +1,59 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icheja_mobile/common/presentation/layouts/app_layout.dart';
+import 'package:icheja_mobile/common/presentation/layouts/modal_layout.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
+import 'package:icheja_mobile/common/presentation/widgets/modal_content.dart';
+import 'package:icheja_mobile/common/presentation/widgets/modal_footer_actions.dart';
+import 'package:icheja_mobile/common/presentation/widgets/modal_header.dart';
 import 'package:icheja_mobile/core/application/dependency_injection.dart';
 import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
 import 'package:icheja_mobile/home/presentation/viewmodels/home_viewmodel.dart';
 import 'package:icheja_mobile/home/presentation/widgets/home_skeleton.dart';
 import 'package:icheja_mobile/home/presentation/widgets/row_types.dart';
 import 'package:icheja_mobile/home/presentation/widgets/welcome_header.dart';
+import 'package:icheja_mobile/common/presentation/widgets/custom_network_image.dart';
 import 'package:provider/provider.dart';
+import 'package:go_router/go_router.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+
+  void _showModal(BuildContext context) {
+    ModalLayout.show(
+      context: context,
+      header: const ModalHeader(
+        title: "Recomendación",
+        titleColor: Colors.green,
+        subtitle: "Ejercicios recomendados",
+      ),
+      content: const ModalContent(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CustomNetworkImage(
+              imageUrl:
+                  'https://cdn-icons-png.flaticon.com/512/8136/8136031.png',
+              placeHolderImage: const Icon(
+                Icons.school,
+                size: 64,
+                color: Colors.blue,
+              ),
+              errorImage: const Icon(
+                Icons.school,
+                size: 64,
+                color: Colors.red,
+              ),
+            ),
+          ],
+        ),
+      ),
+      footerActions: ModalFooterActions(
+        buttonTypes: [ModalButtonType.close],
+        onClose: () => GoRouter.of(context).pop(),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
