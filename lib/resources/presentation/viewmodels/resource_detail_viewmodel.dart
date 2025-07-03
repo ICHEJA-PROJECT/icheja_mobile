@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icheja_mobile/core/session/session_manager.dart';
+import 'package:icheja_mobile/resources/domain/entities/abecedary_resource_entity.dart';
+import 'package:icheja_mobile/resources/domain/entities/resource_detail_entity.dart';
 
 class ResourceDetailViewmodel extends ChangeNotifier {
   final SessionManager _sessionManager;
@@ -10,12 +12,12 @@ class ResourceDetailViewmodel extends ChangeNotifier {
   bool _isLoading = true;
   bool get isLoading => _isLoading;
 
-  String? _error;
-  String? get error => _error;
+  String _error = '';
+  String get error => _error;
 
-  dynamic _resourceDetail;
+  late ResourceDetailEntity _resourceDetail;
 
-  dynamic get resourceDetail => _resourceDetail;
+  ResourceDetailEntity get resourceDetail => _resourceDetail;
 
   ResourceDetailViewmodel(this._sessionManager) {
     initialize();
@@ -46,13 +48,147 @@ class ResourceDetailViewmodel extends ChangeNotifier {
 
   Future<void> _fetchResource() async {
     try {
-      _resourceDetail = {
-        'id': '1',
-        'title': 'Abecedario',
-        'imageUrl':
-            'https://previews.123rf.com/images/matriyoshka/matriyoshka1510/matriyoshka151000021/46276042-science-and-international-education-classroom-university-professor-theory-teacher-college-lecture.jpg',
-        'content': 'Detailed content about the theory resource goes here.'
-      };
+      _resourceDetail = ResourceDetailEntity(
+        id: '1',
+        title: 'Abecedario',
+        content: <AbecedaryResourceEntity>[
+          AbecedaryResourceEntity(
+              vocal: 'A',
+              minusVocal: 'a',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'B',
+              minusVocal: 'b',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'C',
+              minusVocal: 'c',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'D',
+              minusVocal: 'd',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'E',
+              minusVocal: 'e',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'F',
+              minusVocal: 'f',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'G',
+              minusVocal: 'g',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'H',
+              minusVocal: 'h',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'I',
+              minusVocal: 'i',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'J',
+              minusVocal: 'j',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'K',
+              minusVocal: 'k',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'L',
+              minusVocal: 'l',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'M',
+              minusVocal: 'm',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'N',
+              minusVocal: 'n',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'Ñ',
+              minusVocal: 'ñ',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'O',
+              minusVocal: 'o',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'P',
+              minusVocal: 'p',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'Q',
+              minusVocal: 'q',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'R',
+              minusVocal: 'r',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'S',
+              minusVocal: 's',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'T',
+              minusVocal: 't',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'U',
+              minusVocal: 'u',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'V',
+              minusVocal: 'v',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'W',
+              minusVocal: 'w',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'X',
+              minusVocal: 'x',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'Y',
+              minusVocal: 'y',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+          AbecedaryResourceEntity(
+              vocal: 'Z',
+              minusVocal: 'z',
+              imageUrl:
+                  'https://cdn-icons-png.freepik.com/512/15385/15385302.png'),
+        ],
+      );
     } catch (e) {
       _error = 'Failed to load resources: $e';
     }
