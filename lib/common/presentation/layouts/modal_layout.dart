@@ -4,17 +4,18 @@ import '../widgets/modal_content.dart';
 import '../widgets/modal_footer_actions.dart';
 
 // Solo header --
-// ModalLayout(header: ModalHeader(title: "Hola"))
+// ModalLayout.show(context: context, header: ModalHeader(title: "Hola"))
 
 // Solo contenido --
-// ModalLayout(content: ModalContent(child: Text("Contenido")))
+// ModalLayout.show(context: context, content: ModalContent(child: Text("Contenido")))
 
 // Solo botones --
-// ModalLayout(footerActions: ModalFooterActions(buttonTypes: [ModalButtonType.close]))
+// ModalLayout.show(context: context, footerActions: ModalFooterActions(buttonTypes: [ModalButtonType.close]))
 
-// Combinación completa -- 
-// ModalLayout(
-  // header: ModalHeader(title*: "Título", titleColor: Colors.red, subtitle: "Subtítulo"),
+// Todo -- 
+// ModalLayout.show(
+  // context: context,
+  // header: ModalHeader(title: "Título", titleColor: Colors.red, subtitle: "Subtítulo"),
   // content: ModalContent(child*: Image.asset("imagen.png"), padding: EdgeInsets.all(16)),
   // footerActions: ModalFooterActions(
   //   buttonTypes: [ModalButtonType.close, ModalButtonType.next],
@@ -36,6 +37,30 @@ class ModalLayout extends StatelessWidget {
     this.footerActions,
     this.child,
   });
+
+  static Future<T?> show<T>({
+    required BuildContext context,
+    ModalHeader? header,
+    ModalContent? content,
+    ModalFooterActions? footerActions,
+    Widget? child,
+    bool barrierDismissible = true,
+  }) {
+    return showDialog<T>(
+      context: context,
+      barrierDismissible: barrierDismissible,
+      builder: (context) => Dialog(
+        backgroundColor: Colors.transparent,
+        insetPadding: const EdgeInsets.all(24),
+        child: ModalLayout(
+          header: header,
+          content: content,
+          footerActions: footerActions,
+          child: child,
+        ),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {

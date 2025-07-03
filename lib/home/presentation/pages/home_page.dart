@@ -18,44 +18,38 @@ class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   void _showModal(BuildContext context) {
-    showDialog(
+    ModalLayout.show(
       context: context,
-      builder: (BuildContext context) {
-        return Dialog(
-          child: ModalLayout(
-            header: const ModalHeader(
-              title: "Recomendación",
-              titleColor: Colors.green,
-              subtitle: "Ejercicios recomendados",
-            ),
-            content: const ModalContent(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  CustomNetworkImage(
-                    imageUrl:
-                        'https://cdn-icons-png.flaticon.com/512/8136/8136031.png',
-                    placeHolderImage: const Icon(
-                      Icons.school,
-                      size: 64,
-                      color: Colors.blue,
-                    ),
-                    errorImage: const Icon(
-                      Icons.school,
-                      size: 64,
-                      color: Colors.red,
-                    ),
-                  ),
-                ],
+      header: const ModalHeader(
+        title: "Recomendación",
+        titleColor: Colors.green,
+        subtitle: "Ejercicios recomendados",
+      ),
+      content: const ModalContent(
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            CustomNetworkImage(
+              imageUrl:
+                  'https://cdn-icons-png.flaticon.com/512/8136/8136031.png',
+              placeHolderImage: const Icon(
+                Icons.school,
+                size: 64,
+                color: Colors.blue,
+              ),
+              errorImage: const Icon(
+                Icons.school,
+                size: 64,
+                color: Colors.red,
               ),
             ),
-            footerActions: ModalFooterActions(
-              buttonTypes: [ModalButtonType.close],
-              onClose: () => GoRouter.of(context).pop(),
-            ),
-          ),
-        );
-      },
+          ],
+        ),
+      ),
+      footerActions: ModalFooterActions(
+        buttonTypes: [ModalButtonType.close],
+        onClose: () => GoRouter.of(context).pop(),
+      ),
     );
   }
 
