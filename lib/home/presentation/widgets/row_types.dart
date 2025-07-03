@@ -7,13 +7,15 @@ class RowTypes extends StatelessWidget {
   final Color overlayColor;
   final Color backgroundColor;
   final String imageUrl;
+  final VoidCallback? onPressed;
 
   const RowTypes(
       {super.key,
       required this.text,
       required this.overlayColor,
       required this.backgroundColor,
-      required this.imageUrl});
+      required this.imageUrl,
+      this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -38,7 +40,7 @@ class RowTypes extends StatelessWidget {
               borderRadius: BorderRadius.circular(15.0),
             ),
           )),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,

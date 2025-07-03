@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:icheja_mobile/common/presentation/layouts/app_layout.dart';
+import 'package:icheja_mobile/common/presentation/layouts/modal_layout.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
+import 'package:icheja_mobile/common/presentation/widgets/modal_content.dart';
+import 'package:icheja_mobile/common/presentation/widgets/modal_footer_actions.dart';
+import 'package:icheja_mobile/common/presentation/widgets/modal_header.dart';
 import 'package:icheja_mobile/core/application/dependency_injection.dart';
 import 'package:icheja_mobile/home/presentation/viewmodels/home_viewmodel.dart';
 import 'package:icheja_mobile/home/presentation/widgets/home_skeleton.dart';
@@ -10,6 +14,49 @@ import 'package:provider/provider.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
+
+  void _showModal(BuildContext context, String title) {
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          child: ModalLayout(
+            header: ModalHeader(
+              title: title,
+              titleColor: Colors.red,
+              subtitle: "Ejemplo de subtitulo",
+            ),
+            content: ModalContent(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  const Icon(
+                    Icons.school,
+                    size: 64,
+                    color: Colors.blue,
+                  ),
+                  const SizedBox(height: 16),
+                  Text(
+                    "Ejemplpo de modal de $title",
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(fontSize: 16),
+                  ),
+                ],
+              ),
+            ),
+            footerActions: ModalFooterActions(
+              buttonTypes: [ModalButtonType.close, ModalButtonType.next],
+              onClose: () => Navigator.of(context).pop(),
+              onNext: () {
+                Navigator.of(context).pop();
+                print("Navegando a: $title");
+              },
+            ),
+          ),
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -60,7 +107,8 @@ class HomePage extends StatelessWidget {
                                     ? ColorTheme.tertiary
                                     : ColorTheme.secondary,
                                 imageUrl:
-                                    'https://cdn-icons-png.flaticon.com/512/8136/8136031.png'),
+                                    'https://cdn-icons-png.flaticon.com/512/8136/8136031.png',
+                                onPressed: () => _showModal(context, text)),
                             const SizedBox(height: 25),
                           ],
                         );
