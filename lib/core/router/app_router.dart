@@ -10,6 +10,7 @@ import 'package:icheja_mobile/exercises/domain/entities/feedback_entity.dart';
 import 'package:icheja_mobile/exercises/presentation/pages/exercise_page.dart';
 import 'package:icheja_mobile/feedback/presentation/pages/feedback_page.dart';
 import 'package:icheja_mobile/home/presentation/pages/home_page.dart';
+import 'package:icheja_mobile/resources/presentation/pages/resource_detail.dart';
 import 'package:icheja_mobile/resources/presentation/pages/resources_pages.dart';
 
 final _rootNavigatorKey = GlobalKey<NavigatorState>();
@@ -75,6 +76,10 @@ final GoRouter router = GoRouter(
     ),
     GoRoute(
         path: AppRoutesConstant.resources,
-        builder: (context, state) => const ResourcesPages())
+        builder: (context, state) => const ResourcesPages()),
+    GoRoute(
+      path: AppRoutesConstant.resourceDetail,
+      builder: (context, state) => const ResourceDetail(),
+    )
   ],
 );

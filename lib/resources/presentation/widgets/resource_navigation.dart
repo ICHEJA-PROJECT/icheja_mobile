@@ -14,6 +14,7 @@ class ResourceNavigation extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: () {
         context.go(itemResource.routeToGo);
@@ -29,7 +30,7 @@ class ResourceNavigation extends StatelessWidget {
             children: [
               ImageDecorationContainer(
                 imageUrl: itemResource.imageUrl,
-                height: 100,
+                height: size.height * 0.15,
                 borderRadius: 10.0,
               ),
               const SizedBox(height: 10),

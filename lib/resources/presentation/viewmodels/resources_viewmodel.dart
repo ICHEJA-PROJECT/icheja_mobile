@@ -54,7 +54,7 @@ class ResourcesViewmodel extends ChangeNotifier {
           title: 'Teoría',
           imageUrl:
               'https://previews.123rf.com/images/matriyoshka/matriyoshka1510/matriyoshka151000021/46276042-science-and-international-education-classroom-university-professor-theory-teacher-college-lecture.jpg',
-          routeToGo: AppRoutesConstant.home,
+          routeToGo: AppRoutesConstant.resourceDetail,
         ),
         ResourcesEntity(
           id: '2',
@@ -65,8 +65,7 @@ class ResourcesViewmodel extends ChangeNotifier {
         ),
         ResourcesEntity(
           id: '3',
-          title:
-              'Ejercicio 2',
+          title: 'Ejercicio 2',
           imageUrl:
               'https://img.freepik.com/premium-vector/little-boy-doing-homework-by-read-writing-his-desk-vector-illustration_181870-188.jpg',
           routeToGo: AppRoutesConstant.home,

@@ -58,7 +58,7 @@ class AppLayout extends StatelessWidget {
 
   int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).uri.toString();
-    if (location.startsWith('/home')) {
+    if (location.startsWith(AppRoutesConstant.home)) {
       return 0;
     }
     if (location.startsWith('/exercises')) {
@@ -76,7 +76,7 @@ class AppLayout extends StatelessWidget {
         context.go(AppRoutesConstant.home);
         break;
       case 1:
-        context.go(AppRoutesConstant.exercises);
+        context.go(AppRoutesConstant.home);
         break;
       case 2:
         sl<SessionManager>().clearSession();
