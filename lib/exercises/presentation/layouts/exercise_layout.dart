@@ -17,7 +17,7 @@ class ExerciseLayout extends StatelessWidget {
     required this.childrens,
     required this.isSpeaking,
     required this.onSpeakerPressed,
-    this.isDeaf = false,
+    this.isDeaf = true,
   });
 
   @override

@@ -202,7 +202,10 @@ class ExerciseViewModel extends ChangeNotifier {
 
     if (imageFile != null) {
       _takenPicture = File(imageFile.path);
+      print('Picture taken: ${_takenPicture?.path}');
       notifyListeners();
+    } else {
+      print('No picture taken');
     }
   }
 

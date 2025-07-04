@@ -84,7 +84,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       footerActions: ModalFooterActions(
-        buttonTypes: [ModalButtonType.close],
+        buttonTypes: const [ModalButtonType.close],
         onClose: () => Navigator.of(context).pop(),
       ),
     );
