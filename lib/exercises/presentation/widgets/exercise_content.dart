@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:icheja_mobile/common/domain/constants/ui_constants.dart';
 import 'package:icheja_mobile/common/presentation/layouts/modal_layout.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
 import 'package:icheja_mobile/common/presentation/widgets/custom_container_border.dart';
@@ -10,9 +9,9 @@ import 'package:icheja_mobile/common/presentation/widgets/modal_content.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_footer_actions.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_header.dart';
 import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
-import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/layouts/exercise_layout.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
+import 'package:icheja_mobile/exercises/presentation/widgets/correlation_exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/widgets/writing_exercise_actions.dart';
 
 class ExerciseContent extends StatelessWidget {
@@ -20,11 +19,11 @@ class ExerciseContent extends StatelessWidget {
   final ExerciseViewModel viewModel;
   final bool isText;
   final bool isSelection;
-  final Exercise exercise;
+  // final Exercise exercise;
 
   const ExerciseContent({
     super.key,
-    required this.exercise,
+    // required this.exercise,
     required this.viewModel,
     this.isText = false,
     this.isSelection = false,
@@ -60,15 +59,20 @@ class ExerciseContent extends StatelessWidget {
       footerActions: ModalFooterActions(
         buttonTypes: const [ModalButtonType.close, ModalButtonType.next],
         onNext: () => {
+          viewModel.cleanPicture(),
           Navigator.of(context).pop(),
           context.go('${AppRoutesConstant.resources}/$fieldNameSelected')
         },
         onClose: () => {
+          viewModel.cleanPicture(),
           Navigator.of(context).pop(),
           context.go('${AppRoutesConstant.resources}/$fieldNameSelected')
         },
       ),
-    );
+    ).then((_) {
+      viewModel.cleanPicture();
+      context.go('${AppRoutesConstant.resources}/$fieldNameSelected');
+    });
   }
 
   @override
@@ -77,17 +81,17 @@ class ExerciseContent extends StatelessWidget {
 
     return ExerciseLayout(
       fieldNameSelected: fieldNameSelected,
-      exercise: exercise,
+      // exercise: exercise,
       isSpeaking: viewModel.isSpeaking,
       onSpeakerPressed: () {
         if (viewModel.isSpeaking) {
           viewModel.stop();
         } else {
-          final typeExercise = exercise.type;
-          final exerciseMessage = typeExercise == ExerciseType.writing
-              ? UIConstants.writingMessage
-              : UIConstants.readingMessage;
-          viewModel.speak("$exerciseMessage ${exercise.instrucciones}");
+          // final typeExercise = exercise.type;
+          // final exerciseMessage = typeExercise == ExerciseType.writing
+          //     ? UIConstants.writingMessage
+          //     : UIConstants.readingMessage;
+          viewModel.speak(viewModel.exerciseMock?.instrucciones ?? '');
         }
       },
       childrens: [
@@ -118,8 +122,13 @@ class ExerciseContent extends StatelessWidget {
               onSendExercise: () {
                 _showGamificationModal(context);
               }),
-        ] else if (isSelection)
-          ...[]
+        ] else if (isSelection) ...[
+          CorrelationExerciseWidget(
+              fieldNameSelected: fieldNameSelected,
+              exerciseCtx: viewModel.exerciseMock?.contexto ?? {},
+              imagesPath: viewModel.exerciseMock?.rutasImagenes ?? [],
+              viewModel: viewModel)
+        ]
 
         // ? For future use, if needed
         // ExerciseMediaDisplay(
