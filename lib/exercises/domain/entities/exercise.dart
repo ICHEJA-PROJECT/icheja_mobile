@@ -3,6 +3,7 @@ import 'package:icheja_mobile/exercises/domain/entities/context_entity.dart';
 enum ExerciseType {
   writing,
   reading,
+  correlation,
 }
 
 class Exercise {
