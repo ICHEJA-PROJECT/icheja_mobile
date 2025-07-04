@@ -5,7 +5,8 @@ import 'package:icheja_mobile/exercises/presentation/widgets/exercise_skeleton.d
 import 'package:provider/provider.dart';
 
 class ExerciseView extends StatelessWidget {
-  const ExerciseView({super.key});
+  final String fieldNameSelected;
+  const ExerciseView({super.key, required this.fieldNameSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -30,6 +31,7 @@ class ExerciseView extends StatelessWidget {
               viewModel: viewModel,
               exercise: viewModel.currentExercise!,
               isWriting: true,
+              fieldNameSelected: fieldNameSelected,
             ),
           )
         else

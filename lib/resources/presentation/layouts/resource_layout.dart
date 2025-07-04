@@ -8,10 +8,14 @@ import 'package:icheja_mobile/home/presentation/widgets/welcome_header.dart';
 import 'package:icheja_mobile/resources/presentation/viewmodels/resource_detail_viewmodel.dart';
 
 class ResourceLayout extends StatelessWidget {
+  final String fieldNameSelected;
   final ResourceDetailViewmodel viewmodel;
   final List<Widget> childrens;
   const ResourceLayout(
-      {super.key, required this.childrens, required this.viewmodel});
+      {super.key,
+      required this.childrens,
+      required this.viewmodel,
+      required this.fieldNameSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -33,11 +37,12 @@ class ResourceLayout extends StatelessWidget {
               Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  const Expanded(
+                  Expanded(
                     flex: 1,
                     child: Center(
-                        child:
-                            GoBackButton(route: AppRoutesConstant.resources)),
+                        child: GoBackButton(
+                            route:
+                                '${AppRoutesConstant.resources}/$fieldNameSelected')),
                   ),
                   const SizedBox(width: 20),
                   Expanded(

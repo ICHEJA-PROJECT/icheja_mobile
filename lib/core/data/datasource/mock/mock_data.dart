@@ -121,181 +121,181 @@ final List<Map<String, dynamic>> content = [
             "vocal": "A",
             "minus_vocal": "a",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751581287/ICHEJA/ICHEJA/T2_R1_1.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751581287/ICHEJA/ICHEJA/T2_R1_1.svg",
           },
           {
             "vocal": "B",
             "minus_vocal": "b",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751581457/ICHEJA/ICHEJA/T2_R1_2.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751581457/ICHEJA/ICHEJA/T2_R1_2.svg",
           },
           {
             "vocal": "C",
             "minus_vocal": "c",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751581488/ICHEJA/ICHEJA/T2_R1_3.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751581488/ICHEJA/ICHEJA/T2_R1_3.svg",
           },
           {
             "vocal": "CH",
             "minus_vocal": "ch",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751584072/ICHEJA/ICHEJA/T2_R1_4.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751584072/ICHEJA/ICHEJA/T2_R1_4.svg",
           },
           {
             "vocal": "D",
             "minus_vocal": "d",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751581517/ICHEJA/ICHEJA/T2_R1_5.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751581517/ICHEJA/ICHEJA/T2_R1_5.svg",
           },
           {
             "vocal": "E",
             "minus_vocal": "e",
             "path_image":
-                "E:http://res.cloudinary.com/dsiamqhuu/image/upload/v1751581562/ICHEJA/ICHEJA/T2_R1_6.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751581562/ICHEJA/ICHEJA/T2_R1_6.svg",
           },
           {
             "vocal": "F",
             "minus_vocal": "f",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751581590/ICHEJA/ICHEJA/T2_R1_7.svg ",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751581590/ICHEJA/ICHEJA/T2_R1_7.svg",
           },
           {
             "vocal": "G",
             "minus_vocal": "g",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751572953/ICHEJA/ICHEJA/T2_R1_8.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572953/ICHEJA/ICHEJA/T2_R1_8.svg",
           },
           {
             "vocal": "H",
             "minus_vocal": "h",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751572956/ICHEJA/ICHEJA/T2_R1_9.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572956/ICHEJA/ICHEJA/T2_R1_9.svg",
           },
           {
             "vocal": "I",
             "minus_vocal": "i",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751572961/ICHEJA/ICHEJA/T2_R1_10.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572961/ICHEJA/ICHEJA/T2_R1_10.svg",
           },
           {
             "vocal": "J",
             "minus_vocal": "j",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751572964/ICHEJA/ICHEJA/T2_R1_11.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572964/ICHEJA/ICHEJA/T2_R1_11.svg",
           },
           {
             "vocal": "K",
             "minus_vocal": "k",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751572967/ICHEJA/ICHEJA/T2_R1_12.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572967/ICHEJA/ICHEJA/T2_R1_12.svg",
           },
           {
             "vocal": "L",
             "minus_vocal": "l",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751572972/ICHEJA/ICHEJA/T2_R1_13.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572972/ICHEJA/ICHEJA/T2_R1_13.svg",
           },
           {
             "vocal": "Ll",
             "minus_vocal": "ll",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751575317/ICHEJA/ICHEJA/T2_R1_30.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751575317/ICHEJA/ICHEJA/T2_R1_30.svg",
           },
           {
             "vocal": "M",
             "minus_vocal": "m",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751572975/ICHEJA/ICHEJA/T2_R1_14.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572975/ICHEJA/ICHEJA/T2_R1_14.svg",
           },
           {
             "vocal": "N",
             "minus_vocal": "n",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751572978/ICHEJA/ICHEJA/T2_R1_15.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572978/ICHEJA/ICHEJA/T2_R1_15.svg",
           },
           {
             "vocal": "Ñ",
             "minus_vocal": "ñ",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751572982/ICHEJA/ICHEJA/T2_R1_16.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572982/ICHEJA/ICHEJA/T2_R1_16.svg",
           },
           {
             "vocal": "O",
             "minus_vocal": "o",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751572985/ICHEJA/ICHEJA/T2_R1_17.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572985/ICHEJA/ICHEJA/T2_R1_17.svg",
           },
           {
             "vocal": "P",
             "minus_vocal": "p",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751572988/ICHEJA/ICHEJA/T2_R1_18.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572988/ICHEJA/ICHEJA/T2_R1_18.svg",
           },
           {
             "vocal": "Q",
             "minus_vocal": "q",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751572992/ICHEJA/ICHEJA/T2_R1_19.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572992/ICHEJA/ICHEJA/T2_R1_19.svg",
           },
           {
             "vocal": "R",
             "minus_vocal": "r",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751572996/ICHEJA/ICHEJA/T2_R1_20.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572996/ICHEJA/ICHEJA/T2_R1_20.svg",
           },
           {
             "vocal": "RR",
             "minus_vocal": "rr",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751572999/ICHEJA/ICHEJA/T2_R1_21.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572999/ICHEJA/ICHEJA/T2_R1_21.svg",
           },
           {
             "vocal": "S",
             "minus_vocal": "s",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751573003/ICHEJA/ICHEJA/T2_R1_22.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751573003/ICHEJA/ICHEJA/T2_R1_22.svg",
           },
           {
             "vocal": "T",
             "minus_vocal": "t",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751573006/ICHEJA/ICHEJA/T2_R1_23.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751573006/ICHEJA/ICHEJA/T2_R1_23.svg",
           },
           {
             "vocal": "U",
             "minus_vocal": "u",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751573009/ICHEJA/ICHEJA/T2_R1_24.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751573009/ICHEJA/ICHEJA/T2_R1_24.svg",
           },
           {
             "vocal": "V",
             "minus_vocal": "v",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751573012/ICHEJA/ICHEJA/T2_R1_25.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751573012/ICHEJA/ICHEJA/T2_R1_25.svg",
           },
           {
             "vocal": "W",
             "minus_vocal": "w",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751573018/ICHEJA/ICHEJA/T2_R1_26.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751573018/ICHEJA/ICHEJA/T2_R1_26.svg",
           },
           {
             "vocal": "X",
             "minus_vocal": "x",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751573022/ICHEJA/ICHEJA/T2_R1_27.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751573022/ICHEJA/ICHEJA/T2_R1_27.svg",
           },
           {
             "vocal": "Y",
             "minus_vocal": "y",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751573025/ICHEJA/ICHEJA/T2_R1_28.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751573025/ICHEJA/ICHEJA/T2_R1_28.svg",
           },
           {
             "vocal": "Z",
             "minus_vocal": "z",
             "path_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751573029/ICHEJA/ICHEJA/T2_R1_29.svg",
+                "https://res.cloudinary.com/dsiamqhuu/image/upload/v1751573029/ICHEJA/ICHEJA/T2_R1_29.svg",
           },
         ],
       },
@@ -729,25 +729,25 @@ final List<Map<String, dynamic>> content = [
       {
         "titulo": "Familia",
         "material": [
-          {
-            "rol": "Mamá",
-            "seña_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751579595/ICHEJA/ICHEJA/T3_R1_1.svg",
-          },
-          {
-            "rol": "Papá",
-            "seña_image":
-                "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751579627/ICHEJA/ICHEJA/T3_R1_2.svg",
-          },
+          // {
+          //   "rol": "Mamá",
+          //   "path_image":
+          //       "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751579595/ICHEJA/ICHEJA/T3_R1_1.svg",
+          // },
+          // {
+          //   "rol": "Papá",
+          //   "path_image":
+          //       "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751579627/ICHEJA/ICHEJA/T3_R1_2.svg",
+          // },
           {
             "rol": "Hermano",
-            "seña_image":
-                "http://res.cloudinary.com/dsiamqhuu/raw/upload/v1751581189/ICHEJA/ICHEJA/T3_R1_3",
+            "path_image":
+                "https://res.cloudinary.com/dsiamqhuu/raw/upload/v1751581189/ICHEJA/ICHEJA/T3_R1_3",
           },
           {
             "rol": "Hermana",
-            "seña_image":
-                "http://res.cloudinary.com/dsiamqhuu/raw/upload/v1751581248/ICHEJA/ICHEJA/T3_R1_4",
+            "path_image":
+                "https://res.cloudinary.com/dsiamqhuu/raw/upload/v1751581248/ICHEJA/ICHEJA/T3_R1_4",
           },
         ],
       },
