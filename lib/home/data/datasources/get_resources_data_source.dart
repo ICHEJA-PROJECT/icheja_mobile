@@ -60,6 +60,7 @@ class GetResourcesDataSource implements GetResourcesRepository {
       if (exerciseIndex >= 0 && exerciseIndex < exercisesList.length) {
         final exerciseData =
             exercisesList[exerciseIndex] as Map<String, dynamic>;
+        print(exerciseData);
         return ExerciseModel.fromJson(exerciseData);
       }
 

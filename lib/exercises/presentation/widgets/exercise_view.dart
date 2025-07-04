@@ -25,12 +25,13 @@ class ExerciseView extends StatelessWidget {
               child: Text(viewModel.errorMessage!),
             ),
           )
-        else if (viewModel.currentExercise != null)
+        else if (viewModel.exerciseMock != null)
           Flexible(
             child: ExerciseContent(
               viewModel: viewModel,
-              exercise: viewModel.currentExercise!,
-              isWriting: true,
+              // exercise: viewModel.currentExercise!,
+              isText: viewModel.exerciseMock?.texto ?? false,
+              isSelection: viewModel.exerciseMock?.seleccion ?? false,
               fieldNameSelected: fieldNameSelected,
             ),
           )

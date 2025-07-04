@@ -45,7 +45,7 @@ class FeedbackPage extends StatelessWidget {
                 width: double.infinity,
                 child: ElevatedButton(
                   onPressed: () {
-                    exerciseViewModel.nextExercise();
+                    // exerciseViewModel.nextExercise();
                     context.go(AppRoutesConstant.exercises);
                   },
                   style: ElevatedButton.styleFrom(

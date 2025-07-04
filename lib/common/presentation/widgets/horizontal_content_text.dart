@@ -19,9 +19,9 @@ class ContentText extends StatelessWidget {
             child: Text(
               title ?? '',
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 18,
                 color: textColor,
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.bold,
               ),
               textAlign: child != null ? TextAlign.left : TextAlign.center,
               maxLines: 2,

@@ -85,8 +85,8 @@ class CorrelationExerciseViewModel extends ChangeNotifier {
   }
 
   void selectOption(int index) {
-    if (_showFeedback) return; 
-    
+    if (_showFeedback) return;
+
     _selectedOption = index;
     _showFeedback = true;
     _isCorrect = _currentExercise?.opcionCorrecta == index;
@@ -113,4 +113,4 @@ class CorrelationExerciseViewModel extends ChangeNotifier {
     _isSpeakingSubscription.cancel();
     super.dispose();
   }
-} 
+}

@@ -13,3 +13,14 @@ class ReadingContext extends ContextEntity {
 
   const ReadingContext({required this.readingBase});
 }
+
+class CorrelationContext extends ContextEntity {
+  final String typeOptions;
+  final List<String> options;
+  final num correctOptionIndex;
+
+  const CorrelationContext(
+      {required this.typeOptions,
+      required this.options,
+      required this.correctOptionIndex});
+}

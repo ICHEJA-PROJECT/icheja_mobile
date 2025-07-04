@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icheja_mobile/core/session/session_manager.dart';
 import 'package:icheja_mobile/resources/data/datasources/get_resource_detail_data_source.dart';
-import 'package:icheja_mobile/resources/domain/entities/abecedary_resource_entity.dart';
 import 'package:icheja_mobile/resources/domain/entities/resource_detail_entity.dart';
 
 class ResourceDetailViewmodel extends ChangeNotifier {

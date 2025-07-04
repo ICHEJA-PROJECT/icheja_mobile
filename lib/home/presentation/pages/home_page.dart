@@ -57,7 +57,7 @@ class _HomePageState extends State<HomePage> {
           children: [
             HorizontalModalLayout(
               color: ColorTheme.primary,
-              title: "Trazos circulares",
+              title: "¡De Señas a Letras: Descifra el Alfabeto!",
               textColor: ColorTheme.text,
               child: Container(
                 padding: const EdgeInsets.all(4),
@@ -68,7 +68,7 @@ class _HomePageState extends State<HomePage> {
                 child: const Padding(
                   padding: EdgeInsets.symmetric(horizontal: 10),
                   child: Text(
-                    '1',
+                    '3',
                     style: TextStyle(
                       color: Colors.white,
                       fontSize: 20,
@@ -78,9 +78,63 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               action: () {
-                context.go(AppRoutesConstant.exercises);
+                context.go('${AppRoutesConstant.exercises}/Abecedario/2');
               },
-            )
+            ),
+            const SizedBox(height: 20),
+            HorizontalModalLayout(
+              color: ColorTheme.primary,
+              title: "¡De Señas a Letras: Descifra el Alfabeto!",
+              textColor: ColorTheme.text,
+              child: Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  color: Colors.amber,
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    '4',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+              ),
+              action: () {
+                context.go('${AppRoutesConstant.exercises}/Abecedario/3');
+              },
+            ),
+            const SizedBox(height: 20),
+            HorizontalModalLayout(
+              color: ColorTheme.primary,
+              title: "Aprendiendo que cada seña tiene su letra",
+              textColor: ColorTheme.text,
+              child: Container(
+                padding: const EdgeInsets.all(4),
+                decoration: BoxDecoration(
+                  color: Colors.amber,
+                  borderRadius: BorderRadius.circular(6),
+                ),
+                child: const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Text(
+                    '7',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                ),
+              ),
+              action: () {
+                context.go('${AppRoutesConstant.exercises}/Abecedario/6');
+              },
+            ),
           ],
         ),
       ),

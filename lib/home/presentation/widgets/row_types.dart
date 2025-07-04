@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
-import 'package:icheja_mobile/common/presentation/widgets/custom_network_image.dart';
 import 'package:icheja_mobile/common/presentation/widgets/image_decoration_container.dart';
-import 'package:icheja_mobile/common/presentation/widgets/image_skeleton_loader.dart';
 
 class RowTypes extends StatelessWidget {
   final String text;

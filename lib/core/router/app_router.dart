@@ -8,8 +8,7 @@ import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.d
 import 'package:icheja_mobile/core/session/session_manager.dart';
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/domain/entities/feedback_entity.dart';
-import 'package:icheja_mobile/exercises/presentation/pages/correlation_exercise_page.dart';
-import 'package:icheja_mobile/exercises/presentation/pages/memorama_exercise_page.dart';
+import 'package:icheja_mobile/exercises/presentation/pages/exercise_page_wrapper.dart';
 import 'package:icheja_mobile/feedback/presentation/pages/feedback_page.dart';
 import 'package:icheja_mobile/home/presentation/pages/home_page.dart';
 import 'package:icheja_mobile/resources/presentation/pages/resource_detail.dart';
@@ -62,8 +61,9 @@ final GoRouter router = GoRouter(
         final field =
             state.pathParameters['field'] ?? UIConstants.all_resources;
         // The index parameter is the index of the exercise in the list
-        final index = state.pathParameters['index'];
-        return ExercisePage(fieldNameSelected: field);
+        final index = state.pathParameters['index'] ?? '0';
+        return ExercisePageWrapper(
+            fieldNameSelected: field, indexExercise: index);
       },
     ),
     GoRoute(
