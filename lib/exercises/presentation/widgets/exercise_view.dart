@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
 import 'package:icheja_mobile/exercises/presentation/widgets/exercise_content.dart';
 import 'package:icheja_mobile/exercises/presentation/widgets/exercise_skeleton.dart';
@@ -26,11 +25,11 @@ class ExerciseView extends StatelessWidget {
               child: Text(viewModel.errorMessage!),
             ),
           )
-        else if (viewModel.currentExercise != null)
+        else if (viewModel.exerciseMock != null)
           Flexible(
             child: ExerciseContent(
               viewModel: viewModel,
-              exercise: viewModel.currentExercise!,
+              // exercise: viewModel.currentExercise!,
               isText: viewModel.exerciseMock?.texto ?? false,
               isSelection: viewModel.exerciseMock?.seleccion ?? false,
               fieldNameSelected: fieldNameSelected,

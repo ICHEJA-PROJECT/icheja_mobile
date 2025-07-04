@@ -5,8 +5,6 @@ import 'package:icheja_mobile/common/tts/domain/usecases/get_is_speaking_stream_
 import 'package:icheja_mobile/common/tts/domain/usecases/speak_usecase.dart';
 import 'package:icheja_mobile/common/tts/domain/usecases/stop_usecase.dart';
 import 'package:icheja_mobile/core/session/session_manager.dart';
-import 'package:icheja_mobile/exercises/domain/entities/context_entity.dart';
-import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/domain/entities/feedback_entity.dart';
 import 'package:icheja_mobile/exercises/domain/usecases/evaluate_reading_exercise_usecase.dart';
 import 'package:icheja_mobile/exercises/domain/usecases/evaluate_writing_exercise_usecase.dart';
@@ -53,8 +51,8 @@ class ExerciseViewModel extends ChangeNotifier {
   String? _username;
   String? get username => _username;
 
-  List<Exercise> _exercises = [];
-  int _currentExerciseIndex = 0;
+  // List<Exercise> _exercises = [];
+  // int _currentExerciseIndex = 0;
 
   bool _isSpeaking = false;
   bool get isSpeaking => _isSpeaking;
@@ -71,15 +69,13 @@ class ExerciseViewModel extends ChangeNotifier {
   File? _takenPicture;
   File? get takenPicture => _takenPicture;
 
-  bool _isInitialized = false;
+  // bool _isInitialized = false;
 
-  bool get isButtonForReadingEvaluationEnabled =>
-      _recordedFilePath != null && currentExercise != null;
-  bool get isButtonForWritingEvaluationEnabled =>
-      currentExercise != null && takenPicture != null;
+  bool get isButtonForReadingEvaluationEnabled => _recordedFilePath != null;
+  bool get isButtonForWritingEvaluationEnabled => takenPicture != null;
 
-  Exercise? get currentExercise =>
-      _exercises.isNotEmpty ? _exercises[_currentExerciseIndex] : null;
+  // Exercise? get currentExercise =>
+  //     _exercises.isNotEmpty ? _exercises[_currentExerciseIndex] : null;
 
   ExerciseEntity? _exerciseMock;
   ExerciseEntity? get exerciseMock => _exerciseMock;
@@ -87,7 +83,7 @@ class ExerciseViewModel extends ChangeNotifier {
   bool _isExerciseLoading = false;
   bool get isExerciseLoading => _isExerciseLoading;
 
-    int? _selectedOption;
+  int? _selectedOption;
   int? get selectedOption => _selectedOption;
 
   bool _showFeedback = false;
@@ -95,7 +91,6 @@ class ExerciseViewModel extends ChangeNotifier {
 
   bool _isCorrect = false;
   bool get isCorrect => _isCorrect;
-
 
   ExerciseViewModel({
     required this.getExercises,
@@ -129,7 +124,7 @@ class ExerciseViewModel extends ChangeNotifier {
       notifyListeners();
     });
     getUsername();
-    loadExercises();
+    // loadExercises();
   }
 
   Future<void> speak(String text) async {
@@ -150,26 +145,24 @@ class ExerciseViewModel extends ChangeNotifier {
 
   Future<void> stopRecording() async {
     _recordedFilePath = await stopRecordingUseCase();
-    if (_recordedFilePath != null && currentExercise != null) {
+    if (_recordedFilePath != null) {
       print('Recording file path: $_recordedFilePath');
-      print('Current exercise: ${currentExercise!.contenido}');
     }
     notifyListeners();
   }
 
   Future<void> evaluateListeningExercise() async {
-    if (_recordedFilePath == null || currentExercise == null) return;
+    if (_recordedFilePath == null) return;
 
     _isLoading = true;
     _errorMessage = null;
     notifyListeners();
 
     try {
-      final exerciseCtx = currentExercise!.contexto as ReadingContext;
+      // final exerciseCtx = currentExercise!.contexto as ReadingContext;
       final feedback = await evaluateReadingExerciseUseCase(
-        audioPath: _recordedFilePath!,
-        objectiveSentence: exerciseCtx.readingBase,
-      );
+          audioPath: _recordedFilePath!,
+          objectiveSentence: 'exerciseCtx.readingBase,');
       print('Feedback: $feedback');
       _evaluatedFeedback = feedback;
     } catch (e) {
@@ -182,17 +175,17 @@ class ExerciseViewModel extends ChangeNotifier {
   }
 
   Future<void> evaluateWritingExercise() async {
-    if (_takenPicture == null || currentExercise == null) return;
+    if (_takenPicture == null) return;
 
     _isLoading = true;
     _errorMessage = null;
     notifyListeners();
 
     try {
-      final exerciseCtx = currentExercise!.contexto as WritingContext;
+      // final exerciseCtx = currentExercise!.contexto as WritingContext;
       final feedback = await evaluateWritingExerciseUseCase(
         studentImage: _takenPicture!,
-        originalImageUrl: exerciseCtx.imageBase,
+        originalImageUrl: 'exerciseCtx.imageBase',
       );
       _evaluatedFeedback = feedback;
       print('Writing exercise evaluation result: $feedback');
@@ -229,30 +222,34 @@ class ExerciseViewModel extends ChangeNotifier {
     }
   }
 
+  Future<void> cleanPicture() async {
+    _takenPicture = null;
+    notifyListeners();
+  }
+
   Future<void> getUsername() async {
-    if (_isInitialized) return;
     _username = await sessionManager.getUserName();
     notifyListeners();
   }
 
-  Future<void> loadExercises() async {
-    if (_isInitialized) return;
+  // Future<void> loadExercises() async {
+  //   if (_isInitialized) return;
 
-    _isLoading = true;
-    _errorMessage = null;
-    notifyListeners();
+  //   _isLoading = true;
+  //   _errorMessage = null;
+  //   notifyListeners();
 
-    try {
-      _exercises = await getExercises();
-      _currentExerciseIndex = 0; // Start at the first exercise
-      _isInitialized = true;
-    } catch (e) {
-      _errorMessage = "Failed to load exercises.";
-    } finally {
-      _isLoading = false;
-      notifyListeners();
-    }
-  }
+  //   try {
+  //     _exercises = await getExercises();
+  //     _currentExerciseIndex = 0; // Start at the first exercise
+  //     _isInitialized = true;
+  //   } catch (e) {
+  //     _errorMessage = "Failed to load exercises.";
+  //   } finally {
+  //     _isLoading = false;
+  //     notifyListeners();
+  //   }
+  // }
 
   void _resetAudioState() {
     if (_isPlaying) stopPlayback();
@@ -260,29 +257,29 @@ class ExerciseViewModel extends ChangeNotifier {
     _recordedFilePath = null;
   }
 
-  void nextExercise() {
-    stop();
-    _resetAudioState();
-    _takenPicture = null;
-    if (_currentExerciseIndex < _exercises.length - 1) {
-      _currentExerciseIndex++;
-    } else {
-      _currentExerciseIndex = 0;
-    }
-    notifyListeners();
-  }
+  // void nextExercise() {
+  //   stop();
+  //   _resetAudioState();
+  //   _takenPicture = null;
+  //   if (_currentExerciseIndex < _exercises.length - 1) {
+  //     _currentExerciseIndex++;
+  //   } else {
+  //     _currentExerciseIndex = 0;
+  //   }
+  //   notifyListeners();
+  // }
 
-  void previousExercise() {
-    stop();
-    _resetAudioState();
-    _takenPicture = null;
-    if (_currentExerciseIndex > 0) {
-      _currentExerciseIndex--;
-    } else {
-      _currentExerciseIndex = _exercises.length - 1;
-    }
-    notifyListeners();
-  }
+  // void previousExercise() {
+  //   stop();
+  //   _resetAudioState();
+  //   _takenPicture = null;
+  //   if (_currentExerciseIndex > 0) {
+  //     _currentExerciseIndex--;
+  //   } else {
+  //     _currentExerciseIndex = _exercises.length - 1;
+  //   }
+  //   notifyListeners();
+  // }
 
   void clearFeedback() {
     _evaluatedFeedback = null;
@@ -307,14 +304,14 @@ class ExerciseViewModel extends ChangeNotifier {
     }
   }
 
-    void selectOption(int index) {
+  void selectOption(int index) {
     if (_showFeedback) return;
 
-    final exerciseCtx = currentExercise?.contexto as CorrelationContext;
+    final exerciseCtx = _exerciseMock?.contexto;
 
     _selectedOption = index;
     _showFeedback = true;
-    _isCorrect = exerciseCtx.correctOptionIndex == index;
+    _isCorrect = exerciseCtx?["opcion_correcta"] == index;
     notifyListeners();
   }
 

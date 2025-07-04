@@ -8,21 +8,22 @@ import 'package:icheja_mobile/common/presentation/widgets/modal_content.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_footer_actions.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_header.dart';
 import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
-import 'package:icheja_mobile/exercises/domain/entities/context_entity.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
 import 'package:icheja_mobile/exercises/presentation/widgets/exercise_image_display.dart';
 import 'package:icheja_mobile/exercises/presentation/widgets/option_button.dart';
 
 class CorrelationExerciseWidget extends StatelessWidget {
-  final CorrelationContext exerciseCtx;
+  final Map<String, dynamic> exerciseCtx;
   final List<String> imagesPath;
   final ExerciseViewModel viewModel;
+  final String fieldNameSelected;
 
   const CorrelationExerciseWidget({
     super.key,
     required this.exerciseCtx,
     required this.imagesPath,
     required this.viewModel,
+    required this.fieldNameSelected,
   });
 
   void _showSuccessModal(BuildContext context) {
@@ -51,9 +52,22 @@ class CorrelationExerciseWidget extends StatelessWidget {
       ),
       footerActions: ModalFooterActions(
         buttonTypes: const [ModalButtonType.close, ModalButtonType.next],
-        onNext: () {},
-        onClose: () {},
+        onNext: () => {
+          viewModel.resetFeedback(),
+          Navigator.of(context).pop(),
+          context.go('${AppRoutesConstant.resources}/$fieldNameSelected')
+        },
+        onClose: () => {
+          viewModel.resetFeedback(),
+          Navigator.of(context).pop(),
+          context.go('${AppRoutesConstant.resources}/$fieldNameSelected')
+        },
       ),
+    ).then(
+      (_) {
+        viewModel.resetFeedback();
+        context.go('${AppRoutesConstant.resources}/$fieldNameSelected');
+      },
     );
   }
 
@@ -85,8 +99,13 @@ class CorrelationExerciseWidget extends StatelessWidget {
         buttonTypes: const [ModalButtonType.close],
         onClose: () {
           viewModel.resetFeedback();
+          Navigator.of(context).pop();
         },
       ),
+    ).then(
+      (_) {
+        viewModel.resetFeedback();
+      },
     );
   }
 
@@ -102,7 +121,7 @@ class CorrelationExerciseWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-
+    print(imagesPath);
     return Column(
       children: [
         if (imagesPath.isNotEmpty) ...[
@@ -124,14 +143,14 @@ class CorrelationExerciseWidget extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(
-            exerciseCtx.options.length,
+            exerciseCtx["opciones"].length,
             (index) => Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8.0),
               child: SizedBox(
                 width: 90,
                 height: 90,
                 child: OptionButton(
-                  text: exerciseCtx.options[index],
+                  text: exerciseCtx["opciones"][index],
                   isSelected: viewModel.selectedOption == index,
                   onPressed: () => _handleOptionSelected(context, index),
                 ),
