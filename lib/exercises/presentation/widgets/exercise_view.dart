@@ -30,7 +30,8 @@ class ExerciseView extends StatelessWidget {
             child: ExerciseContent(
               viewModel: viewModel,
               exercise: viewModel.currentExercise!,
-              isWriting: true,
+              isText: viewModel.exerciseMock?.texto ?? false,
+              isSelection: viewModel.exerciseMock?.seleccion ?? false,
               fieldNameSelected: fieldNameSelected,
             ),
           )

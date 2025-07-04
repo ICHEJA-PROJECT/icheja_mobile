@@ -8,6 +8,8 @@ import 'package:icheja_mobile/exercises/domain/usecases/evaluate_writing_exercis
 import 'package:icheja_mobile/exercises/domain/usecases/get_exercises.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/correlation_exercise_viewmodel.dart';
+import 'package:icheja_mobile/exercises/domain/usecases/get_exercise_by_index.dart';
+import 'package:icheja_mobile/exercises/domain/usecases/get_topic_content_by_name.dart';
 
 void setupExerciseDependencies(GetIt sl) {
   // ViewModels
@@ -24,7 +26,8 @@ void setupExerciseDependencies(GetIt sl) {
       getIsPlayingStreamUseCase: sl(),
       evaluateReadingExerciseUseCase: sl(),
       evaluateWritingExerciseUseCase: sl(),
-      sessionManager: sl()));
+      sessionManager: sl(),
+      getExerciseByIndexUseCase: sl()));
 
   sl.registerLazySingleton(() => CorrelationExerciseViewModel(
       speakUseCase: sl(),
@@ -36,6 +39,8 @@ void setupExerciseDependencies(GetIt sl) {
   sl.registerLazySingleton(() => GetExercises(sl()));
   sl.registerLazySingleton(() => EvaluateReadingExerciseUseCase(sl()));
   sl.registerLazySingleton(() => EvaluateWritingExerciseUseCase(sl()));
+  sl.registerLazySingleton(() => GetTopicContentByNameUseCase(sl()));
+  sl.registerLazySingleton(() => GetExerciseByIndexUseCase(sl()));
 
   // Repositories
   sl.registerLazySingleton<ExerciseRepository>(() =>

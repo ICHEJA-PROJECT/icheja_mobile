@@ -8,7 +8,6 @@ import 'package:icheja_mobile/common/presentation/widgets/modal_header.dart';
 import 'package:icheja_mobile/home/presentation/widgets/home_skeleton.dart';
 import 'package:provider/provider.dart';
 import 'package:icheja_mobile/common/presentation/layouts/app_layout.dart';
-import 'package:icheja_mobile/core/application/dependency_injection.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
 import 'package:icheja_mobile/exercises/presentation/widgets/exercise_view.dart';
 import 'package:icheja_mobile/home/presentation/widgets/welcome_header.dart';
@@ -36,22 +35,26 @@ class _ExercisePageState extends State<ExercisePage> {
   }
 
   void _showInstructionsModal(BuildContext context) {
+    final viewModel = Provider.of<ExerciseViewModel>(context, listen: false);
+    print(viewModel.exerciseMock);
     ModalLayout.show(
       context: context,
       barrierDismissible: true,
-      header: const ModalHeader(
+      header: ModalHeader(
         title: "Instrucciones",
         titleFontSize: 30,
         subtitleFontSize: 20,
         titleColor: ColorTheme.goldColor,
-        subtitle: "Escribe la letra en papel",
+        subtitle: viewModel.exerciseMock?.instrucciones ??
+            "Escribe la letra en papel",
       ),
-      content: const ModalContent(
+      content: ModalContent(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ImageDecorationContainer(
-              imageUrl: 'https://media.tenor.com/HdXY24H0RaAAAAAM/haha-yay.gif',
+              imageUrl: viewModel.exerciseMock?.mediaInstrucciones["media"] ??
+                  'https://media.tenor.com/HdXY24H0RaAAAAAM/haha-yay.gif',
               height: 200,
               width: 250,
               borderRadius: 15.0,
@@ -70,37 +73,46 @@ class _ExercisePageState extends State<ExercisePage> {
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (context) => sl<ExerciseViewModel>(),
-      child: AppLayout(
-        body: SingleChildScrollView(
-            padding: const EdgeInsets.all(20.0),
-            child: Consumer<ExerciseViewModel>(
-                builder: (context, viewmodel, child) {
-              if (viewmodel.isLoading) {
-                return const HomeSkeleton();
-              }
+    return AppLayout(
+      body: SingleChildScrollView(
+          padding: const EdgeInsets.all(20.0),
+          child:
+              Consumer<ExerciseViewModel>(builder: (context, viewmodel, child) {
+            if (viewmodel.isLoading) {
+              return const HomeSkeleton();
+            }
 
-              if (viewmodel.errorMessage != null) {
-                return Center(child: Text('Error: ${viewmodel.errorMessage}'));
-              }
-              return Column(
-                children: [
-                  WelcomeHeader(
-                    name: viewmodel.username ?? 'Usuario',
-                    onClickButtonFromExercise: () {
-                      if (!_modalShown) {
-                        _showInstructionsModal(context);
-                        _modalShown = true;
-                      }
-                    },
-                  ),
-                  const SizedBox(height: 20.0),
-                  ExerciseView(fieldNameSelected: widget.fieldNameSelected),
-                ],
+            if (viewmodel.isExerciseLoading) {
+              return const Center(
+                child: CircularProgressIndicator(),
               );
-            })),
-      ),
+            }
+
+            if (viewmodel.errorMessage != null) {
+              return Center(child: Text('Error: ${viewmodel.errorMessage}'));
+            }
+
+            if (viewmodel.exerciseMock == null) {
+              return const Center(
+                child: Text('No exercise data available'),
+              );
+            }
+            return Column(
+              children: [
+                WelcomeHeader(
+                  name: viewmodel.username ?? 'Usuario',
+                  onClickButtonFromExercise: () {
+                    if (!_modalShown) {
+                      _showInstructionsModal(context);
+                      _modalShown = true;
+                    }
+                  },
+                ),
+                const SizedBox(height: 20.0),
+                ExerciseView(fieldNameSelected: widget.fieldNameSelected),
+              ],
+            );
+          })),
     );
   }
 }

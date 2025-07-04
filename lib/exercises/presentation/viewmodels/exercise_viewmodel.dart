@@ -10,6 +10,7 @@ import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/domain/entities/feedback_entity.dart';
 import 'package:icheja_mobile/exercises/domain/usecases/evaluate_reading_exercise_usecase.dart';
 import 'package:icheja_mobile/exercises/domain/usecases/evaluate_writing_exercise_usecase.dart';
+import 'package:icheja_mobile/exercises/domain/usecases/get_exercise_by_index.dart';
 import 'package:icheja_mobile/exercises/domain/usecases/get_exercises.dart';
 import 'package:icheja_mobile/common/audio_recorder/domain/usecases/get_is_recording_stream_usecase.dart';
 import 'package:icheja_mobile/common/audio_recorder/domain/usecases/start_recording_usecase.dart';
@@ -17,6 +18,7 @@ import 'package:icheja_mobile/common/audio_recorder/domain/usecases/stop_recordi
 import 'package:icheja_mobile/common/audio_player/domain/usecases/get_is_playing_stream_usecase.dart';
 import 'package:icheja_mobile/common/audio_player/domain/usecases/play_audio_usecase.dart';
 import 'package:icheja_mobile/common/audio_player/domain/usecases/stop_audio_usecase.dart';
+import 'package:icheja_mobile/home/domain/entities/topic_content_entity.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ExerciseViewModel extends ChangeNotifier {
@@ -33,6 +35,7 @@ class ExerciseViewModel extends ChangeNotifier {
   final EvaluateReadingExerciseUseCase evaluateReadingExerciseUseCase;
   final EvaluateWritingExerciseUseCase evaluateWritingExerciseUseCase;
   final SessionManager sessionManager;
+  final GetExerciseByIndexUseCase getExerciseByIndexUseCase;
 
   FeedbackEntity? _evaluatedFeedback;
   FeedbackEntity? get evaluatedFeedback => _evaluatedFeedback;
@@ -78,6 +81,12 @@ class ExerciseViewModel extends ChangeNotifier {
   Exercise? get currentExercise =>
       _exercises.isNotEmpty ? _exercises[_currentExerciseIndex] : null;
 
+  ExerciseEntity? _exerciseMock;
+  ExerciseEntity? get exerciseMock => _exerciseMock;
+
+  bool _isExerciseLoading = false;
+  bool get isExerciseLoading => _isExerciseLoading;
+
   ExerciseViewModel({
     required this.getExercises,
     required this.speakUseCase,
@@ -92,6 +101,7 @@ class ExerciseViewModel extends ChangeNotifier {
     required this.evaluateReadingExerciseUseCase,
     required this.evaluateWritingExerciseUseCase,
     required this.sessionManager,
+    required this.getExerciseByIndexUseCase,
   }) {
     _isSpeakingSubscription = getIsSpeakingStreamUseCase().listen((isSpeaking) {
       _isSpeaking = isSpeaking;
@@ -266,6 +276,25 @@ class ExerciseViewModel extends ChangeNotifier {
 
   void clearFeedback() {
     _evaluatedFeedback = null;
+  }
+
+  void loadExercise(String topicName, int exerciseIndex) async {
+    _isExerciseLoading = true;
+    _exerciseMock = null;
+    notifyListeners();
+
+    try {
+      _exerciseMock = await getExerciseByIndexUseCase.call(
+        topicName,
+        exerciseIndex,
+      );
+    } catch (e) {
+      _errorMessage = "Error loading exercise: ${e.toString()}";
+      print('Error: $_errorMessage');
+    } finally {
+      _isExerciseLoading = false;
+      notifyListeners();
+    }
   }
 
   @override
