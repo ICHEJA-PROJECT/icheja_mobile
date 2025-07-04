@@ -11,32 +11,36 @@ class ExerciseView extends StatelessWidget {
   Widget build(BuildContext context) {
     final viewModel = Provider.of<ExerciseViewModel>(context);
 
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        if (viewModel.isLoading)
-          const Flexible(
-            child: ExerciseSkeleton(),
-          )
-        else if (viewModel.errorMessage != null)
-          Flexible(
-            child: Center(
-              child: Text(viewModel.errorMessage!),
-            ),
-          )
-        else if (viewModel.currentExercise != null)
-          Flexible(
-            child: ExerciseContent(
-              exercise: viewModel.currentExercise!,
-            ),
-          )
-        else
-          const Flexible(
-            child: Center(
-              child: Text('No exercises found.'),
-            ),
-          ),
-      ],
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.all(20.0),
+        child: Column(
+          children: [
+            if (viewModel.isLoading)
+              const Expanded(
+                child: ExerciseSkeleton(),
+              )
+            else if (viewModel.errorMessage != null)
+              Expanded(
+                child: Center(
+                  child: Text(viewModel.errorMessage!),
+                ),
+              )
+            else if (viewModel.currentExercise != null)
+              Expanded(
+                child: ExerciseContent(
+                  exercise: viewModel.currentExercise!,
+                ),
+              )
+            else
+              const Expanded(
+                child: Center(
+                  child: Text('No exercises found.'),
+                ),
+              ),
+          ],
+        ),
+      ),
     );
   }
 }
