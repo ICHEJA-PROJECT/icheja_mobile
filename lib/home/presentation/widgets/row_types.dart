@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
 import 'package:icheja_mobile/common/presentation/widgets/custom_network_image.dart';
+import 'package:icheja_mobile/common/presentation/widgets/image_decoration_container.dart';
 import 'package:icheja_mobile/common/presentation/widgets/image_skeleton_loader.dart';
 
 class RowTypes extends StatelessWidget {
@@ -60,17 +61,12 @@ class RowTypes extends StatelessWidget {
           const SizedBox(width: 18.0),
           Expanded(
             flex: 3,
-            child: CustomNetworkImage(
+            child: ImageDecorationContainer(
               imageUrl: imageUrl,
-              placeHolderImage: ImageSkeletonLoader(
-                width: 50.0,
-                height: 50.0,
-                baseColor: Colors.grey[300]!,
-                highlightColor: Colors.grey[100]!,
-              ),
-              errorImage: const Icon(Icons.error, size: 50.0),
-              width: 50.0,
-              height: 50.0,
+              width: 80.0,
+              height: 80.0,
+              borderRadius: 15.0,
+              fit: BoxFit.cover,
             ),
           ),
         ],

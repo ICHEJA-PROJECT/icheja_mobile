@@ -7,9 +7,12 @@ import 'package:icheja_mobile/common/tts/domain/usecases/speak_usecase.dart';
 import 'package:icheja_mobile/common/tts/domain/usecases/stop_usecase.dart';
 import 'package:icheja_mobile/core/session/session_manager.dart';
 import 'package:icheja_mobile/home/domain/entities/progress_entity.dart';
+import 'package:icheja_mobile/home/domain/entities/resource.dart';
 import 'package:icheja_mobile/home/domain/usecases/get_progress.dart';
+import 'package:icheja_mobile/home/domain/usecases/get_resources.dart';
 
 class HomeViewModel extends ChangeNotifier {
+  final GetResourcesUseCase _getResourcesUseCase;
   final GetProgressUseCase _getProgressUseCase;
   final SpeakUseCase _speakUseCase;
   final StopUseCase _stopUseCase;
@@ -18,6 +21,7 @@ class HomeViewModel extends ChangeNotifier {
   StreamSubscription? _isSpeakingSubscription;
 
   HomeViewModel(
+    this._getResourcesUseCase,
     this._getProgressUseCase,
     this._speakUseCase,
     this._stopUseCase,
@@ -25,6 +29,7 @@ class HomeViewModel extends ChangeNotifier {
     this._sessionManager,
   ) {
     _fetchUsername();
+    fetchResources();
     fetchProgress();
     _isSpeakingSubscription =
         _getIsSpeakingStreamUseCase().listen((isSpeaking) {
@@ -38,6 +43,14 @@ class HomeViewModel extends ChangeNotifier {
 
   List<ProgressEntity> _progressList = [];
   List<ProgressEntity> get progressList => _progressList;
+
+  List<Resource> _resourcesList = [
+    Resource(
+        name: 'Recursos global',
+        imageUrl:
+            'https://static.vecteezy.com/system/resources/previews/020/294/900/non_2x/global-globe-cartoon-illustration-vector.jpg')
+  ];
+  List<Resource> get resourcesList => _resourcesList;
 
   String? _error;
   String? get error => _error;
@@ -60,6 +73,22 @@ class HomeViewModel extends ChangeNotifier {
 
     try {
       _progressList = await _getProgressUseCase();
+    } catch (e) {
+      _error = e.toString();
+    } finally {
+      _isLoading = false;
+      notifyListeners();
+    }
+  }
+
+  Future<void> fetchResources() async {
+    _isLoading = true;
+    _error = null;
+    notifyListeners();
+
+    try {
+      final res = await _getResourcesUseCase();
+      _resourcesList.addAll(res);
     } catch (e) {
       _error = e.toString();
     } finally {
