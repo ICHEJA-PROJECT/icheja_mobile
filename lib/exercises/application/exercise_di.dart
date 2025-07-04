@@ -26,12 +26,6 @@ void setupExerciseDependencies(GetIt sl) {
       evaluateWritingExerciseUseCase: sl(),
       sessionManager: sl()));
 
-  sl.registerLazySingleton(() => CorrelationExerciseViewModel(
-      speakUseCase: sl(),
-      stopUseCase: sl(),
-      getIsSpeakingStreamUseCase: sl(),
-      sessionManager: sl()));
-
   // Usecases
   sl.registerLazySingleton(() => GetExercises(sl()));
   sl.registerLazySingleton(() => EvaluateReadingExerciseUseCase(sl()));

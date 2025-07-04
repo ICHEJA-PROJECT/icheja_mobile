@@ -17,7 +17,8 @@ class CorrelationExercisePage extends StatefulWidget {
   const CorrelationExercisePage({super.key});
 
   @override
-  State<CorrelationExercisePage> createState() => _CorrelationExercisePageState();
+  State<CorrelationExercisePage> createState() =>
+      _CorrelationExercisePageState();
 }
 
 class _CorrelationExercisePageState extends State<CorrelationExercisePage> {
@@ -43,14 +44,15 @@ class _CorrelationExercisePageState extends State<CorrelationExercisePage> {
         titleFontSize: 30,
         subtitleFontSize: 20,
         titleColor: ColorTheme.goldColor,
-        subtitle: "Observa la seña mostrada y selecciona la letra que corresponde",
+        subtitle:
+            "Observa la seña mostrada y selecciona la letra que corresponde",
       ),
       content: const ModalContent(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ImageDecorationContainer(
-              imageUrl: 'https://media.tenor.com/HdXY24H0RaAAAAAM/haha-yay.gif',
+              imageUrl: 'https:media.tenor.com/HdXY24H0RaAAAAAM/haha-yay.gif',
               height: 200,
               width: 250,
               borderRadius: 15.0,
@@ -95,12 +97,12 @@ class _CorrelationExercisePageState extends State<CorrelationExercisePage> {
                       }
                     },
                   ),
-                  const SizedBox(height: 20.0),
-                  if (viewModel.currentExercise != null)
-                    CorrelationExerciseWidget(
-                      exercise: viewModel.currentExercise!,
-                      viewModel: viewModel,
-                    ),
+                  // const SizedBox(height: 20.0),
+                  // if (viewModel.currentExercise != null)
+                  //   CorrelationExerciseWidget(
+                  //     exercise: viewModel.currentExercise!,
+                  //     viewModel: viewModel,
+                  //   ),
                 ],
               );
             },
@@ -109,4 +111,4 @@ class _CorrelationExercisePageState extends State<CorrelationExercisePage> {
       ),
     );
   }
-} 
+}

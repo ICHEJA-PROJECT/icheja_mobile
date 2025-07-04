@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
 import 'package:icheja_mobile/exercises/presentation/widgets/exercise_content.dart';
 import 'package:icheja_mobile/exercises/presentation/widgets/exercise_skeleton.dart';
@@ -25,19 +26,28 @@ class ExerciseView extends StatelessWidget {
             ),
           )
         else if (viewModel.currentExercise != null)
-          Flexible(
-            child: ExerciseContent(
-              viewModel: viewModel,
-              exercise: viewModel.currentExercise!,
-              isWriting: true,
+          if (viewModel.currentExercise?.type != ExerciseType.writing)
+            Flexible(
+              child: ExerciseContent(
+                viewModel: viewModel,
+                exercise: viewModel.currentExercise!,
+                isWriting: true,
+              ),
+            )
+          else if (viewModel.currentExercise?.type != ExerciseType.correlation)
+            Flexible(
+              child: ExerciseContent(
+                viewModel: viewModel,
+                exercise: viewModel.currentExercise!,
+                isCorrelation: true,
+              ),
+            )
+          else
+            const Flexible(
+              child: Center(
+                child: Text('No exercises found.'),
+              ),
             ),
-          )
-        else
-          const Flexible(
-            child: Center(
-              child: Text('No exercises found.'),
-            ),
-          ),
       ],
     );
   }
