@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:icheja_mobile/core/session/session_manager.dart';
-import 'package:icheja_mobile/resources/domain/entities/abecedary_resource_entity.dart';
+import 'package:icheja_mobile/resources/domain/entities/family_resource_entity.dart';
 import 'package:icheja_mobile/resources/domain/entities/resource_detail_entity.dart';
 
 class ResourceDetailViewmodel extends ChangeNotifier {
@@ -49,146 +49,26 @@ class ResourceDetailViewmodel extends ChangeNotifier {
   Future<void> _fetchResource() async {
     try {
       _resourceDetail = ResourceDetailEntity(
-        id: '1',
-        title: 'Abecedario',
-        content: <AbecedaryResourceEntity>[
-          AbecedaryResourceEntity(
-              vocal: 'A',
-              minusVocal: 'a',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'B',
-              minusVocal: 'b',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'C',
-              minusVocal: 'c',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'D',
-              minusVocal: 'd',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'E',
-              minusVocal: 'e',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'F',
-              minusVocal: 'f',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'G',
-              minusVocal: 'g',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'H',
-              minusVocal: 'h',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'I',
-              minusVocal: 'i',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'J',
-              minusVocal: 'j',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'K',
-              minusVocal: 'k',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'L',
-              minusVocal: 'l',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'M',
-              minusVocal: 'm',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'N',
-              minusVocal: 'n',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'Ñ',
-              minusVocal: 'ñ',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'O',
-              minusVocal: 'o',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'P',
-              minusVocal: 'p',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'Q',
-              minusVocal: 'q',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'R',
-              minusVocal: 'r',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'S',
-              minusVocal: 's',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'T',
-              minusVocal: 't',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'U',
-              minusVocal: 'u',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'V',
-              minusVocal: 'v',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'W',
-              minusVocal: 'w',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'X',
-              minusVocal: 'x',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'Y',
-              minusVocal: 'y',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-          AbecedaryResourceEntity(
-              vocal: 'Z',
-              minusVocal: 'z',
-              imageUrl:
-                  'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg'),
-        ],
-      );
+          id: "1",
+          title: "Familia",
+          content: <FamilyResourceEntity>[
+            FamilyResourceEntity(
+                role: "Mamá",
+                imgPath:
+                    "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751579595/ICHEJA/ICHEJA/T3_R1_1"),
+            FamilyResourceEntity(
+                role: "Papá",
+                imgPath:
+                    "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751579627/ICHEJA/ICHEJA/T3_R1_2"),
+            FamilyResourceEntity(
+                role: "Hermano",
+                imgPath:
+                    "http://res.cloudinary.com/dsiamqhuu/raw/upload/v1751581189/ICHEJA/ICHEJA/T3_R1_3"),
+            FamilyResourceEntity(
+                role: "Hermana",
+                imgPath:
+                    "http://res.cloudinary.com/dsiamqhuu/raw/upload/v1751581248/ICHEJA/ICHEJA/T3_R1_4"),
+          ]);
     } catch (e) {
       _error = 'Failed to load resources: $e';
     }
