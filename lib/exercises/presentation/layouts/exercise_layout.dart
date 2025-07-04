@@ -2,11 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
 import 'package:icheja_mobile/common/presentation/widgets/go_back_button.dart';
 import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
-import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 
 class ExerciseLayout extends StatelessWidget {
   final String fieldNameSelected;
-  final Exercise exercise;
+  //  final Exercise exercise;
   final List<Widget> childrens;
   final bool isSpeaking;
   final VoidCallback onSpeakerPressed;
@@ -14,7 +13,7 @@ class ExerciseLayout extends StatelessWidget {
 
   const ExerciseLayout({
     super.key,
-    required this.exercise,
+    //  required this.exercise,
     required this.childrens,
     required this.isSpeaking,
     required this.onSpeakerPressed,
@@ -33,7 +32,7 @@ class ExerciseLayout extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
               GoBackButton(
-                route: '${AppRoutesConstant.resources}/${fieldNameSelected}',
+                route: '${AppRoutesConstant.resources}/$fieldNameSelected',
                 width: 0.03,
                 height: 0.06,
                 iconSize: 0.07,
@@ -56,9 +55,9 @@ class ExerciseLayout extends StatelessWidget {
                   color: ColorTheme.primary,
                   borderRadius: BorderRadius.circular(8),
                 ),
-                child: Text(
-                  '${exercise.id}',
-                  style: const TextStyle(
+                child: const Text(
+                  '1',
+                  style: TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.bold,
                       color: ColorTheme.text),

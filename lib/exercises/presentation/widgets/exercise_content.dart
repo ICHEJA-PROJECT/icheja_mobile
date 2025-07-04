@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:icheja_mobile/common/domain/constants/ui_constants.dart';
 import 'package:icheja_mobile/common/presentation/layouts/modal_layout.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
 import 'package:icheja_mobile/common/presentation/widgets/custom_container_border.dart';
@@ -10,22 +9,24 @@ import 'package:icheja_mobile/common/presentation/widgets/modal_content.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_footer_actions.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_header.dart';
 import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
-import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/layouts/exercise_layout.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
+import 'package:icheja_mobile/exercises/presentation/widgets/correlation_exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/widgets/writing_exercise_actions.dart';
 
 class ExerciseContent extends StatelessWidget {
   final String fieldNameSelected;
   final ExerciseViewModel viewModel;
-  final bool isWriting;
-  final Exercise exercise;
+  final bool isText;
+  final bool isSelection;
+  // final Exercise exercise;
 
   const ExerciseContent({
     super.key,
-    required this.exercise,
+    // required this.exercise,
     required this.viewModel,
-    this.isWriting = false,
+    this.isText = false,
+    this.isSelection = false,
     required this.fieldNameSelected,
   });
 
@@ -33,12 +34,14 @@ class ExerciseContent extends StatelessWidget {
     ModalLayout.show(
       context: context,
       barrierDismissible: true,
-      header: const ModalHeader(
-        title: "Felicidades!!",
+      header: ModalHeader(
+        title: viewModel.exerciseMock?.retroalimentacion["titulo"] ??
+            "¡Excelente!",
         titleFontSize: 30,
         subtitleFontSize: 20,
         titleColor: ColorTheme.greenColor,
-        subtitle: "Sigue trabajando así",
+        subtitle: viewModel.exerciseMock?.retroalimentacion["subtitulo"] ??
+            "¡Has completado el ejercicio!",
       ),
       content: const ModalContent(
         child: Column(
@@ -55,13 +58,21 @@ class ExerciseContent extends StatelessWidget {
       ),
       footerActions: ModalFooterActions(
         buttonTypes: const [ModalButtonType.close, ModalButtonType.next],
-        onNext: () => {Navigator.of(context).pop()},
-        onClose: () => {
+        onNext: () => {
+          viewModel.cleanPicture(),
           Navigator.of(context).pop(),
-          context.go(AppRoutesConstant.resourceDetail)
+          context.go('${AppRoutesConstant.resources}/$fieldNameSelected')
+        },
+        onClose: () => {
+          viewModel.cleanPicture(),
+          Navigator.of(context).pop(),
+          context.go('${AppRoutesConstant.resources}/$fieldNameSelected')
         },
       ),
-    );
+    ).then((_) {
+      viewModel.cleanPicture();
+      context.go('${AppRoutesConstant.resources}/$fieldNameSelected');
+    });
   }
 
   @override
@@ -70,21 +81,21 @@ class ExerciseContent extends StatelessWidget {
 
     return ExerciseLayout(
       fieldNameSelected: fieldNameSelected,
-      exercise: exercise,
+      // exercise: exercise,
       isSpeaking: viewModel.isSpeaking,
       onSpeakerPressed: () {
         if (viewModel.isSpeaking) {
           viewModel.stop();
         } else {
-          final typeExercise = exercise.type;
-          final exerciseMessage = typeExercise == ExerciseType.writing
-              ? UIConstants.writingMessage
-              : UIConstants.readingMessage;
-          viewModel.speak("$exerciseMessage ${exercise.instrucciones}");
+          // final typeExercise = exercise.type;
+          // final exerciseMessage = typeExercise == ExerciseType.writing
+          //     ? UIConstants.writingMessage
+          //     : UIConstants.readingMessage;
+          viewModel.speak(viewModel.exerciseMock?.instrucciones ?? '');
         }
       },
       childrens: [
-        if (isWriting) ...[
+        if (isText) ...[
           const SizedBox(height: 16),
           CustomContainerBorder(
             borderColor: ColorTheme.primary,
@@ -96,7 +107,7 @@ class ExerciseContent extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomSvgNetworkImage(
-                  imageUrl:
+                  imageUrl: viewModel.exerciseMock?.contexto["imagen"] ??
                       'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg',
                   width: size.width * 0.30,
                   height: size.height * 0.30,
@@ -111,6 +122,12 @@ class ExerciseContent extends StatelessWidget {
               onSendExercise: () {
                 _showGamificationModal(context);
               }),
+        ] else if (isSelection) ...[
+          CorrelationExerciseWidget(
+              fieldNameSelected: fieldNameSelected,
+              exerciseCtx: viewModel.exerciseMock?.contexto ?? {},
+              imagesPath: viewModel.exerciseMock?.rutasImagenes ?? [],
+              viewModel: viewModel)
         ]
 
         // ? For future use, if needed
