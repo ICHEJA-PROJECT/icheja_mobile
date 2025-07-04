@@ -8,6 +8,7 @@ import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.d
 import 'package:icheja_mobile/core/session/session_manager.dart';
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/domain/entities/feedback_entity.dart';
+import 'package:icheja_mobile/exercises/presentation/pages/correlation_exercise_page.dart';
 import 'package:icheja_mobile/exercises/presentation/pages/exercise_page.dart';
 import 'package:icheja_mobile/feedback/presentation/pages/feedback_page.dart';
 import 'package:icheja_mobile/home/presentation/pages/home_page.dart';
