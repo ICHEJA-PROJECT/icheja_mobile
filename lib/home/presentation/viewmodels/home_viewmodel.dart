@@ -46,7 +46,7 @@ class HomeViewModel extends ChangeNotifier {
 
   List<Resource> _resourcesList = [
     Resource(
-        name: 'Recursos global',
+        name: UIConstants.all_resources,
         imageUrl:
             'https://static.vecteezy.com/system/resources/previews/020/294/900/non_2x/global-globe-cartoon-illustration-vector.jpg')
   ];

@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:icheja_mobile/common/domain/constants/ui_constants.dart';
 import 'package:icheja_mobile/common/presentation/layouts/app_layout.dart';
 import 'package:icheja_mobile/common/presentation/layouts/horizontal_modal_layout.dart';
 import 'package:icheja_mobile/common/presentation/layouts/modal_layout.dart';
@@ -124,17 +125,19 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             RowTypes(
                               text: resource.name,
-                              overlayColor: resource.name == 'Recursos global'
+                              overlayColor: resource.name ==
+                                      UIConstants.all_resources
                                   ? ColorTheme.primary.withValues(alpha: 0.5)
                                   : ColorTheme.tertiary.withValues(alpha: 0.2),
                               backgroundColor:
-                                  resource.name == 'Recursos global'
+                                  resource.name == UIConstants.all_resources
                                       ? ColorTheme.tertiary
                                       : ColorTheme.secondary,
                               imageUrl: resource.imageUrl,
                               onPressed: () {
                                 context.go(
-                                    '${AppRoutesConstant.resources}/${resource.name}');
+                                  '${AppRoutesConstant.resources}/${resource.name}',
+                                );
                               },
                             ),
                             const SizedBox(height: 25),

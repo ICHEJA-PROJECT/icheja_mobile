@@ -61,7 +61,8 @@ class AbecedaryContent extends StatelessWidget {
                 Text(
                   '${item.vocal}${item.minusVocal}',
                   style: const TextStyle(
-                      fontSize: 65,
+                      overflow: TextOverflow.ellipsis,
+                      fontSize: 30,
                       fontWeight: FontWeight.w500,
                       color: Color(0XFFDD4242)),
                 ),

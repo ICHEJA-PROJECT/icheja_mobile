@@ -13,12 +13,17 @@ import 'package:icheja_mobile/resources/presentation/widgets/resource_navigation
 import 'package:provider/provider.dart';
 
 class ResourcesPages extends StatelessWidget {
-  const ResourcesPages({super.key});
+  final String field;
+  const ResourcesPages({super.key, required this.field});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => sl<ResourcesViewmodel>(),
+      create: (context) {
+        final viewModel = sl<ResourcesViewmodel>();
+        viewModel.fetchResources(field);
+        return viewModel;
+      },
       child: AppLayout(
           body: SingleChildScrollView(
         padding: EdgeInsets.symmetric(
@@ -78,7 +83,7 @@ class ResourcesPages extends StatelessWidget {
                         itemContent: (item, index, extraData) {
                           return ResourceNavigation(
                             itemResource: item,
-                            cardColor: index == 0
+                            cardColor: item.id == '0'
                                 ? ColorTheme.tertiary
                                 : ColorTheme.secondary,
                           );

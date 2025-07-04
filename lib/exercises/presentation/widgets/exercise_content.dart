@@ -16,6 +16,7 @@ import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmod
 import 'package:icheja_mobile/exercises/presentation/widgets/writing_exercise_actions.dart';
 
 class ExerciseContent extends StatelessWidget {
+  final String fieldNameSelected;
   final ExerciseViewModel viewModel;
   final bool isWriting;
   final Exercise exercise;
@@ -25,6 +26,7 @@ class ExerciseContent extends StatelessWidget {
     required this.exercise,
     required this.viewModel,
     this.isWriting = false,
+    required this.fieldNameSelected,
   });
 
   void _showGamificationModal(BuildContext context) {
@@ -67,6 +69,7 @@ class ExerciseContent extends StatelessWidget {
     final size = MediaQuery.of(context).size;
 
     return ExerciseLayout(
+      fieldNameSelected: fieldNameSelected,
       exercise: exercise,
       isSpeaking: viewModel.isSpeaking,
       onSpeakerPressed: () {
