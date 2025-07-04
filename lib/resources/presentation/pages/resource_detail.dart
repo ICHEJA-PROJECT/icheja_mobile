@@ -9,13 +9,19 @@ import 'package:icheja_mobile/resources/presentation/widgets/family_content.dart
 import 'package:provider/provider.dart';
 
 class ResourceDetail extends StatelessWidget {
+  final String detailTitle;
   final String fieldNameSelected;
-  const ResourceDetail({super.key, required this.fieldNameSelected});
+  const ResourceDetail(
+      {super.key, required this.fieldNameSelected, required this.detailTitle});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-      create: (context) => sl<ResourceDetailViewmodel>(),
+      create: (context) {
+        final viewModel = sl<ResourceDetailViewmodel>();
+        viewModel.fetchResource(detailTitle, fieldNameSelected);
+        return viewModel;
+      },
       child: Consumer<ResourceDetailViewmodel>(
         builder: (context, viewModel, child) {
           return ResourceLayout(

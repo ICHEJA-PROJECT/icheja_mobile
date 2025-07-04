@@ -57,10 +57,11 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '${AppRoutesConstant.exercises}/:field/:index',
       builder: (context, state) {
+        // The field parameter is 'recursos globales', 'nombres propios', etc.
         final field =
             state.pathParameters['field'] ?? UIConstants.all_resources;
+        // The index parameter is the index of the exercise in the list
         final index = state.pathParameters['index'];
-        print('Field: $field, Index: $index');
         return ExercisePage(fieldNameSelected: field);
       },
     ),
@@ -91,12 +92,13 @@ final GoRouter router = GoRouter(
     GoRoute(
       path: '${AppRoutesConstant.resourceDetail}/:title/:field',
       builder: (context, state) {
+        // The title parameter is the title of the resource
         final title = state.pathParameters['title'];
+        // The field parameter is 'recursos globales', 'nombres propios', etc.
         final field =
             state.pathParameters['field'] ?? UIConstants.all_resources;
-        print('Field: $field');
-        print('Title: $title');
         return ResourceDetail(
+          detailTitle: title ?? '',
           fieldNameSelected: field,
         );
       },

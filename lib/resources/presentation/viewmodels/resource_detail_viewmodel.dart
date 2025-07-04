@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:icheja_mobile/core/session/session_manager.dart';
-import 'package:icheja_mobile/resources/domain/entities/family_resource_entity.dart';
+import 'package:icheja_mobile/resources/data/datasources/get_resource_detail_data_source.dart';
+import 'package:icheja_mobile/resources/domain/entities/abecedary_resource_entity.dart';
 import 'package:icheja_mobile/resources/domain/entities/resource_detail_entity.dart';
 
 class ResourceDetailViewmodel extends ChangeNotifier {
+  final GetResourceDetailDataSource _getResourceDetailDataSource =
+      GetResourceDetailDataSource();
   final SessionManager _sessionManager;
 
   String? _username;
@@ -29,7 +32,6 @@ class ResourceDetailViewmodel extends ChangeNotifier {
       notifyListeners();
       await Future.delayed(const Duration(seconds: 1));
       await _fetchUsername();
-      await _fetchResource();
     } catch (e) {
       _error = e.toString();
     } finally {
@@ -46,29 +48,13 @@ class ResourceDetailViewmodel extends ChangeNotifier {
     }
   }
 
-  Future<void> _fetchResource() async {
+  Future<void> fetchResource(title, field) async {
     try {
-      _resourceDetail = ResourceDetailEntity(
-          id: "1",
-          title: "Familia",
-          content: <FamilyResourceEntity>[
-            FamilyResourceEntity(
-                role: "Mamá",
-                imgPath:
-                    "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751579595/ICHEJA/ICHEJA/T3_R1_1"),
-            FamilyResourceEntity(
-                role: "Papá",
-                imgPath:
-                    "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751579627/ICHEJA/ICHEJA/T3_R1_2"),
-            FamilyResourceEntity(
-                role: "Hermano",
-                imgPath:
-                    "http://res.cloudinary.com/dsiamqhuu/raw/upload/v1751581189/ICHEJA/ICHEJA/T3_R1_3"),
-            FamilyResourceEntity(
-                role: "Hermana",
-                imgPath:
-                    "http://res.cloudinary.com/dsiamqhuu/raw/upload/v1751581248/ICHEJA/ICHEJA/T3_R1_4"),
-          ]);
+      _resourceDetail = await _getResourceDetailDataSource.getResourceDetail(
+        title: title,
+        field: field,
+      );
+      print(_resourceDetail.content.runtimeType);
     } catch (e) {
       _error = 'Failed to load resources: $e';
     }
