@@ -35,26 +35,22 @@ class _ExercisePageState extends State<ExercisePage> {
   }
 
   void _showInstructionsModal(BuildContext context) {
-    final viewModel = Provider.of<ExerciseViewModel>(context, listen: false);
-    print(viewModel.exerciseMock);
     ModalLayout.show(
       context: context,
       barrierDismissible: true,
-      header: ModalHeader(
+      header: const ModalHeader(
         title: "Instrucciones",
         titleFontSize: 30,
         subtitleFontSize: 20,
         titleColor: ColorTheme.goldColor,
-        subtitle: viewModel.exerciseMock?.instrucciones ??
-            "Escribe la letra en papel",
+        subtitle: "Sigue las instrucciones del ejercicio",
       ),
-      content: ModalContent(
+      content: const ModalContent(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
             ImageDecorationContainer(
-              imageUrl: viewModel.exerciseMock?.mediaInstrucciones["media"] ??
-                  'https://media.tenor.com/HdXY24H0RaAAAAAM/haha-yay.gif',
+              imageUrl: 'https://media.tenor.com/HdXY24H0RaAAAAAM/haha-yay.gif',
               height: 200,
               width: 250,
               borderRadius: 15.0,
@@ -109,7 +105,7 @@ class _ExercisePageState extends State<ExercisePage> {
                   },
                 ),
                 const SizedBox(height: 20.0),
-                ExerciseView(fieldNameSelected: widget.fieldNameSelected),
+                ExerciseView(topicName: widget.fieldNameSelected),
               ],
             );
           })),

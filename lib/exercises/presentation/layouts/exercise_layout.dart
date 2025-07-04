@@ -2,23 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
 import 'package:icheja_mobile/common/presentation/widgets/go_back_button.dart';
 import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
+import 'package:icheja_mobile/home/domain/entities/topic_content_entity.dart';
 
 class ExerciseLayout extends StatelessWidget {
-  final String fieldNameSelected;
-  //  final Exercise exercise;
+  final ExerciseEntity exercise; // Cambiar a ExerciseEntity si es necesario
   final List<Widget> childrens;
   final bool isSpeaking;
   final VoidCallback onSpeakerPressed;
   final bool isDeaf;
+  final String fieldNameSelected; // Este parámetro requerido
 
   const ExerciseLayout({
     super.key,
-    //  required this.exercise,
+    required this.exercise,
     required this.childrens,
     required this.isSpeaking,
     required this.onSpeakerPressed,
+    required this.fieldNameSelected, // REQUERIDO
     this.isDeaf = true,
-    required this.fieldNameSelected,
   });
 
   @override

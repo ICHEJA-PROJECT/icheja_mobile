@@ -7,10 +7,8 @@ import 'package:icheja_mobile/exercises/domain/usecases/evaluate_reading_exercis
 import 'package:icheja_mobile/exercises/domain/usecases/evaluate_writing_exercise_usecase.dart';
 import 'package:icheja_mobile/exercises/domain/usecases/get_exercises.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
-import 'package:icheja_mobile/exercises/presentation/viewmodels/correlation_exercise_viewmodel.dart';
 import 'package:icheja_mobile/exercises/domain/usecases/get_exercise_by_index.dart';
 import 'package:icheja_mobile/exercises/domain/usecases/get_topic_content_by_name.dart';
-import 'package:icheja_mobile/exercises/presentation/viewmodels/memorama_viewmodel.dart';
 
 void setupExerciseDependencies(GetIt sl) {
   // ViewModels
@@ -29,12 +27,6 @@ void setupExerciseDependencies(GetIt sl) {
       evaluateWritingExerciseUseCase: sl(),
       sessionManager: sl(),
       getExerciseByIndexUseCase: sl()));
-
-  sl.registerLazySingleton(() => MemoramaViewModel(
-      speakUseCase: sl(),
-      stopUseCase: sl(),
-      getIsSpeakingStreamUseCase: sl(),
-      sessionManager: sl()));
 
   // Usecases
   sl.registerLazySingleton(() => GetExercises(sl()));

@@ -1,5 +1,6 @@
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/domain/entities/context_entity.dart';
+import 'package:icheja_mobile/exercises/domain/entities/memorama_entity.dart';
 
 class ExerciseModel extends Exercise {
   ExerciseModel({
@@ -15,8 +16,17 @@ class ExerciseModel extends Exercise {
 
   factory ExerciseModel.fromJson(Map<String, dynamic> json) {
     final bool isWriting = json['escritura'] as bool;
-    final ExerciseType type =
-        isWriting ? ExerciseType.writing : ExerciseType.correlation;
+    //final bool isReading = json['lectura'] as bool? ?? false;
+    final bool isMemory = json['memoria'] as bool;
+    
+    ExerciseType type;
+    if (isMemory) {
+      type = ExerciseType.memory;
+    } else if (isWriting) {
+      type = ExerciseType.writing;
+    } else {
+      type = ExerciseType.reading;
+    }
 
     return ExerciseModel(
       id: json['id'] as int,
@@ -28,12 +38,50 @@ class ExerciseModel extends Exercise {
           .map((e) => e as String)
           .toList(),
       type: type,
-      contexto: isWriting
-          ? WritingContextModel.fromJson(
-              json['contexto'] as Map<String, dynamic>)
-          : CorrelationContextModel.fromJson(
-              json['contexto'] as Map<String, dynamic>),
+      contexto: _buildContext(json, type),
     );
+  }
+}
+
+ContextEntity _buildContext(Map<String, dynamic> json, ExerciseType type) {
+  switch (type) {
+    case ExerciseType.memory:
+      return MemoramaContextModel.fromJson(
+          json['contexto'] as Map<String, dynamic>);
+    case ExerciseType.writing:
+      return WritingContextModel.fromJson(
+          json['contexto'] as Map<String, dynamic>);
+    case ExerciseType.reading:
+      return ReadingContextModel.fromJson(
+          json['contexto'] as Map<String, dynamic>);
+    default:
+      return WritingContextModel.fromJson(
+          json['contexto'] as Map<String, dynamic>);
+  }
+}
+
+class MemoramaContextModel extends ContextEntity {
+  final List<MemoramaItem> items;
+
+  const MemoramaContextModel({required this.items});
+
+  factory MemoramaContextModel.fromJson(Map<String, dynamic> json) {
+    final contenido = json['contenido'] as List<dynamic>;
+    final items = contenido.map((item) {
+      return MemoramaItem(
+        letter: item['vocal'] as String,
+        imageUrl: _cleanImageUrl(item['path_image'] as String),
+      );
+    }).toList();
+
+    return MemoramaContextModel(items: items);
+  }
+
+  static String _cleanImageUrl(String url) {
+    if (url.contains(':http')) {
+      return url.split(':').last;
+    }
+    return url.trim();
   }
 }
 

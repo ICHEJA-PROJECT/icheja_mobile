@@ -4,6 +4,7 @@ enum ExerciseType {
   writing,
   reading,
   correlation,
+  memory,
 }
 
 class Exercise {

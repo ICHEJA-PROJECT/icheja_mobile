@@ -25,16 +25,16 @@ class MemoramaCardWidget extends StatelessWidget {
             color: card.isMatched 
                 ? ColorTheme.greenColor 
                 : ColorTheme.secondary,
-            width: 2,
+            width: 3,
           ),
           color: card.isFlipped || card.isMatched 
               ? Colors.white 
               : ColorTheme.primary,
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.1),
-              blurRadius: 4,
-              offset: const Offset(0, 2),
+              color: Colors.black.withOpacity(0.2),
+              blurRadius: 6,
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -48,7 +48,7 @@ class MemoramaCardWidget extends StatelessWidget {
       // Carta volteada - mostrar dorso
       return Container(
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(9),
           gradient: LinearGradient(
             begin: Alignment.topLeft,
             end: Alignment.bottomRight,
@@ -60,8 +60,8 @@ class MemoramaCardWidget extends StatelessWidget {
         ),
         child: const Center(
           child: Icon(
-            Icons.help_outline,
-            size: 40,
+            Icons.quiz,
+            size: 32,
             color: Colors.white,
           ),
         ),
@@ -74,7 +74,7 @@ class MemoramaCardWidget extends StatelessWidget {
         child: Text(
           card.content,
           style: TextStyle(
-            fontSize: 48,
+            fontSize: 36,
             fontWeight: FontWeight.bold,
             color: card.isMatched ? ColorTheme.greenColor : ColorTheme.primary,
           ),
@@ -89,7 +89,7 @@ class MemoramaCardWidget extends StatelessWidget {
           height: double.infinity,
           errorImage: const Icon(
             Icons.error,
-            size: 40,
+            size: 30,
             color: Colors.red,
           ),
         ),

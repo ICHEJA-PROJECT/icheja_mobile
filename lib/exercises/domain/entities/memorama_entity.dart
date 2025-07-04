@@ -1,19 +1,3 @@
-class MemoramaExercise {
-  final String titulo;
-  final String subtitulo;
-  final String contenido;
-  final String instrucciones;
-  final List<MemoramaItem> items;
-
-  const MemoramaExercise({
-    required this.titulo,
-    required this.subtitulo,
-    required this.contenido,
-    required this.instrucciones,
-    required this.items,
-  });
-}
-
 class MemoramaItem {
   final String letter;
   final String imageUrl;
@@ -26,7 +10,7 @@ class MemoramaItem {
 
 class MemoramaCard {
   final int id;
-  final String content; // Letra o imagen
+  final String content; // Letra o URL de imagen
   final MemoramaCardType type;
   final String pairId; // ID para identificar la pareja
   bool isFlipped;
@@ -40,6 +24,20 @@ class MemoramaCard {
     this.isFlipped = false,
     this.isMatched = false,
   });
+
+  MemoramaCard copyWith({
+    bool? isFlipped,
+    bool? isMatched,
+  }) {
+    return MemoramaCard(
+      id: id,
+      content: content,
+      type: type,
+      pairId: pairId,
+      isFlipped: isFlipped ?? this.isFlipped,
+      isMatched: isMatched ?? this.isMatched,
+    );
+  }
 }
 
 enum MemoramaCardType { letter, image }
