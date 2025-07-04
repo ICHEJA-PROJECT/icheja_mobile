@@ -14,7 +14,8 @@ import 'package:icheja_mobile/exercises/presentation/widgets/exercise_view.dart'
 import 'package:icheja_mobile/home/presentation/widgets/welcome_header.dart';
 
 class ExercisePage extends StatefulWidget {
-  const ExercisePage({super.key});
+  final String fieldNameSelected;
+  const ExercisePage({super.key, required this.fieldNameSelected});
 
   @override
   State<ExercisePage> createState() => _ExercisePageState();
@@ -95,7 +96,7 @@ class _ExercisePageState extends State<ExercisePage> {
                     },
                   ),
                   const SizedBox(height: 20.0),
-                  const ExerciseView(),
+                  ExerciseView(fieldNameSelected: widget.fieldNameSelected),
                 ],
               );
             })),

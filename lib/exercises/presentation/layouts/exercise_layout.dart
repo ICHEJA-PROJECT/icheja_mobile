@@ -5,6 +5,7 @@ import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.d
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 
 class ExerciseLayout extends StatelessWidget {
+  final String fieldNameSelected;
   final Exercise exercise;
   final List<Widget> childrens;
   final bool isSpeaking;
@@ -18,6 +19,7 @@ class ExerciseLayout extends StatelessWidget {
     required this.isSpeaking,
     required this.onSpeakerPressed,
     this.isDeaf = true,
+    required this.fieldNameSelected,
   });
 
   @override
@@ -30,8 +32,8 @@ class ExerciseLayout extends StatelessWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              const GoBackButton(
-                route: AppRoutesConstant.resources,
+              GoBackButton(
+                route: '${AppRoutesConstant.resources}/${fieldNameSelected}',
                 width: 0.03,
                 height: 0.06,
                 iconSize: 0.07,

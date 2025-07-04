@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
+import 'package:icheja_mobile/common/domain/constants/ui_constants.dart';
 import 'package:icheja_mobile/core/session/session_manager.dart';
+import 'package:icheja_mobile/resources/data/datasources/get_resources_and_exercises_data_source.dart';
 import 'package:icheja_mobile/resources/domain/entities/resources_entity.dart';
 
 class ResourcesViewmodel extends ChangeNotifier {
+  final GetResourcesAndExercisesDataSource _getResourcesAndExercisesDataSource =
+      GetResourcesAndExercisesDataSource();
   final SessionManager _sessionManager;
 
   String? _username;
@@ -29,7 +32,6 @@ class ResourcesViewmodel extends ChangeNotifier {
       notifyListeners();
       await Future.delayed(const Duration(seconds: 1));
       await _fetchUsername();
-      await _fetchResources();
     } catch (e) {
       _error = e.toString();
     } finally {
@@ -46,59 +48,15 @@ class ResourcesViewmodel extends ChangeNotifier {
     }
   }
 
-  Future<void> _fetchResources() async {
+  Future<void> fetchResources(String field) async {
     try {
-      _resources = [
-        ResourcesEntity(
-          id: '1',
-          title: 'Teoría',
-          imageUrl:
-              'https://previews.123rf.com/images/matriyoshka/matriyoshka1510/matriyoshka151000021/46276042-science-and-international-education-classroom-university-professor-theory-teacher-college-lecture.jpg',
-          routeToGo: AppRoutesConstant.resourceDetail,
-        ),
-        ResourcesEntity(
-          id: '2',
-          title: 'Ejercicio 1',
-          imageUrl:
-              'https://img.freepik.com/premium-vector/little-boy-doing-homework-by-read-writing-his-desk-vector-illustration_181870-188.jpg',
-          routeToGo: AppRoutesConstant.exercises,
-        ),
-        ResourcesEntity(
-          id: '3',
-          title: 'Ejercicio 2',
-          imageUrl:
-              'https://img.freepik.com/premium-vector/little-boy-doing-homework-by-read-writing-his-desk-vector-illustration_181870-188.jpg',
-          routeToGo: AppRoutesConstant.exercises,
-        ),
-        ResourcesEntity(
-          id: '4',
-          title: 'Ejercicio 3',
-          imageUrl:
-              'https://img.freepik.com/premium-vector/little-boy-doing-homework-by-read-writing-his-desk-vector-illustration_181870-188.jpg',
-          routeToGo: AppRoutesConstant.exercises,
-        ),
-        ResourcesEntity(
-          id: '5',
-          title: 'Ejercicio 4',
-          imageUrl:
-              'https://img.freepik.com/premium-vector/little-boy-doing-homework-by-read-writing-his-desk-vector-illustration_181870-188.jpg',
-          routeToGo: AppRoutesConstant.exercises,
-        ),
-        ResourcesEntity(
-          id: '6',
-          title: 'Ejercicio 5',
-          imageUrl:
-              'https://img.freepik.com/premium-vector/little-boy-doing-homework-by-read-writing-his-desk-vector-illustration_181870-188.jpg',
-          routeToGo: AppRoutesConstant.exercises,
-        ),
-        ResourcesEntity(
-          id: '7',
-          title: 'Ejercicio 6',
-          imageUrl:
-              'https://img.freepik.com/premium-vector/little-boy-doing-homework-by-read-writing-his-desk-vector-illustration_181870-188.jpg',
-          routeToGo: AppRoutesConstant.exercises,
-        ),
-      ];
+      if (field == UIConstants.all_resources) {
+        _resources =
+            await _getResourcesAndExercisesDataSource.getAllResources();
+      } else {
+        _resources = await _getResourcesAndExercisesDataSource
+            .getResourcesAndExercisesByField(field);
+      }
     } catch (e) {
       _error = 'Failed to load resources: $e';
     }

@@ -10,4 +10,6 @@ class UIConstants {
 
   static const String homeMessage =
       "En la parte de abajo de la pantalla se encuentran los siguientes íconos: En la casita, podrás ver tu progreso, el lápiz, te mostrará tus ejercicios, y para salir de la cuenta, esta el ícono de sálida. Finalmente, el ícono verde de bocina para volver a escuchar las instrucciones.";
+
+  static const String all_resources = "Recursos global";
 }
