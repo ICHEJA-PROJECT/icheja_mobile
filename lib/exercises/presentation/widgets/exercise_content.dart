@@ -5,6 +5,7 @@ import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
 import 'package:icheja_mobile/common/presentation/widgets/custom_container_border.dart';
 import 'package:icheja_mobile/common/presentation/widgets/custom_flottie_image.dart';
 import 'package:icheja_mobile/common/presentation/widgets/custom_svg_network_image.dart';
+import 'package:icheja_mobile/common/presentation/widgets/image_decoration_container.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_content.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_footer_actions.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_header.dart';
@@ -19,6 +20,7 @@ class ExerciseContent extends StatelessWidget {
   final ExerciseViewModel viewModel;
   final bool isText;
   final bool isSelection;
+  final bool isWriting;
   // final Exercise exercise;
 
   const ExerciseContent({
@@ -27,6 +29,7 @@ class ExerciseContent extends StatelessWidget {
     required this.viewModel,
     this.isText = false,
     this.isSelection = false,
+    this.isWriting = false,
     required this.fieldNameSelected,
   });
 
@@ -128,7 +131,22 @@ class ExerciseContent extends StatelessWidget {
               exerciseCtx: viewModel.exerciseMock?.contexto ?? {},
               imagesPath: viewModel.exerciseMock?.rutasImagenes ?? [],
               viewModel: viewModel)
-        ]
+        ] else if (isWriting) ...[
+          const SizedBox(height: 16),
+          ImageDecorationContainer(
+            imageUrl: viewModel.exerciseMock?.rutasImagenes[0] ??
+                'http://res.cloudinary.com/dsiamqhuu/image/upload/v1751571141/ICHEJA/ICHEJA/T1_E1.jpg',
+            width: size.width * 0.30,
+            fit: BoxFit.contain,
+            height: size.height * 0.30,
+          ),
+          const SizedBox(height: 16),
+          WritingExerciseActions(
+              viewModel: viewModel,
+              onSendExercise: () {
+                _showGamificationModal(context);
+              }),
+        ],
 
         // ? For future use, if needed
         // ExerciseMediaDisplay(
