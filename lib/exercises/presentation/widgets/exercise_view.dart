@@ -9,7 +9,7 @@ class ExerciseView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final viewModel = Provider.of<ExerciseViewModel>(context);
+    final viewModel = Provider.of<ExerciseViewModel>(context, listen: true);
 
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -27,7 +27,9 @@ class ExerciseView extends StatelessWidget {
         else if (viewModel.currentExercise != null)
           Flexible(
             child: ExerciseContent(
+              viewModel: viewModel,
               exercise: viewModel.currentExercise!,
+              isWriting: true,
             ),
           )
         else

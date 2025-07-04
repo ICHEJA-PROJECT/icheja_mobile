@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:icheja_mobile/common/presentation/layouts/modal_layout.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_content.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_footer_actions.dart';
-import 'package:icheja_mobile/common/presentation/widgets/modal_header.dart';
 import 'package:icheja_mobile/common/presentation/widgets/custom_container_border.dart';
 import 'package:icheja_mobile/common/presentation/widgets/custom_svg_network_image.dart';
 import 'package:icheja_mobile/common/presentation/widgets/grid_container.dart';
@@ -38,7 +37,7 @@ class AbecedaryContent extends StatelessWidget {
         ),
       ),
       footerActions: ModalFooterActions(
-        buttonTypes: [ModalButtonType.close],
+        buttonTypes: const [ModalButtonType.close],
         onClose: () => Navigator.of(context).pop(),
       ),
     );
