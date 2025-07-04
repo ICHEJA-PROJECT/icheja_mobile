@@ -10,6 +10,7 @@ import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmod
 import 'package:icheja_mobile/exercises/presentation/viewmodels/correlation_exercise_viewmodel.dart';
 import 'package:icheja_mobile/exercises/domain/usecases/get_exercise_by_index.dart';
 import 'package:icheja_mobile/exercises/domain/usecases/get_topic_content_by_name.dart';
+import 'package:icheja_mobile/exercises/presentation/viewmodels/memorama_viewmodel.dart';
 
 void setupExerciseDependencies(GetIt sl) {
   // ViewModels
@@ -29,6 +30,12 @@ void setupExerciseDependencies(GetIt sl) {
       sessionManager: sl()));
 
   sl.registerLazySingleton(() => CorrelationExerciseViewModel(
+      speakUseCase: sl(),
+      stopUseCase: sl(),
+      getIsSpeakingStreamUseCase: sl(),
+      sessionManager: sl()));
+
+  sl.registerLazySingleton(() => MemoramaViewModel(
       speakUseCase: sl(),
       stopUseCase: sl(),
       getIsSpeakingStreamUseCase: sl(),

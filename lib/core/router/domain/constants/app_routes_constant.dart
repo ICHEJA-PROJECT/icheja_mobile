@@ -9,4 +9,5 @@ class AppRoutesConstant {
   static const String resources = '/resources';
   static const String resourceDetail = '/resource_detail';
   static const String test = '/test';
+  static const String memoramaExcercise = '/memorama';
 }
