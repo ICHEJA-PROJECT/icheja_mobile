@@ -10,4 +10,5 @@ class ColorTheme {
   static const shadowColor = Color(0xA9000000);
   static const greenColor = Color(0xFF00A529);
   static const goldColor = Color(0xFFE4B600);
+  static const redColor = Color(0xFFE53935);
 }
