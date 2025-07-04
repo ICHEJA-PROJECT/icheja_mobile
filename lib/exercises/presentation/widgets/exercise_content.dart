@@ -31,15 +31,17 @@ class ExerciseContent extends StatelessWidget {
         }
       },
       childrens: [
-        ExerciseMediaDisplay(
-          exercise: exercise,
-          viewModel: viewModel,
-        ),
-        const SizedBox(height: 32),
-        ExerciseActionButtons(
-          exercise: exercise,
-          viewModel: viewModel,
-        ),
+
+        // ? For future use, if needed
+        // ExerciseMediaDisplay(
+        //   exercise: exercise,
+        //   viewModel: viewModel,
+        // ),
+        // const SizedBox(height: 32),
+        // ExerciseActionButtons(
+        //   exercise: exercise,
+        //   viewModel: viewModel,
+        // ),
       ],
     );
   }

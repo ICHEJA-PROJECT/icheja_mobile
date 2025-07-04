@@ -11,10 +11,14 @@ class AppLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final String location = GoRouterState.of(context).uri.toString();
+
     return Scaffold(
       appBar: AppBar(
         title: Image.asset(
-          'assets/img/logo.png',
+          location.startsWith(AppRoutesConstant.exercises)
+              ? 'assets/img/header_line.png'
+              : 'assets/img/logo.png',
           height: 30,
         ),
         centerTitle: true,
@@ -58,7 +62,7 @@ class AppLayout extends StatelessWidget {
 
   int _calculateSelectedIndex(BuildContext context) {
     final String location = GoRouterState.of(context).uri.toString();
-    if (location.startsWith('/home')) {
+    if (location.startsWith(AppRoutesConstant.home)) {
       return 0;
     }
     if (location.startsWith('/exercises')) {
@@ -76,7 +80,7 @@ class AppLayout extends StatelessWidget {
         context.go(AppRoutesConstant.home);
         break;
       case 1:
-        context.go(AppRoutesConstant.exercises);
+        context.go(AppRoutesConstant.home);
         break;
       case 2:
         sl<SessionManager>().clearSession();
