@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
 import 'package:icheja_mobile/exercises/presentation/widgets/exercise_content.dart';
 import 'package:icheja_mobile/exercises/presentation/widgets/exercise_skeleton.dart';

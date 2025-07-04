@@ -87,6 +87,16 @@ class ExerciseViewModel extends ChangeNotifier {
   bool _isExerciseLoading = false;
   bool get isExerciseLoading => _isExerciseLoading;
 
+    int? _selectedOption;
+  int? get selectedOption => _selectedOption;
+
+  bool _showFeedback = false;
+  bool get showFeedback => _showFeedback;
+
+  bool _isCorrect = false;
+  bool get isCorrect => _isCorrect;
+
+
   ExerciseViewModel({
     required this.getExercises,
     required this.speakUseCase,
@@ -295,6 +305,24 @@ class ExerciseViewModel extends ChangeNotifier {
       _isExerciseLoading = false;
       notifyListeners();
     }
+  }
+
+    void selectOption(int index) {
+    if (_showFeedback) return;
+
+    final exerciseCtx = currentExercise?.contexto as CorrelationContext;
+
+    _selectedOption = index;
+    _showFeedback = true;
+    _isCorrect = exerciseCtx.correctOptionIndex == index;
+    notifyListeners();
+  }
+
+  void resetFeedback() {
+    _selectedOption = null;
+    _showFeedback = false;
+    _isCorrect = false;
+    notifyListeners();
   }
 
   @override

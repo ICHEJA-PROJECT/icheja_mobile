@@ -16,7 +16,7 @@ class ExerciseModel extends Exercise {
   factory ExerciseModel.fromJson(Map<String, dynamic> json) {
     final bool isWriting = json['escritura'] as bool;
     final ExerciseType type =
-        isWriting ? ExerciseType.writing : ExerciseType.reading;
+        isWriting ? ExerciseType.writing : ExerciseType.correlation;
 
     return ExerciseModel(
       id: json['id'] as int,
@@ -31,7 +31,7 @@ class ExerciseModel extends Exercise {
       contexto: isWriting
           ? WritingContextModel.fromJson(
               json['contexto'] as Map<String, dynamic>)
-          : ReadingContextModel.fromJson(
+          : CorrelationContextModel.fromJson(
               json['contexto'] as Map<String, dynamic>),
     );
   }
@@ -54,5 +54,19 @@ class ReadingContextModel extends ReadingContext {
     return ReadingContextModel(
       readingBase: json['lectura_base'] as String,
     );
+  }
+}
+
+class CorrelationContextModel extends CorrelationContext {
+  const CorrelationContextModel(
+      {required super.typeOptions,
+      required super.options,
+      required super.correctOptionIndex});
+
+  factory CorrelationContextModel.fromJson(Map<String, dynamic> json) {
+    return CorrelationContextModel(
+        typeOptions: json["tipo_opciones"] as String,
+        options: json["opciones"] as List<String>,
+        correctOptionIndex: json["opcion_correcta"] as int);
   }
 }

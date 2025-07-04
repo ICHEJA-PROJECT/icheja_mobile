@@ -10,9 +10,11 @@ import 'package:icheja_mobile/common/presentation/widgets/modal_content.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_footer_actions.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_header.dart';
 import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
+import 'package:icheja_mobile/exercises/domain/entities/context_entity.dart';
 import 'package:icheja_mobile/exercises/domain/entities/exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/layouts/exercise_layout.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/exercise_viewmodel.dart';
+import 'package:icheja_mobile/exercises/presentation/widgets/correlation_exercise.dart';
 import 'package:icheja_mobile/exercises/presentation/widgets/writing_exercise_actions.dart';
 
 class ExerciseContent extends StatelessWidget {
@@ -119,7 +121,10 @@ class ExerciseContent extends StatelessWidget {
                 _showGamificationModal(context);
               }),
         ] else if (isSelection)
-          ...[]
+          ...[          CorrelationExerciseWidget(
+              exerciseCtx: exercise.contexto as CorrelationContext,
+              imagesPath: exercise.rutasImagenes,
+              viewModel: viewModel)]
 
         // ? For future use, if needed
         // ExerciseMediaDisplay(

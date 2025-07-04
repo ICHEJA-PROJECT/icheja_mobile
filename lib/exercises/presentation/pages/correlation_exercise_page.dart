@@ -54,7 +54,7 @@ class _CorrelationExercisePageState extends State<CorrelationExercisePage> {
           mainAxisSize: MainAxisSize.min,
           children: [
             ImageDecorationContainer(
-              imageUrl: 'https://media.tenor.com/HdXY24H0RaAAAAAM/haha-yay.gif',
+              imageUrl: 'https:media.tenor.com/HdXY24H0RaAAAAAM/haha-yay.gif',
               height: 200,
               width: 250,
               borderRadius: 15.0,
@@ -99,12 +99,12 @@ class _CorrelationExercisePageState extends State<CorrelationExercisePage> {
                       }
                     },
                   ),
-                  const SizedBox(height: 20.0),
-                  if (viewModel.currentExercise != null)
-                    CorrelationExerciseWidget(
-                      exercise: viewModel.currentExercise!,
-                      viewModel: viewModel,
-                    ),
+                  // const SizedBox(height: 20.0),
+                  // if (viewModel.currentExercise != null)
+                  //   CorrelationExerciseWidget(
+                  //     exercise: viewModel.currentExercise!,
+                  //     viewModel: viewModel,
+                  //   ),
                 ],
               );
             },

@@ -24,6 +24,9 @@ final GoRouter router = GoRouter(
       AppRoutesConstant.welcome,
       AppRoutesConstant.qrScanner,
     ];
+      AppRoutesConstant.welcome,
+      AppRoutesConstant.qrScanner,
+    ];
     final sessionManager = sl<SessionManager>();
     final token = await sessionManager.getToken();
     final isLoggedIn = token != null;
@@ -33,9 +36,13 @@ final GoRouter router = GoRouter(
     if (!isLoggedIn && !isNonSecure) {
       // Si no ha iniciado sesión y intenta acceder a una página no segura, redirigir a bienvenida
       return AppRoutesConstant.welcome;
+    if (!isLoggedIn && !isNonSecure) {
+      // Si no ha iniciado sesión y intenta acceder a una página no segura, redirigir a bienvenida
+      return AppRoutesConstant.welcome;
     }
 
     if (isLoggedIn && isNonSecure) {
+      // Si ya ha iniciado sesión y intenta acceder a una página no segura, redirigir a la página no segura
       // Si ya ha iniciado sesión y intenta acceder a una página no segura, redirigir a la página no segura
       return state.matchedLocation;
     }
