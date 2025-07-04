@@ -9,7 +9,8 @@ import 'package:icheja_mobile/resources/presentation/widgets/family_content.dart
 import 'package:provider/provider.dart';
 
 class ResourceDetail extends StatelessWidget {
-  const ResourceDetail({super.key});
+  final String fieldNameSelected;
+  const ResourceDetail({super.key, required this.fieldNameSelected});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +19,7 @@ class ResourceDetail extends StatelessWidget {
       child: Consumer<ResourceDetailViewmodel>(
         builder: (context, viewModel, child) {
           return ResourceLayout(
+            fieldNameSelected: fieldNameSelected,
             viewmodel: viewModel,
             childrens: [
               if (!viewModel.isLoading && viewModel.error.isEmpty) ...[

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:icheja_mobile/auth/presentation/pages/qr_scanner_page.dart';
 import 'package:icheja_mobile/auth/presentation/pages/welcome_page.dart';
+import 'package:icheja_mobile/common/domain/constants/ui_constants.dart';
 import 'package:icheja_mobile/core/application/dependency_injection.dart';
 import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
 import 'package:icheja_mobile/core/session/session_manager.dart';
@@ -54,8 +55,14 @@ final GoRouter router = GoRouter(
       builder: (context, state) => const QRScannerPage(),
     ),
     GoRoute(
-      path: AppRoutesConstant.exercises,
-      builder: (context, state) => const ExercisePage(),
+      path: '${AppRoutesConstant.exercises}/:field/:index',
+      builder: (context, state) {
+        final field =
+            state.pathParameters['field'] ?? UIConstants.all_resources;
+        final index = state.pathParameters['index'];
+        print('Field: $field, Index: $index');
+        return ExercisePage(fieldNameSelected: field);
+      },
     ),
     GoRoute(
       path: AppRoutesConstant.feedback,
@@ -75,11 +82,24 @@ final GoRouter router = GoRouter(
       },
     ),
     GoRoute(
-        path: AppRoutesConstant.resources,
-        builder: (context, state) => const ResourcesPages()),
+        path: '${AppRoutesConstant.resources}/:name',
+        builder: (context, state) {
+          final field =
+              state.pathParameters['name'] ?? UIConstants.all_resources;
+          return ResourcesPages(field: field);
+        }),
     GoRoute(
-      path: AppRoutesConstant.resourceDetail,
-      builder: (context, state) => const ResourceDetail(),
+      path: '${AppRoutesConstant.resourceDetail}/:title/:field',
+      builder: (context, state) {
+        final title = state.pathParameters['title'];
+        final field =
+            state.pathParameters['field'] ?? UIConstants.all_resources;
+        print('Field: $field');
+        print('Title: $title');
+        return ResourceDetail(
+          fieldNameSelected: field,
+        );
+      },
     )
   ],
 );

@@ -739,16 +739,16 @@ final List<Map<String, dynamic>> content = [
             "seña_image":
                 "http://res.cloudinary.com/dsiamqhuu/image/upload/v1751579627/ICHEJA/ICHEJA/T3_R1_2.svg",
           },
-          {
-            "rol": "Hermano",
-            "seña_image":
-                "http://res.cloudinary.com/dsiamqhuu/raw/upload/v1751581189/ICHEJA/ICHEJA/T3_R1_3",
-          },
-          {
-            "rol": "Hermana",
-            "seña_image":
-                "http://res.cloudinary.com/dsiamqhuu/raw/upload/v1751581248/ICHEJA/ICHEJA/T3_R1_4",
-          },
+          // {
+          //   "rol": "Hermano",
+          //   "seña_image":
+          //       "http://res.cloudinary.com/dsiamqhuu/raw/upload/v1751581189/ICHEJA/ICHEJA/T3_R1_3",
+          // },
+          // {
+          //   "rol": "Hermana",
+          //   "seña_image":
+          //       "http://res.cloudinary.com/dsiamqhuu/raw/upload/v1751581248/ICHEJA/ICHEJA/T3_R1_4",
+          // },
         ],
       },
     ],

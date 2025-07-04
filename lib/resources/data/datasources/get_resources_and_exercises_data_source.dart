@@ -1,3 +1,4 @@
+import 'package:icheja_mobile/common/domain/constants/ui_constants.dart';
 import 'package:icheja_mobile/core/data/datasource/mock/mock_data.dart';
 import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
 import 'package:icheja_mobile/resources/domain/entities/resources_entity.dart';
@@ -25,22 +26,43 @@ class GetResourcesAndExercisesDataSource
     if (resource.length > 0) {
       res.add(ResourcesEntity(
           id: '0',
-          title: data["Tema"],
+          title: 'Teoría',
           imageUrl:
               'https://previews.123rf.com/images/matriyoshka/matriyoshka1510/matriyoshka151000021/46276042-science-and-international-education-classroom-university-professor-theory-teacher-college-lecture.jpg',
-          routeToGo: '/resources/${data["Tema"]}'));
+          routeToGo:
+              '${AppRoutesConstant.resourceDetail}/${resource[0]["titulo"]}/$field'));
     }
-    int idx = 0;
+    int idx = 1;
     for (var exercise in exercises) {
       res.add(ResourcesEntity(
         id: idx.toString(),
-        title: exercise["titulo"],
+        title: 'Ejercicio $idx',
         imageUrl: exercise["media_instrucciones"]['media'],
-        routeToGo: '${AppRoutesConstant.exercises}${exercise["id"]}',
+        routeToGo: '${AppRoutesConstant.exercises}/$field/${idx - 1}',
       ));
       idx++;
     }
 
     return res;
+  }
+
+  @override
+  Future<List<ResourcesEntity>> getAllResources() async {
+    final data = content.where((e) => e["Recursos"].isNotEmpty).toList();
+    if (data.isEmpty) {
+      throw Exception("No resources found");
+    }
+
+    return data.map((e) {
+      final resource = e["Recursos"][0];
+      return ResourcesEntity(
+        id: "0",
+        title: resource["titulo"],
+        imageUrl:
+            'https://previews.123rf.com/images/matriyoshka/matriyoshka1510/matriyoshka151000021/46276042-science-and-international-education-classroom-university-professor-theory-teacher-college-lecture.jpg',
+        routeToGo:
+            '${AppRoutesConstant.resourceDetail}/${resource["titulo"]}/${UIConstants.all_resources}',
+      );
+    }).toList();
   }
 }
