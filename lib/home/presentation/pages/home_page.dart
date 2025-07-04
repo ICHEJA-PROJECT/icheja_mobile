@@ -93,13 +93,6 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
-    final List<String> allTexts = [
-      'Recursos global',
-      'Caligrafía',
-      'Abecedario',
-      'Nombres propios',
-      'Calendario'
-    ];
     return ChangeNotifierProvider(
       create: (context) => sl<HomeViewModel>(),
       child: AppLayout(
@@ -124,23 +117,24 @@ class _HomePageState extends State<HomePage> {
                   ListView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
-                      itemCount: allTexts.length,
+                      itemCount: viewModel.resourcesList.length,
                       itemBuilder: (context, index) {
-                        final text = allTexts[index];
+                        final resource = viewModel.resourcesList[index];
                         return Column(
                           children: [
                             RowTypes(
-                              text: text,
-                              overlayColor: text == 'Recursos global'
+                              text: resource.name,
+                              overlayColor: resource.name == 'Recursos global'
                                   ? ColorTheme.primary.withValues(alpha: 0.5)
                                   : ColorTheme.tertiary.withValues(alpha: 0.2),
-                              backgroundColor: text == 'Recursos global'
-                                  ? ColorTheme.tertiary
-                                  : ColorTheme.secondary,
-                              imageUrl:
-                                  'https://cdn-icons-png.flaticon.com/512/8136/8136031.png',
+                              backgroundColor:
+                                  resource.name == 'Recursos global'
+                                      ? ColorTheme.tertiary
+                                      : ColorTheme.secondary,
+                              imageUrl: resource.imageUrl,
                               onPressed: () {
-                                context.go(AppRoutesConstant.resources);
+                                context.go(
+                                    '${AppRoutesConstant.resources}/${resource.name}');
                               },
                             ),
                             const SizedBox(height: 25),
