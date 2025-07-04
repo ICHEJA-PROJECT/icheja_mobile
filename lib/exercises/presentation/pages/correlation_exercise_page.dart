@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:icheja_mobile/common/presentation/layouts/app_layout.dart';
 import 'package:icheja_mobile/common/presentation/layouts/modal_layout.dart';
 import 'package:icheja_mobile/common/presentation/theme/color_theme.dart';
@@ -7,6 +8,7 @@ import 'package:icheja_mobile/common/presentation/widgets/modal_content.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_footer_actions.dart';
 import 'package:icheja_mobile/common/presentation/widgets/modal_header.dart';
 import 'package:icheja_mobile/core/application/dependency_injection.dart';
+import 'package:icheja_mobile/core/router/domain/constants/app_routes_constant.dart';
 import 'package:icheja_mobile/exercises/presentation/viewmodels/correlation_exercise_viewmodel.dart';
 import 'package:icheja_mobile/exercises/presentation/widgets/correlation_exercise.dart';
 import 'package:icheja_mobile/home/presentation/widgets/home_skeleton.dart';
@@ -17,7 +19,8 @@ class CorrelationExercisePage extends StatefulWidget {
   const CorrelationExercisePage({super.key});
 
   @override
-  State<CorrelationExercisePage> createState() => _CorrelationExercisePageState();
+  State<CorrelationExercisePage> createState() =>
+      _CorrelationExercisePageState();
 }
 
 class _CorrelationExercisePageState extends State<CorrelationExercisePage> {
@@ -43,7 +46,8 @@ class _CorrelationExercisePageState extends State<CorrelationExercisePage> {
         titleFontSize: 30,
         subtitleFontSize: 20,
         titleColor: ColorTheme.goldColor,
-        subtitle: "Observa la seña mostrada y selecciona la letra que corresponde",
+        subtitle:
+            "Observa la seña mostrada y selecciona la letra que corresponde",
       ),
       content: const ModalContent(
         child: Column(
@@ -109,4 +113,4 @@ class _CorrelationExercisePageState extends State<CorrelationExercisePage> {
       ),
     );
   }
-} 
+}

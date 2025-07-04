@@ -18,14 +18,16 @@ import 'package:icheja_mobile/exercises/presentation/widgets/writing_exercise_ac
 class ExerciseContent extends StatelessWidget {
   final String fieldNameSelected;
   final ExerciseViewModel viewModel;
-  final bool isWriting;
+  final bool isText;
+  final bool isSelection;
   final Exercise exercise;
 
   const ExerciseContent({
     super.key,
     required this.exercise,
     required this.viewModel,
-    this.isWriting = false,
+    this.isText = false,
+    this.isSelection = false,
     required this.fieldNameSelected,
   });
 
@@ -33,12 +35,14 @@ class ExerciseContent extends StatelessWidget {
     ModalLayout.show(
       context: context,
       barrierDismissible: true,
-      header: const ModalHeader(
-        title: "Felicidades!!",
+      header: ModalHeader(
+        title: viewModel.exerciseMock?.retroalimentacion["titulo"] ??
+            "¡Excelente!",
         titleFontSize: 30,
         subtitleFontSize: 20,
         titleColor: ColorTheme.greenColor,
-        subtitle: "Sigue trabajando así",
+        subtitle: viewModel.exerciseMock?.retroalimentacion["subtitulo"] ??
+            "¡Has completado el ejercicio!",
       ),
       content: const ModalContent(
         child: Column(
@@ -55,10 +59,13 @@ class ExerciseContent extends StatelessWidget {
       ),
       footerActions: ModalFooterActions(
         buttonTypes: const [ModalButtonType.close, ModalButtonType.next],
-        onNext: () => {Navigator.of(context).pop()},
+        onNext: () => {
+          Navigator.of(context).pop(),
+          context.go('${AppRoutesConstant.resources}/$fieldNameSelected')
+        },
         onClose: () => {
           Navigator.of(context).pop(),
-          context.go(AppRoutesConstant.resourceDetail)
+          context.go('${AppRoutesConstant.resources}/$fieldNameSelected')
         },
       ),
     );
@@ -84,7 +91,7 @@ class ExerciseContent extends StatelessWidget {
         }
       },
       childrens: [
-        if (isWriting) ...[
+        if (isText) ...[
           const SizedBox(height: 16),
           CustomContainerBorder(
             borderColor: ColorTheme.primary,
@@ -96,7 +103,7 @@ class ExerciseContent extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 CustomSvgNetworkImage(
-                  imageUrl:
+                  imageUrl: viewModel.exerciseMock?.contexto["imagen"] ??
                       'https://res.cloudinary.com/dsiamqhuu/image/upload/v1751572924/ICHEJA/ICHEJA/T2_R1_1.svg',
                   width: size.width * 0.30,
                   height: size.height * 0.30,
@@ -111,7 +118,8 @@ class ExerciseContent extends StatelessWidget {
               onSendExercise: () {
                 _showGamificationModal(context);
               }),
-        ]
+        ] else if (isSelection)
+          ...[]
 
         // ? For future use, if needed
         // ExerciseMediaDisplay(
